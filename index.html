@@ -1,9 +1,173 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Page Title</title>
-</head>
-<body>
+<doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>SuperMessageBoard4</title>
+    <style>
+    #tableBorder {
+      height: 43.3em;
+      width: 57.8em;
+      background-color: #e6ffe6;
+      border-radius: 25px;
+    }
+    #profName {
+      font-size: 45px;
+    }
+    #profStatus {
+      font-size:  35px;
+    }
+    .flex-fill {
+    flex: 1 1 auto;
+    }
+    #statusBar {
+      height: 6em;
+      background-color: silver;
+      border-radius: 25px;
+    }
+    #proPic {
+      margin-top: .5em;
+      height: 18em;
+      width: 13em;
+    }
+    #statusOutline {
+      border-radius: 25px;
+    }
+    .profButton {
+      margin-top: 1.5em;
+      margin-bottom: 1.5em;
+      margin-left: 1em;
+    }
+    #carouselExampleCaptions {
+      background-color: black;
+      margin-left: 1.5em;
+      margin-top: .5em;
+      height: 18em;
+      width: 30em;
+    }
+   .carouselPic {
+     height: 18em;
+     width: 30em;
+     object-fit: contain;
+    }
+    </style>
+  </head>
 
-</body>
+  <body>
+
+    <div id="tableBorder" class="d-inline-flex p-2 border border-dark">
+      <div class="d-flex flex-fill flex-column">
+          <div id="statusBar" class="d-flex align-items-baseline border border-dark">
+          <!--  <div class="border border-dark mr-auto p-2"> -->
+            <div id="profName" class="mr-auto p-2">John Dickerson</div>
+          <!--  </div> -->
+            <div id="statusOutline" class="border border-dark p-2">
+              <div id="profStatus" >Be back in the office in 15 mins!</div>
+            </div>
+          </div>
+          <div class="d-flex flex-row">
+          <img id="proPic" src="dickerson_propic.jpg" alt="ProfilePic">
+          <div class="d-flex flex-column p-2">
+            <button type="button" class="btn btn-secondary btn-lg profButton" data-toggle="modal" data-target="#aboutModal">About Me</button>
+            <button type="button" class="btn btn-secondary btn-lg profButton" data-toggle="modal" data-target="#messageModal">Message Me</button>
+            <button type="button" class="btn btn-secondary btn-lg profButton">Directory</button>
+          </div>
+
+          <div class="bd-example">
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="dickerson_propic.jpg" class="carouselPic d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>First slide label</h5>
+                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="dickerson_propic.jpg" class="carouselPic d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Second slide label</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <img src="dickerson_propic.jpg" class="carouselPic d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Third slide label</h5>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+              </div>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+
+
+      <div id="aboutModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">About Me</h4>
+            </div>
+            <div class="modal-body">
+              <p>I'm an Assistant Professor in the Department of Computer Science at the University of Maryland, with a joint appointment in the University of Maryland Institute for Advanced Computer Studies (UMIACS). At Maryland, I am also formally affiliated with the Applied Mathematics & Statistics, and Scientific Computation (AMSC) program, as well as the Human-Computer Interaction Laboratory (HCIL). Previously, I was a Ph.D. student in computer science at Carnegie Mellon, lead developer of the US nationwide kidney exchange program, and lead developer of a better way to deal with TV advertisements (currently in the pilot phase with two of the nation's largest MSOs).
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="messageModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">About Me</h4>
+            </div>
+            <div class="modal-body">
+              <p>I'm an Assistant Professor in the Department of Computer Science at the University of Maryland, with a joint appointment in the University of Maryland Institute for Advanced Computer Studies (UMIACS). At Maryland, I am also formally affiliated with the Applied Mathematics & Statistics, and Scientific Computation (AMSC) program, as well as the Human-Computer Interaction Laboratory (HCIL). Previously, I was a Ph.D. student in computer science at Carnegie Mellon, lead developer of the US nationwide kidney exchange program, and lead developer of a better way to deal with TV advertisements (currently in the pilot phase with two of the nation's largest MSOs).
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+        </div>
+        </div>
+    </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
 </html>
