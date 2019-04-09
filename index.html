@@ -73,7 +73,7 @@
           <div class="d-flex flex-column p-2">
             <button type="button" class="btn btn-secondary btn-lg profButton" data-toggle="modal" data-target="#aboutModal">About Me</button>
             <button type="button" class="btn btn-secondary btn-lg profButton" data-toggle="modal" data-target="#messageModal">Message Me</button>
-            <button type="button" class="btn btn-secondary btn-lg profButton">Directory</button>
+            <button type="button" class="btn btn-secondary btn-lg profButton" data-toggle="modal" data-target="#directoryModal">Directory</button>
           </div>
 
           <div class="bd-example">
@@ -85,7 +85,7 @@
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="dickerson_propic.jpg" class="carouselPic d-block w-100" alt="...">
+              <img src="michael-phelps-loves-weed.jpg" class="carouselPic d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
                 <h5>First slide label</h5>
                 <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -99,7 +99,7 @@
               </div>
             </div>
             <div class="carousel-item">
-              <img src="dickerson_propic.jpg" class="carouselPic d-block w-100" alt="...">
+              <img src="Golub.jpg" class="carouselPic d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Third slide label</h5>
                 <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
@@ -131,7 +131,7 @@
               </p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
           </div>
 
@@ -144,6 +144,36 @@
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-header">
+              <h4 class="modal-title">Message Me</h4>
+            </div>
+            <div class="modal-body">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Quick Topic</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                <span class="input-group-text">Quick Message</span>
+              </div>
+              <textarea class="form-control" aria-label="With textarea"></textarea>
+            </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal">Send</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="directoryModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
               <h4 class="modal-title">About Me</h4>
             </div>
             <div class="modal-body">
@@ -151,7 +181,7 @@
               </p>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Send</button>
             </div>
           </div>
 
