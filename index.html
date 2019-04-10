@@ -9,12 +9,16 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href='https://use.fontawesome.com/releases/v5.0.6/css/all.css' rel='stylesheet'>
 
     <link href='fullcalendar/core/main.css' rel='stylesheet' />
     <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
+    <link href='fullcalendar/timegrid/main.css' rel='stylesheet' />
+    <link href='fullcalendar/bootstrap/main.css' rel='stylesheet' />
 
     <script src='fullcalendar/core/main.js'></script>
     <script src='fullcalendar/daygrid/main.js'></script>
+    <script src='fullcalendar/timegrid/main.js'></script>
 
 
     <title>SuperMessageBoard4</title>
@@ -77,7 +81,7 @@
             <div id="profName" class="mr-auto p-2">John Dickerson</div>
           <!--  </div> -->
             <div id="statusOutline" class="border border-dark p-2">
-              <div id="profStatus" >Be back in the office in 15 mins!</div>
+              <div id="profStatus" >Be back in 15 mins!</div>
             </div>
           </div>
           <div class="d-flex flex-row">
@@ -214,15 +218,41 @@
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
 
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          plugins: [ 'dayGrid'],
-          defaultView: 'dayGrid', // the name of a generic view
+        /*var calendar = new FullCalendar.Calendar(calendarEl, {
+          plugins: [ 'timeGrid' ],
+          defaultView: 'timeGrid', // the name of a generic view
           duration: { days: 2 },
-          weekends: false,
+          minTime: "08:00:00",
+          maxTime: "19:00:00",
+          allDaySlot: false,
+          nowIndicator: true
+        });*/
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          plugins: [ 'timeGrid'],
+          minTime: "08:00:00",
+          maxTime: "19:00:00",
+          allDaySlot: false,
+          nowIndicator: true,
+          defaultView: 'timeGridThreeDay',
+          header: {
+            left: 'prev,next',
+            center: '',//'title',
+            right: 'timeGridDay,timeGridThreeDay'
+          },
+          views: {
+            timeGridThreeDay: {
+              type: 'timeGrid',
+              duration: { days: 3 },
+              buttonText: '3 day'
+            }
+          },
+          events: 'https://fullcalendar.io/demo-events.json'
         });
 
-
+        calendar.setOption('height', 350);
         calendar.render();
+
       });
 
     </script>
