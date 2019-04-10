@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <link href='fullcalendar/core/main.css' rel='stylesheet' />
+    <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
+
+    <script src='fullcalendar/core/main.js'></script>
+    <script src='fullcalendar/daygrid/main.js'></script>
+
+
     <title>SuperMessageBoard4</title>
     <style>
     #tableBorder {
@@ -30,27 +41,28 @@
     }
     #proPic {
       margin-top: .5em;
-      height: 18em;
-      width: 13em;
+      margin-left: 2.5em;
+      height: 12em;
+      width: 10em;
     }
     #statusOutline {
-      border-radius: 25px;
+       border-radius: 25px;
     }
     .profButton {
-      margin-top: 1.5em;
-      margin-bottom: 1.5em;
-      margin-left: 1em;
+      margin-top: .5em;
+      margin-bottom: .5em;
+      margin-left: 2.5em;
     }
     #carouselExampleCaptions {
       background-color: black;
-      margin-left: 1.5em;
+      margin-left: 3em;
       margin-top: .5em;
-      height: 18em;
-      width: 30em;
+      height: 12em;
+      width: 25em;
     }
    .carouselPic {
-     height: 18em;
-     width: 30em;
+     height: 12em;
+     width: 20em;
      object-fit: contain;
     }
     </style>
@@ -85,24 +97,24 @@
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="michael-phelps-loves-weed.jpg" class="carouselPic d-block w-100" alt="...">
+              <img src="competitionflyer.jpg" class="carouselPic d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
-                <h5>First slide label</h5>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <h5></h5>
+                <p></p>
               </div>
             </div>
             <div class="carousel-item">
-              <img src="dickerson_propic.jpg" class="carouselPic d-block w-100" alt="...">
+              <img src="xkcd_pic.png" class="carouselPic d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Second slide label</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <!--  <h5>Second slide label</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
               </div>
             </div>
             <div class="carousel-item">
               <img src="Golub.jpg" class="carouselPic d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Third slide label</h5>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                <h5>Professor of the Month</h5>
+                <p>Congratulations to Dr. Evan Golub</p>
               </div>
             </div>
           </div>
@@ -116,6 +128,7 @@
           </a>
         </div>
       </div>
+
 
 
       <div id="aboutModal" class="modal fade" role="dialog">
@@ -141,63 +154,79 @@
       <div id="messageModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Message Me</h4>
-            </div>
-            <div class="modal-body">
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text" id="inputGroup-sizing-default">Quick Topic</span>
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Message Me</h4>
                 </div>
-                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                <div class="modal-body">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-default">Quick Topic</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                  </div>
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                    <span class="input-group-text">Quick Message</span>
+                  </div>
+                  <textarea class="form-control" aria-label="With textarea"></textarea>
+                </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-success" data-dismiss="modal">Send</button>
+                </div>
               </div>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                <span class="input-group-text">Quick Message</span>
-              </div>
-              <textarea class="form-control" aria-label="With textarea"></textarea>
-            </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-success" data-dismiss="modal">Send</button>
+
             </div>
           </div>
 
-        </div>
-      </div>
+          <div id="directoryModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
 
-      <div id="directoryModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">About Me</h4>
+                </div>
+                <div class="modal-body">
+                  <p>I'm an Assistant Professor in the Department of Computer Science at the University of Maryland, with a joint appointment in the University of Maryland Institute for Advanced Computer Studies (UMIACS). At Maryland, I am also formally affiliated with the Applied Mathematics & Statistics, and Scientific Computation (AMSC) program, as well as the Human-Computer Interaction Laboratory (HCIL). Previously, I was a Ph.D. student in computer science at Carnegie Mellon, lead developer of the US nationwide kidney exchange program, and lead developer of a better way to deal with TV advertisements (currently in the pilot phase with two of the nation's largest MSOs).
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Send</button>
+                </div>
+              </div>
 
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">About Me</h4>
-            </div>
-            <div class="modal-body">
-              <p>I'm an Assistant Professor in the Department of Computer Science at the University of Maryland, with a joint appointment in the University of Maryland Institute for Advanced Computer Studies (UMIACS). At Maryland, I am also formally affiliated with the Applied Mathematics & Statistics, and Scientific Computation (AMSC) program, as well as the Human-Computer Interaction Laboratory (HCIL). Previously, I was a Ph.D. student in computer science at Carnegie Mellon, lead developer of the US nationwide kidney exchange program, and lead developer of a better way to deal with TV advertisements (currently in the pilot phase with two of the nation's largest MSOs).
-              </p>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Send</button>
             </div>
           </div>
 
-        </div>
-      </div>
 
         </div>
+
+        <div id='calendar'></div>
+
         </div>
     </div>
 
+    <script>
+
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          plugins: [ 'dayGrid'],
+          defaultView: 'dayGrid', // the name of a generic view
+          duration: { days: 2 },
+          weekends: false,
+        });
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        calendar.render();
+      });
+
+    </script>
+
+
   </body>
 </html>
