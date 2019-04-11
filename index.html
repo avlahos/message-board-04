@@ -15,10 +15,12 @@
     <link href='fullcalendar/daygrid/main.css' rel='stylesheet' />
     <link href='fullcalendar/timegrid/main.css' rel='stylesheet' />
     <link href='fullcalendar/bootstrap/main.css' rel='stylesheet' />
+    <link href='fullcalendarscheduler/bootstrap/main.css' rel='stylesheet' />
 
     <script src='fullcalendar/core/main.js'></script>
     <script src='fullcalendar/daygrid/main.js'></script>
     <script src='fullcalendar/timegrid/main.js'></script>
+    <script src='fullcalendarscheduler/interaction/main.js'></script>
 
 
     <title>SuperMessageBoard4</title>
@@ -46,8 +48,8 @@
     #proPic {
       margin-top: .5em;
       margin-left: 2.5em;
-      height: 12em;
-      width: 10em;
+      height: 15em;
+      width: 12em;
     }
     #statusOutline {
        border-radius: 25px;
@@ -61,11 +63,12 @@
       background-color: black;
       margin-left: 3em;
       margin-top: .5em;
-      height: 12em;
+      margin-bottom: 1em;
+      height: 15em;
       width: 25em;
     }
    .carouselPic {
-     height: 12em;
+     height: 15em;
      width: 20em;
      object-fit: contain;
     }
@@ -89,7 +92,7 @@
           <div class="d-flex flex-column p-2">
             <button type="button" class="btn btn-secondary btn-lg profButton" data-toggle="modal" data-target="#aboutModal">About Me</button>
             <button type="button" class="btn btn-secondary btn-lg profButton" data-toggle="modal" data-target="#messageModal">Message Me</button>
-            <button type="button" class="btn btn-secondary btn-lg profButton" data-toggle="modal" data-target="#directoryModal">Directory</button>
+            <button id="directoryButton" type="button" class="btn btn-secondary btn-lg profButton" data-toggle="modal" data-target="#messageModal">Directory</button>
           </div>
 
           <div class="bd-example">
@@ -181,9 +184,37 @@
                   <button type="button" class="btn btn-success" data-dismiss="modal">Send</button>
                 </div>
               </div>
-
             </div>
           </div>
+
+          <div id="schedModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Message Me</h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">Start Time</span>
+                        </div>
+                        <input id="startTime" type="time" min="8:00" max="18:00" value="13:30">
+                      </div>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1">End Time</span>
+                        </div>
+                        <input id="endTime" type="time" min="8:00" max="18:00">
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-success" data-dismiss="modal">Request</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
           <div id="directoryModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -227,17 +258,21 @@
           allDaySlot: false,
           nowIndicator: true
         });*/
-
+        $('#schedModal').modal({ show: false})
         var calendar = new FullCalendar.Calendar(calendarEl, {
-          plugins: [ 'timeGrid'],
+          plugins: [ 'timeGrid', 'interaction'],
+          selectable: true,
+          timeZone: 'local',
           minTime: "08:00:00",
           maxTime: "19:00:00",
+          schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
           allDaySlot: false,
           nowIndicator: true,
+          slotDuration: '00:30:00',
           defaultView: 'timeGridThreeDay',
           header: {
             left: 'prev,next',
-            center: '',//'title',
+            center: '',
             right: 'timeGridDay,timeGridThreeDay'
           },
           views: {
@@ -247,10 +282,40 @@
               buttonText: '3 day'
             }
           },
-          events: 'https://fullcalendar.io/demo-events.json'
+          eventClick: function(info) {
+              var eventObj = info.event;
+              alert(eventObj.title);
+          },
+          select: function(info) {
+            $('#schedModal').modal('show');
+            console.log(info);
+            $('#startTime').val(info.startStr.slice(11,16));
+            $('#endTime').val(info.endStr.slice(11,16));
+
+          },
+          events: [
+                  { // this object will be "parsed" into an Event Object
+                    title: 'Department Meeting', // a property!
+                    start: '2019-04-10T16:00:00+00:00', // a property!
+                    end: '2019-04-10T18:00:00+00:00', // a property! ** see important note below about 'end' **
+                    color: 'red'
+                  },
+                  {
+                    title: 'Out For Lunch', // a property!
+                    start: '2019-04-11T15:00:00+00:00', // a property!
+                    end: '2019-04-11T16:00:00+00:00', // a property! ** see important note below about 'end' **
+                    color: 'red'
+                  },
+                  {
+                    title: 'Office Hours', // a property!
+                    start: '2019-04-11T17:00:00+00:00', // a property!
+                    end: '2019-04-11T18:00:00+00:00', // a property! ** see important note below about 'end' **
+                    color: 'green'
+                  }
+                ]
         });
 
-        calendar.setOption('height', 350);
+        calendar.setOption('height', 325);
         calendar.render();
 
       });
