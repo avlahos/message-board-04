@@ -193,7 +193,7 @@
                   <!-- Modal content-->
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h4 class="modal-title">Message Me</h4>
+                      <h4 class="modal-title">Select A Time</h4>
                     </div>
                     <div class="modal-body">
                       <div class="input-group mb-3">
@@ -210,7 +210,7 @@
                       </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-success" data-dismiss="modal">Request</button>
+                      <button id="requestButton" type="button" class="btn btn-success" data-dismiss="modal">Request</button>
                     </div>
                   </div>
                 </div>
@@ -251,6 +251,24 @@
       });
 
       document.addEventListener('DOMContentLoaded', function() {
+        var eventsArray = [{ // this object will be "parsed" into an Event Object
+          title: 'Department Meeting', // a property!
+          start: '2019-04-10T16:00:00+00:00', // a property!
+          end: '2019-04-10T18:00:00+00:00', // a property! ** see important note below about 'end' **
+          color: 'red'
+        },
+        {
+          title: 'Out For Lunch', // a property!
+          start: '2019-04-11T15:00:00+00:00', // a property!
+          end: '2019-04-11T16:00:00+00:00', // a property! ** see important note below about 'end' **
+          color: 'red'
+        },
+        {
+          title: 'Office Hours', // a property!
+          start: '2019-04-11T17:00:00+00:00', // a property!
+          end: '2019-04-11T18:00:00+00:00', // a property! ** see important note below about 'end' **
+          color: 'green'
+        }];
         var calendarEl = document.getElementById('calendar');
 
         /*var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -264,7 +282,7 @@
         });*/
         $('#schedModal').modal({ show: false})
         var calendar = new FullCalendar.Calendar(calendarEl, {
-          plugins: [ 'timeGrid', 'interaction'],
+          plugins: [ 'timeGrid', 'interaction', 'core'],
           selectable: true,
           timeZone: 'local',
           minTime: "08:00:00",
@@ -292,38 +310,32 @@
           },
           select: function(info) {
             $('#schedModal').modal('show');
-            console.log(info);
+            console.log(this)
             $('#startTime').val(info.startStr.slice(11,16));
             $('#endTime').val(info.endStr.slice(11,16));
-
+            $('#requestButton').click(
+              eventsArray.push({
+                title: 'Test', // a property!
+                start: '2019-04-10T19:00:00+00:00', // a property!
+                end: '2019-04-10T22:00:00+00:00', // a property! ** see important note below about 'end' **
+                color: 'red'
+              })
+            )
           },
-          events: [
-                  { // this object will be "parsed" into an Event Object
-                    title: 'Department Meeting', // a property!
-                    start: '2019-04-10T16:00:00+00:00', // a property!
-                    end: '2019-04-10T18:00:00+00:00', // a property! ** see important note below about 'end' **
-                    color: 'red'
-                  },
-                  {
-                    title: 'Out For Lunch', // a property!
-                    start: '2019-04-11T15:00:00+00:00', // a property!
-                    end: '2019-04-11T16:00:00+00:00', // a property! ** see important note below about 'end' **
-                    color: 'red'
-                  },
-                  {
-                    title: 'Office Hours', // a property!
-                    start: '2019-04-11T17:00:00+00:00', // a property!
-                    end: '2019-04-11T18:00:00+00:00', // a property! ** see important note below about 'end' **
-                    color: 'green'
-                  }
-                ]
+          events: eventsArray
         });
 
         calendar.setOption('height', 325);
         calendar.render();
 
       });
-
+      function createElement(info) {
+        $('#calendar').fullCalendar('renderEvent', {
+         title: 'dynamic event',
+         start: info.startStr,
+         end: info.endStr
+       });
+      }
     </script>
 
 
