@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <title>SuperMessageBoard4_admin</title>
+
+    <style>
+      #profName {
+        font-size: 45px;
+      }
+      #profStatus {
+        font-size:  35px;
+      }
+      #statusBar {
+        height: 6em;
+        background-color: #FFFF88;
+        border-radius: 25px;
+      }
+      #upDateButton {
+        font-size:  20px;
+        margin-top: 1em;
+        margin-left: 3.5em;
+      }
+      #statusOutline {
+        background-color: #B0FF90;
+        border-radius: 25px;
+      }
+      #proPic {
+        margin-top: 2em;
+        margin-left: 2.5em;
+        height: 15em;
+        width: 12em;
+      }
+
+      #MessageButton {
+        margin-top: 1em;
+      }
+
+      .message {
+        margin-top: 0.6em;
+        margin-left: 2em;
+        position: relative;
+      }
+      .message img {
+        width:100px;
+        height:90px;
+      }
+      .message .btn {
+        margin-left: 2em;
+        position: absolute;
+        background-color: #0078D7;
+        color: white;
+        font-size: 20px;
+        padding: 50px 60px;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+      }
+
+      .message .btn:hover {
+        background-color: black;
+      }
+      .message .btn .butex {
+        margin-top: 1em;
+        margin-bottom: -1em;
+      }
+
+      #DirectionButton {
+        margin-top: 1em;
+        margin-left: 17em;
+      }
+      .direction {
+        margin-top: 0.6em;
+        position: relative;
+      }
+      .direction img {
+        margin-bottom: -1em;
+        width:100px;
+        height:90px;
+      }
+      .direction .btn {
+        margin-left: 2em;
+        position: absolute;
+          background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        font-size: 20px;
+        padding: 65px 60px;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+      }
+
+      .direction .btn:hover {
+        background-color: black;
+      }
+      .direction .btn .butex {
+        margin-top: 2em;
+        margin-bottom: -1em;
+      }
+    </style>
+
+  </head>
+
+
+  <body>
+    <h1> </h1>
+    <div id="statusBar" class="d-flex align-items-baseline border border-dark">
+    <!--  <div class="border border-dark mr-auto p-2"> -->
+      <div id="profName" class="mr-auto p-2">John Dickerson</div>
+    <!--  </div> -->
+      <div id="statusOutline" class="border border-dark p-2">
+        <div class="dropdown">
+          <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Tutorials
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+              <li role="presentation" class="divider"></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
+            </ul>
+          </div>
+          <!--<div id="profStatus" >Be back in 15 mins!</div>-->
+      </div>
+    </div>
+
+    <div class="d-flex flex-row">
+      <div>
+        <img id="proPic" src="dickerson_propic.jpg" alt="ProfilePic"><div></div>
+        <div id="upDateButton"> <button type="button" class="btn btn-outline-primary">Update Picture</div>
+        <div id="upDateButton"> <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#aboutModal">Edit About Me</button> </div>
+      </div>
+
+      <div id="MessageButton" class="d-flex flex-column p-2">
+        <div class="message">
+          <button class="btn"><img src="windows-10-mail-icon.png" alt="Mail"><div class="butex">My Messages</div></button>
+        </div>
+        <!--<button id="directoryButton" type="button" class="btn btn-secondary btn-lg profButton" data-toggle="modal" data-target="#messageModal">Directory</button> -->
+      </div>
+
+      <div id="DirectionButton" class="d-flex flex-column p-2">
+        <div class="direction">
+          <button class="btn"><img src="maps-icon.png" alt="Mail"><div class="butex">Directory</div></button>
+        </div>
+        <!--<button id="directoryButton" type="button" class="btn btn-secondary btn-lg profButton" data-toggle="modal" data-target="#messageModal">Directory</button> -->
+      </div>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
