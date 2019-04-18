@@ -49,16 +49,17 @@
         position: relative;
       }
       .message img {
+        margin-top: -0.5em;
         width:100px;
         height:90px;
       }
       .message .btn {
         margin-left: 2em;
         position: absolute;
-        background-color: #0078D7;
+        background-color: #0078F1;
         color: white;
         font-size: 20px;
-        padding: 50px 60px;
+        padding: 40px 60px;
         border: none;
         cursor: pointer;
         border-radius: 20px;
@@ -70,6 +71,16 @@
       .message .btn .butex {
         margin-top: 1em;
         margin-bottom: -1em;
+      }
+
+      .badge {
+        position: absolute;
+        right: -55px;
+        margin-top: -1em;
+        padding: 5px 10px;
+        border-radius: 50%;
+        background-color: red;
+        color: white;
       }
 
       #DirectionButton {
@@ -104,6 +115,32 @@
         margin-top: 2em;
         margin-bottom: -1em;
       }
+
+      .setting {
+        margin-left: 2em;
+        position: absolute;
+          background-color: rgba(0, 0, 0, 0.3);
+        color: white;
+        font-size: 20px;
+        padding: 65px 60px;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+      }
+      .setting:hover {
+        background-color: black;
+      }
+
+      .setting .butex {
+        margin-top: 2em;
+        margin-bottom: -1em;
+      }
+
+      .dropdown-menu {
+        background-color: #000000;
+         border: 1px solid #FFFFFF;
+      }
+
     </style>
 
   </head>
@@ -115,20 +152,39 @@
     <!--  <div class="border border-dark mr-auto p-2"> -->
       <div id="profName" class="mr-auto p-2">John Dickerson</div>
     <!--  </div> -->
+    <div id="statusOutline" class="border border-dark p-2">
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+          Status Selection
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" background-color="rgba(0, 0, 0, 0.3)">
+          <li><a href="#" data-value="I am here." style="color:green">I am here.</a></li>
+          <li><a href="#" data-value="Be Back in" style="color:Yellow">Be Back in</a></li>
+          <li><a href="#" data-value="Out for Today!" style="color:Red">Out for Today!</a></li>
+        </ul>
+      </div>
+        <!--<div id="profStatus" >Be back in 15 mins!</div>-->
+      </div>
       <div id="statusOutline" class="border border-dark p-2">
         <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Tutorials
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-              <li role="presentation" class="divider"></li>
-              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-            </ul>
-          </div>
+          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Status Selection
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li><a href="#" data-value="Come in!" style="color:green">Come in!</a></li>
+            <li><a href="#" data-value="15 minutes." style="color:Yellow">15 minutes.</a></li>
+            <li><a href="#" data-value="30 minutes." style="color:Yellow">30 minutes.</a></li>
+            <li><a href="#" data-value="an hour." style="color:Yellow">an hour.</a></li>
+            <li><a href="#" data-value="two hours." style="color:Yellow">two hours.</a></li>
+            <li><a href="#" data-value="four hours." style="color:Yellow">four hours.</a></li>
+            <li><a href="#" data-value="See you!" style="color:green">See you!</a></li>
+          </ul>
+        </div>
           <!--<div id="profStatus" >Be back in 15 mins!</div>-->
-      </div>
+        </div>
+
     </div>
 
     <div class="d-flex flex-row">
@@ -140,21 +196,31 @@
 
       <div id="MessageButton" class="d-flex flex-column p-2">
         <div class="message">
-          <button class="btn"><img src="windows-10-mail-icon.png" alt="Mail"><div class="butex">My Messages</div></button>
+          <button class="btn"><span class="badge">3</span><img src="windows-10-mail-icon.png" alt="Mail"><div class="butex">My Messages</div></button>
         </div>
-        <!--<button id="directoryButton" type="button" class="btn btn-secondary btn-lg profButton" data-toggle="modal" data-target="#messageModal">Directory</button> -->
       </div>
 
       <div id="DirectionButton" class="d-flex flex-column p-2">
         <div class="direction">
           <button class="btn"><img src="maps-icon.png" alt="Mail"><div class="butex">Directory</div></button>
         </div>
-        <!--<button id="directoryButton" type="button" class="btn btn-secondary btn-lg profButton" data-toggle="modal" data-target="#messageModal">Directory</button> -->
+      </div>
+
+      <div id="DirectionButton" class="d-flex flex-column p-2">
+        <div class="direction">
+          <button class="setting"><img src="setting-icon.png" alt="Mail"><div class="butex">Directory</div></button>
+        </div>
       </div>
 
 
 
     <!-- Optional JavaScript -->
+    <script>
+    $(".dropdown-menu li a").click(function(){
+      $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+      $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+    });
+    </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
