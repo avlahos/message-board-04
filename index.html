@@ -145,7 +145,7 @@
             </div>
             <p><button type="button" class="profButton" data-toggle="modal" data-target="#aboutModal">About Me</button></p>
             <p><button type="button" class="profButton" data-toggle="modal" data-target="#messageModal">Message Me</button></p>
-            <p><button id="directoryButton" type="button" class="profButton" data-toggle="modal" data-target="#messageModal">Directory</button></p>
+            <p><button id="directoryButton" type="button" class="profButton" data-toggle="modal" data-target="#directoryModal">Directory</button></p>
           </div>
         </div>
 
@@ -208,7 +208,6 @@
 
       <div id="messageModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-
               <!-- Modal content-->
               <div class="modal-content">
                 <div class="modal-header">
@@ -217,23 +216,39 @@
                 <div class="modal-body">
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-default">Your Name</span>
+                    </div>
+                    <input type="text" id="messageName" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-default">Your DirectoryID</span>
+                    </div>
+                    <input type="text" id="messageID" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                  </div>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
                       <span class="input-group-text" id="inputGroup-sizing-default">Quick Topic</span>
                     </div>
-                    <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    <input type="text" id="messageTopic" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                   </div>
                   <div class="input-group">
                     <div class="input-group-prepend">
                     <span class="input-group-text">Quick Message</span>
                   </div>
-                  <textarea class="form-control" aria-label="With textarea"></textarea>
+                  <textarea class="form-control" id="messageBody" aria-label="With textarea"></textarea>
                 </div>
-                </div>
+                <div id="errorEmail"></div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-success" data-dismiss="modal">Send</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                  <button type="button" onClick="sendEmail(document.getElementById('messageName').value, document.getElementById('messageID').value, document.getElementById('messageTopic').value, document.getElementById('messageBody').value)" class="btn btn-success">Send</button>
                 </div>
               </div>
             </div>
           </div>
+        </div>
+
+
 
           <div id="schedModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -305,16 +320,58 @@
           }
         }
 
+        if(ret === ""){
+          ret = "No professor found"
+        }
+
         return ret;
       }
     </script>
+
+    <script>
+      var toAddress = "alisha.asnani@gmail.com";
+      var dirIDs = ["aasnani","happy","live"];
+
+      function closeModual(){
+        
+      }
+
+      function sendEmail(name, dirID, topic, mess){
+        //check inputs
+
+        if (topic === "" || name === "" || dirID === "" || mess === ""){
+           document.getElementById('errorEmail').innerHTML = "Error: Fill out all fields";
+        }
+        else if(dirIDs.includes(dirID) == false){
+          document.getElementById('errorEmail').innerHTML = "Error: Inputed dirID does not exist";
+        }
+        else{
+          document.getElementById('errorEmail').innerHTML = "";
+        }
+
+        // <?php
+        //   $to = toAddress;
+        //   $subject = topic;
+        //   $name_field = name;
+        //   $email_field = address;
+        //   $message = mess;
+        //
+        //   $body = "From: $name_field\n E-Mail: $email_field\n Message:\n $message";
+        //
+        //   echo "Data has been submitted to $to!";
+        //   mail($to, $subject, $body);
+        // ?>
+
+      }
+    </script>
+
 
 
     <script>
       $('.carousel-inner img').click(function () {
         alert("pop up doc");
       });
-      
+
 
       document.addEventListener('DOMContentLoaded', function() {
         var eventsArray = [{ // this object will be "parsed" into an Event Object
