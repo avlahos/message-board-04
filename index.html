@@ -92,7 +92,7 @@
           <div class="d-flex flex-column p-2">
             <button type="button" class="btn btn-secondary btn-lg profButton" data-toggle="modal" data-target="#aboutModal">About Me</button>
             <button type="button" class="btn btn-secondary btn-lg profButton" data-toggle="modal" data-target="#messageModal">Message Me</button>
-            <button id="directoryButton" type="button" class="btn btn-secondary btn-lg profButton" data-toggle="modal" data-target="#messageModal">Directory</button>
+            <button id="directoryButton" type="button" class="btn btn-secondary btn-lg profButton" data-toggle="modal" data-target="#directoryModal">Directory</button>
           </div>
 
           <div class="bd-example">
@@ -222,17 +222,22 @@
               <!-- Modal content-->
               <div class="modal-content">
                 <div class="modal-header">
-                  <h4 class="modal-title">About Me</h4>
+                  <h4 class="modal-title">Search for Other Professors' Rooms</h4>
                 </div>
                 <div class="modal-body">
-                  <p>I'm an Assistant Professor in the Department of Computer Science at the University of Maryland, with a joint appointment in the University of Maryland Institute for Advanced Computer Studies (UMIACS). At Maryland, I am also formally affiliated with the Applied Mathematics & Statistics, and Scientific Computation (AMSC) program, as well as the Human-Computer Interaction Laboratory (HCIL). Previously, I was a Ph.D. student in computer science at Carnegie Mellon, lead developer of the US nationwide kidney exchange program, and lead developer of a better way to deal with TV advertisements (currently in the pilot phase with two of the nation's largest MSOs).
-                  </p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Send</button>
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                    </div>
+                    <input type="text" name="name" id = "dirname" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                    <button type="button" onClick="document.getElementById('result').innerHTML = query(document.getElementById('dirname').value)">Search</button>
+                  </div>
+                  <div id="result"></div>
+                  <div id="bottom">
+                    <button type="button" onclick="document.getElementById('dirname').value = '';document.getElementById('result').innerHTML = ''" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
                 </div>
               </div>
-
             </div>
           </div>
 
@@ -243,6 +248,21 @@
 
         </div>
     </div>
+
+    <script>
+     var rooms = [{name: "Evan Golub", room: "IRB 1209"}, {name: "Michelle Hugue", room: "IRB 1211"}]
+      function query(name) {
+        var ret = "";
+        for (i = 0; i < rooms.length; i++) {
+          if(rooms[i].name.toLowerCase().includes(name.toLowerCase())){
+            ret += rooms[i].name + " is in room " + rooms[i].room + "<br />";
+          }
+        }
+
+        return ret;
+      }
+    </script>
+
 
     <script>
 
