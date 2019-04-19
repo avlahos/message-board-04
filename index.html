@@ -555,6 +555,7 @@
     startTime = document.getElementById('startTime').value
     endTime = document.getElementById('endTime').value
 
+
     if (topic === "" || name === "" || dirID === ""){
        document.getElementById('errorSched').innerHTML = "Error: Fill out all fields";
        return;
@@ -563,18 +564,30 @@
     if(dirID.includes("@umd")){
       var d = dirID.split("@")[0];
       if(dirIDs.includes(d) == false){
-        document.getElementById('errorEmail').innerHTML = "Error: Inputed University email does not exist";
+        document.getElementById('errorSched').innerHTML = "Error: Inputed University email does not exist";
         return;
       }
     }
     else if(!dirID.includes("@" )){
       if(dirIDs.includes(dirID) == false){
-        document.getElementById('errorEmail').innerHTML = "Error: Inputed Directory ID does not exist";
+        document.getElementById('errorSched').innerHTML = "Error: Inputed Directory ID does not exist";
         return;
       }
     }
     else{
 
+    }
+
+    if(startTime > endTime){
+      document.getElementById('errorSched').innerHTML = "End Time is before Start Time";
+      return;
+    }
+
+    console.log(startTime)
+    console.log(""+new Date().getHours()+":"+new Date().getMinutes())
+    if(startTime < ""+new Date().getHours()+":"+new Date().getMinutes()){
+      document.getElementById('errorSched').innerHTML = "Start Time already past";
+      return;
     }
       clearRequest();
       $("#schedModal").modal("hide");
