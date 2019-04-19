@@ -110,7 +110,7 @@
 				<div id="calendar">
 
 				</div>
-				<button class="btnFutureDates" data-toggle="modal" data-target="#calendarModal">Check Future Dates</button>
+				<button class="btnFutureDates" onclick="secondCalendarInit()" data-toggle="modal" data-target="#calendarModal">Check Future Dates</button>
 
 		  </div>
 		</div>
@@ -180,7 +180,7 @@
                 </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Your DirectoryID</span>
+                    <span class="input-group-text" id="inputGroup-sizing-default">Your DirectoryID or Email</span>
                   </div>
                   <input type="text" id="messageID" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                 </div>
@@ -199,7 +199,7 @@
               <div id="errorEmail"></div>
               <div class="modal-footer">
                 <button type="button" onClick="clearMessage()" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <button type="button" onClick="sendEmail(document.getElementById('messageName').value, document.getElementById('messageID').value, document.getElementById('messageTopic').value, document.getElementById('messageBody').value)" class="btn btn-success">Send</button>
+                <button type="button" onClick="sendEmail()" class="btn btn-success">Send</button>
               </div>
             </div>
           </div>
@@ -229,7 +229,7 @@
                     </div>
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
-                        <span class="input-group-text" id="basic-addon1">DirectoryID</span>
+                        <span class="input-group-text" id="basic-addon1">Your DirectoryID or Email</span>
                       </div>
                       <input id="schedID" type="text">
                     </div>
@@ -252,6 +252,26 @@
                     <button id="requestButton" onclick="requestFuction()" type="button" class="btn btn-success">Request</button>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <div id="waitSchedModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Request Sent</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p> The request has been sent. You will get an email when the professor confirms your appointment!
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
               </div>
             </div>
 
@@ -281,7 +301,6 @@
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
 <!-- directory functions end -->
@@ -306,6 +325,15 @@
 
           </div>
         </div>
+
+<!-- Alisha Added -->
+        <div id="timeButtons">
+          <button class="button" data-toggle="modal" data-target="#aboutModal">Current</button>
+          <button class="button" data-toggle="modal" data-target="#messageModal">Be Back in 15 Mins</button>
+          <button class="button" data-toggle="modal" data-target="#directoryModal">During Office Hours</button>
+          <button class="button" data-toggle="modal" data-target="#directoryModal">10 Mins until Office Hours</button>
+        </div>
+  <!-- Alisha end -->
 
 	</div>
 
@@ -346,34 +374,37 @@
       document.getElementById('messageBody').value = "";
     }
 
-    function sendEmail(name, dirID, topic, mess){
+    function sendEmail(){
       //check inputs
+        var name = document.getElementById('messageName').value;
+        var dirID = document.getElementById('messageID').value.toLowerCase();
+        var topic = document.getElementById('messageTopic').value;
+        var mess = document.getElementById('messageBody').value;
 
         if (topic === "" || name === "" || dirID === "" || mess === ""){
            document.getElementById('errorEmail').innerHTML = "Error: Fill out all fields";
+           return;
         }
-        else if(dirIDs.includes(dirID) == false){
-          document.getElementById('errorEmail').innerHTML = "Error: Inputed Directory ID does not exist";
+
+        if(dirID.includes("@umd")){
+          var d = dirID.split("@")[0];
+          if(dirIDs.includes(d) == false){
+            document.getElementById('errorEmail').innerHTML = "Error: Inputed University email does not exist";
+            return;
+          }
+        }
+        else if(!dirID.includes("@" )){
+          if(dirIDs.includes(dirID) == false){
+            document.getElementById('errorEmail').innerHTML = "Error: Inputed Directory ID does not exist";
+            return;
+          }
         }
         else{
+
+        }
           clearMessage();
           $("#messageModal").modal("hide");
         }
-
-      // <?php
-      //   $to = toAddress;
-      //   $subject = topic;
-      //   $name_field = name;
-      //   $email_field = address;
-      //   $message = mess;
-      //
-      //   $body = "From: $name_field\n E-Mail: $email_field\n Message:\n $message";
-      //
-      //   echo "Data has been submitted to $to!";
-      //   mail($to, $subject, $body);
-      // ?>
-
-    }
 
 
   </script>
@@ -520,19 +551,34 @@
   function requestFuction(){
     name = document.getElementById('schedName').value
     topic = document.getElementById('schedTopic').value
-    dirID = document.getElementById('schedID').value
+    dirID = document.getElementById('schedID').value.toLowerCase();
     startTime = document.getElementById('startTime').value
     endTime = document.getElementById('endTime').value
 
     if (topic === "" || name === "" || dirID === ""){
        document.getElementById('errorSched').innerHTML = "Error: Fill out all fields";
+       return;
     }
-    else if(dirIDs.includes(dirID) == false){
-      document.getElementById('errorSched').innerHTML = "Error: Inputed Directory ID does not exist";
+
+    if(dirID.includes("@umd")){
+      var d = dirID.split("@")[0];
+      if(dirIDs.includes(d) == false){
+        document.getElementById('errorEmail').innerHTML = "Error: Inputed University email does not exist";
+        return;
+      }
+    }
+    else if(!dirID.includes("@" )){
+      if(dirIDs.includes(dirID) == false){
+        document.getElementById('errorEmail').innerHTML = "Error: Inputed Directory ID does not exist";
+        return;
+      }
     }
     else{
-      clearMessage();
+
+    }
+      clearRequest();
       $("#schedModal").modal("hide");
+      $("#waitSchedModal").modal("show");
 
       var e = {
         title: topic,
@@ -540,11 +586,54 @@
         end: endTime,
         color: 'yellow'}
 
-      console.log(document.getElementById('calendar'));
-      console.log(document.getElementById('calendar').events);
-      document.getElementById('calendar').addEvent(e);
-      document.getElementById('calendar').render();
-    }
+      //$('#calendar').fullCalendar('render');
+      //addEvent(e);
+  }
+
+  function addEvent(e){
+    var eventsArray = [{ // this object will be "parsed" into an Event Object
+      title: 'Department Meeting', // a property!
+      start: '2019-04-16T16:00:00+00:00', // a property!
+      end: '2019-04-16T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'red'
+    },
+    {
+      title: 'Out For Lunch', // a property!
+      start: '2019-04-16T15:00:00+00:00', // a property!
+      end: '2019-04-16T16:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'red'
+    },
+    {
+      title: 'Office Hours', // a property!
+      start: '2019-04-17T17:00:00+00:00', // a property!
+      end: '2019-04-17T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'green'
+    }];
+
+    eventsArray.push(e);
+
+    document.ready(function() {
+    ux.load("calendar",function(){
+        var date = new Date();  // set the calendar dates based on today
+        var d = date.getDate(); // d = today's date
+        var m = date.getMonth(); // m = this month
+        var y = date.getFullYear(); // y = this year
+
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            editable: false,
+            events: eventsArray
+        });
+
+    });
+});
+    //calendar.setOption('contentHeight', 475);
+    //calendar.render();
+
   }
 
 //Alisha end
@@ -621,6 +710,25 @@
 
 
   function secondCalendarInit() {
+    var eventsArray = [{ // this object will be "parsed" into an Event Object
+      title: 'Department Meeting', // a property!
+      start: '2019-04-16T16:00:00+00:00', // a property!
+      end: '2019-04-16T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'red'
+    },
+    {
+      title: 'Out For Lunch', // a property!
+      start: '2019-04-16T15:00:00+00:00', // a property!
+      end: '2019-04-16T16:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'red'
+    },
+    {
+      title: 'Office Hours', // a property!
+      start: '2019-04-17T17:00:00+00:00', // a property!
+      end: '2019-04-17T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'green'
+    }];
+
     var secondEl = document.getElementById('secondCalendar');
     var calendar = new FullCalendar.Calendar(secondEl, {
       plugins: [ 'timeGrid', 'interaction','dayGrid'],
