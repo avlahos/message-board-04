@@ -105,12 +105,12 @@ header {
 	margin-bottom: 5em;
 }
 
-.modal-content {
+#calendarModal .modal-content {
 	width: 95%;
 	max-width: 95%;
 }
 
-.modal-dialog {
+#calendarModal .modal-dialog {
 	width: 95%;
 	max-width: 95% !important;
 	align-self: center;
