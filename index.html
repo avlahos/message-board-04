@@ -240,15 +240,13 @@
                 </div>
                 <div id="errorEmail"></div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                  <button type="button" onClick="clearMessage()" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                   <button type="button" onClick="sendEmail(document.getElementById('messageName').value, document.getElementById('messageID').value, document.getElementById('messageTopic').value, document.getElementById('messageBody').value)" class="btn btn-success">Send</button>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-
 
           <div id="schedModal" class="modal fade" role="dialog">
             <div class="modal-dialog">
@@ -276,6 +274,7 @@
                       <button id="requestButton" type="button" class="btn btn-success" data-dismiss="modal">Request</button>
                     </div>
                   </div>
+
                 </div>
               </div>
 
@@ -296,15 +295,13 @@
                     <button type="button" onClick="document.getElementById('result').innerHTML = query(document.getElementById('dirname').value)">Search</button>
                   </div>
                   <div id="result"></div>
-                  <div id="bottom">
+                  <div id="bottom" class="modal-footer">
                     <button type="button" onclick="document.getElementById('dirname').value = '';document.getElementById('result').innerHTML = ''" class="btn btn-danger" data-dismiss="modal">Close</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-
 
 
 
@@ -332,8 +329,12 @@
       var toAddress = "alisha.asnani@gmail.com";
       var dirIDs = ["aasnani","happy","live"];
 
-      function closeModual(){
-        
+      function clearMessage(){
+        document.getElementById('errorEmail').innerHTML = "";
+        document.getElementById('messageName').value = "";
+        document.getElementById('messageID').value = "";
+        document.getElementById('messageTopic').value = "";
+        document.getElementById('messageBody').value = "";
       }
 
       function sendEmail(name, dirID, topic, mess){
@@ -346,7 +347,8 @@
           document.getElementById('errorEmail').innerHTML = "Error: Inputed dirID does not exist";
         }
         else{
-          document.getElementById('errorEmail').innerHTML = "";
+          clearMessage();
+          $("#messageModal").modal("hide");
         }
 
         // <?php
