@@ -391,7 +391,20 @@
             alert(eventObj.title);
         },
         select: function(info) {
-
+          console.log(info)
+          $('#schedModal').modal('show');
+          document.getElementById('startTime').value = info.startStr.slice(11,16)
+          document.getElementById('endTime').value = info.endStr.slice(11,16)
+          $('#requestButton').click(function() {
+            var event = {
+              title: 'dynamic event',
+              start: info.startStr,
+              end: info.endStr,
+              sticky: true
+            }
+            eventsArray.push(event)
+            calendar.addEvent(event)
+          })
         },
         events: eventsArray,
       });
@@ -423,6 +436,7 @@
           alert(eventObj.title);
       },
       select: function(info) {
+
       },
       events: eventsArray,
     });
