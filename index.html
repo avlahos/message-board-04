@@ -26,11 +26,104 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <title>Super Message Board 4</title>
 <style type="text/css">
-@import url("stylenew.css");
+@import url("style.css");
 </style>
 </head>
-
 <body>
+  <script type="text/javascript">
+      jssor_1_slider_init = function() {
+
+          var jssor_1_SlideshowTransitions = [
+            {$Duration:1400,x:0.25,$Zoom:1.5,$Easing:{$Left:$Jease$.$InWave,$Zoom:$Jease$.$InSine},$Opacity:2,$ZIndex:-10,$Brother:{$Duration:1400,x:-0.25,$Zoom:1.5,$Easing:{$Left:$Jease$.$InWave,$Zoom:$Jease$.$InSine},$Opacity:2,$ZIndex:-10}},
+            {$Duration:1500,x:0.5,$Cols:2,$ChessMode:{$Column:3},$Easing:{$Left:$Jease$.$InOutCubic},$Opacity:2,$Brother:{$Duration:1500,$Opacity:2}},
+            {$Duration:1500,x:0.3,$During:{$Left:[0.6,0.4]},$Easing:{$Left:$Jease$.$InQuad,$Opacity:$Jease$.$Linear},$Opacity:2,$Outside:true,$Brother:{$Duration:1000,x:-0.3,$Easing:{$Left:$Jease$.$InQuad,$Opacity:$Jease$.$Linear},$Opacity:2}},
+            {$Duration:1200,x:0.25,y:0.5,$Rotate:-0.1,$Easing:{$Left:$Jease$.$InQuad,$Top:$Jease$.$InQuad,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$InQuad},$Opacity:2,$Brother:{$Duration:1200,x:-0.1,y:-0.7,$Rotate:0.1,$Easing:{$Left:$Jease$.$InQuad,$Top:$Jease$.$InQuad,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$InQuad},$Opacity:2}},
+            {$Duration:1600,x:1,$Rows:2,$ChessMode:{$Row:3},$Easing:{$Left:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2,$Brother:{$Duration:1600,x:-1,$Rows:2,$ChessMode:{$Row:3},$Easing:{$Left:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2}},
+            {$Duration:1600,y:-1,$Cols:2,$ChessMode:{$Column:12},$Easing:{$Top:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2,$Brother:{$Duration:1600,y:1,$Cols:2,$ChessMode:{$Column:12},$Easing:{$Top:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2}},
+            {$Duration:1200,y:1,$Easing:{$Top:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2,$Brother:{$Duration:1200,y:-1,$Easing:{$Top:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2}},
+            {$Duration:1500,x:-0.1,y:-0.7,$Rotate:0.1,$During:{$Left:[0.6,0.4],$Top:[0.6,0.4],$Rotate:[0.6,0.4]},$Easing:{$Left:$Jease$.$InQuad,$Top:$Jease$.$InQuad,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$InQuad},$Opacity:2,$Brother:{$Duration:1000,x:0.2,y:0.5,$Rotate:-0.1,$Easing:{$Left:$Jease$.$InQuad,$Top:$Jease$.$InQuad,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$InQuad},$Opacity:2}},
+            {$Duration:1600,x:-0.2,$Delay:40,$Cols:12,$During:{$Left:[0.4,0.6]},$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Assembly:260,$Easing:{$Left:$Jease$.$InOutExpo,$Opacity:$Jease$.$InOutQuad},$Opacity:2,$Outside:true,$Round:{$Top:0.5},$Brother:{$Duration:1000,x:0.2,$Delay:40,$Cols:12,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Assembly:1028,$Easing:{$Left:$Jease$.$InOutExpo,$Opacity:$Jease$.$InOutQuad},$Opacity:2,$Round:{$Top:0.5}}},
+            {$Duration:700,$Opacity:2,$Brother:{$Duration:1000,$Opacity:2}},
+            {$Duration:1200,x:1,$Easing:{$Left:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2,$Brother:{$Duration:1200,x:-1,$Easing:{$Left:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2}}
+          ];
+
+          var jssor_1_options = {
+            $AutoPlay: 1,
+            $FillMode: 5,
+            $SlideshowOptions: {
+              $Class: $JssorSlideshowRunner$,
+              $Transitions: jssor_1_SlideshowTransitions,
+              $TransitionsOrder: 1
+            },
+            $ArrowNavigatorOptions: {
+              $Class: $JssorArrowNavigator$
+            },
+            $BulletNavigatorOptions: {
+              $Class: $JssorBulletNavigator$
+            }
+          };
+
+          var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+
+          /*#region responsive code begin*/
+
+          var MAX_WIDTH = 600;
+
+          function ScaleSlider() {
+              var containerElement = jssor_1_slider.$Elmt.parentNode;
+              var containerWidth = containerElement.clientWidth;
+
+              if (containerWidth) {
+
+                  var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
+
+                  jssor_1_slider.$ScaleWidth(expectedWidth);
+              }
+              else {
+                  window.setTimeout(ScaleSlider, 30);
+              }
+          }
+
+          ScaleSlider();
+
+          $Jssor$.$AddEvent(window, "load", ScaleSlider);
+          $Jssor$.$AddEvent(window, "resize", ScaleSlider);
+          $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+          /*#endregion responsive code end*/
+      };
+  </script>
+  <style>
+      /* jssor slider loading skin spin css */
+      .jssorl-009-spin img {
+          animation-name: jssorl-009-spin;
+          animation-duration: 1.6s;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+      }
+
+      @keyframes jssorl-009-spin {
+          from {
+              transform: rotate(0deg);
+          }
+
+          to {
+              transform: rotate(360deg);
+          }
+      }
+
+      .jssorb072 .i {position:absolute;color:#000;font-family:"Helvetica neue",Helvetica,Arial,sans-serif;text-align:center;cursor:pointer;z-index:0;}
+      .jssorb072 .i .b {fill:#fff;opacity:.3;}
+      .jssorb072 .i:hover {opacity:.7;}
+      .jssorb072 .iav {color:#fff;}
+      .jssorb072 .iav .b {fill:#000;opacity:.5;}
+      .jssorb072 .i.idn {opacity:.3;}
+
+      .jssora073 {display:block;position:absolute;cursor:pointer;}
+      .jssora073 .a {fill:#ddd;fill-opacity:.7;stroke:#000;stroke-width:160;stroke-miterlimit:10;stroke-opacity:.7;}
+      .jssora073:hover {opacity:.8;}
+      .jssora073.jssora073dn {opacity:.4;}
+      .jssora073.jssora073ds {opacity:.3;pointer-events:none;}
+  </style>
 	<div id="wrapper">
 		<header>
 		  <div id="name">
@@ -212,18 +305,23 @@
           </div>
         </div>
 
-        <div id="calendarModal" class="modal fade" role="dialog">
+	</div>
+
+  <div id="calendarModal" class="modal fade" role="dialog">
           <div class="modal-dialog">
 
-            <!-- Modal content-->
             <div class="modal-content">
               <div class="modal-header">
                 <h4 class="modal-title">My Schedule</h4>
               </div>
               <div class="modal-body">
                 <div id="secondCalendar">
-
-        				</div>
+                  <script>
+                  $('#calendarModal').on('shown.bs.modal', function (e) {
+                      secondCalendarInit();
+                  })
+                  </script>
+                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -231,128 +329,37 @@
             </div>
 
           </div>
-        </div>
+    </div>
 
-	</div>
-  <script type="text/javascript">
-      jssor_1_slider_init = function() {
-
-          var jssor_1_SlideshowTransitions = [
-            {$Duration:1400,x:0.25,$Zoom:1.5,$Easing:{$Left:$Jease$.$InWave,$Zoom:$Jease$.$InSine},$Opacity:2,$ZIndex:-10,$Brother:{$Duration:1400,x:-0.25,$Zoom:1.5,$Easing:{$Left:$Jease$.$InWave,$Zoom:$Jease$.$InSine},$Opacity:2,$ZIndex:-10}},
-            {$Duration:1500,x:0.5,$Cols:2,$ChessMode:{$Column:3},$Easing:{$Left:$Jease$.$InOutCubic},$Opacity:2,$Brother:{$Duration:1500,$Opacity:2}},
-            {$Duration:1500,x:0.3,$During:{$Left:[0.6,0.4]},$Easing:{$Left:$Jease$.$InQuad,$Opacity:$Jease$.$Linear},$Opacity:2,$Outside:true,$Brother:{$Duration:1000,x:-0.3,$Easing:{$Left:$Jease$.$InQuad,$Opacity:$Jease$.$Linear},$Opacity:2}},
-            {$Duration:1200,x:0.25,y:0.5,$Rotate:-0.1,$Easing:{$Left:$Jease$.$InQuad,$Top:$Jease$.$InQuad,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$InQuad},$Opacity:2,$Brother:{$Duration:1200,x:-0.1,y:-0.7,$Rotate:0.1,$Easing:{$Left:$Jease$.$InQuad,$Top:$Jease$.$InQuad,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$InQuad},$Opacity:2}},
-            {$Duration:1600,x:1,$Rows:2,$ChessMode:{$Row:3},$Easing:{$Left:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2,$Brother:{$Duration:1600,x:-1,$Rows:2,$ChessMode:{$Row:3},$Easing:{$Left:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2}},
-            {$Duration:1600,y:-1,$Cols:2,$ChessMode:{$Column:12},$Easing:{$Top:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2,$Brother:{$Duration:1600,y:1,$Cols:2,$ChessMode:{$Column:12},$Easing:{$Top:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2}},
-            {$Duration:1200,y:1,$Easing:{$Top:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2,$Brother:{$Duration:1200,y:-1,$Easing:{$Top:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2}},
-            {$Duration:1500,x:-0.1,y:-0.7,$Rotate:0.1,$During:{$Left:[0.6,0.4],$Top:[0.6,0.4],$Rotate:[0.6,0.4]},$Easing:{$Left:$Jease$.$InQuad,$Top:$Jease$.$InQuad,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$InQuad},$Opacity:2,$Brother:{$Duration:1000,x:0.2,y:0.5,$Rotate:-0.1,$Easing:{$Left:$Jease$.$InQuad,$Top:$Jease$.$InQuad,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$InQuad},$Opacity:2}},
-            {$Duration:1600,x:-0.2,$Delay:40,$Cols:12,$During:{$Left:[0.4,0.6]},$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Assembly:260,$Easing:{$Left:$Jease$.$InOutExpo,$Opacity:$Jease$.$InOutQuad},$Opacity:2,$Outside:true,$Round:{$Top:0.5},$Brother:{$Duration:1000,x:0.2,$Delay:40,$Cols:12,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Assembly:1028,$Easing:{$Left:$Jease$.$InOutExpo,$Opacity:$Jease$.$InOutQuad},$Opacity:2,$Round:{$Top:0.5}}},
-            {$Duration:700,$Opacity:2,$Brother:{$Duration:1000,$Opacity:2}},
-            {$Duration:1200,x:1,$Easing:{$Left:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2,$Brother:{$Duration:1200,x:-1,$Easing:{$Left:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2}}
-          ];
-
-          var jssor_1_options = {
-            $AutoPlay: 1,
-            $FillMode: 5,
-            $SlideshowOptions: {
-              $Class: $JssorSlideshowRunner$,
-              $Transitions: jssor_1_SlideshowTransitions,
-              $TransitionsOrder: 1
-            },
-            $ArrowNavigatorOptions: {
-              $Class: $JssorArrowNavigator$
-            },
-            $BulletNavigatorOptions: {
-              $Class: $JssorBulletNavigator$
-            }
-          };
-
-          var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-
-          /*#region responsive code begin*/
-
-          var MAX_WIDTH = 600;
-
-          function ScaleSlider() {
-              var containerElement = jssor_1_slider.$Elmt.parentNode;
-              var containerWidth = containerElement.clientWidth;
-
-              if (containerWidth) {
-
-                  var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
-
-                  jssor_1_slider.$ScaleWidth(expectedWidth);
-              }
-              else {
-                  window.setTimeout(ScaleSlider, 30);
-              }
-          }
-
-          ScaleSlider();
-
-          $Jssor$.$AddEvent(window, "load", ScaleSlider);
-          $Jssor$.$AddEvent(window, "resize", ScaleSlider);
-          $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
-          /*#endregion responsive code end*/
-      };
-  </script>
-  <style>
-      /* jssor slider loading skin spin css */
-      .jssorl-009-spin img {
-          animation-name: jssorl-009-spin;
-          animation-duration: 1.6s;
-          animation-iteration-count: infinite;
-          animation-timing-function: linear;
-      }
-
-      @keyframes jssorl-009-spin {
-          from {
-              transform: rotate(0deg);
-          }
-
-          to {
-              transform: rotate(360deg);
-          }
-      }
-
-      .jssorb072 .i {position:absolute;color:#000;font-family:"Helvetica neue",Helvetica,Arial,sans-serif;text-align:center;cursor:pointer;z-index:0;}
-      .jssorb072 .i .b {fill:#fff;opacity:.3;}
-      .jssorb072 .i:hover {opacity:.7;}
-      .jssorb072 .iav {color:#fff;}
-      .jssorb072 .iav .b {fill:#000;opacity:.5;}
-      .jssorb072 .i.idn {opacity:.3;}
-
-      .jssora073 {display:block;position:absolute;cursor:pointer;}
-      .jssora073 .a {fill:#ddd;fill-opacity:.7;stroke:#000;stroke-width:160;stroke-miterlimit:10;stroke-opacity:.7;}
-      .jssora073:hover {opacity:.8;}
-      .jssora073.jssora073dn {opacity:.4;}
-      .jssora073.jssora073ds {opacity:.3;pointer-events:none;}
-  </style>
-<script type="text/javascript">jssor_1_slider_init();</script>
-<script>
+  <script>
+    var eventsArray = [{ // this object will be "parsed" into an Event Object
+      title: 'Department Meeting', // a property!
+      start: '2019-04-16T16:00:00+00:00', // a property!
+      end: '2019-04-16T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'red'
+    },
+    {
+      title: 'Out For Lunch', // a property!
+      start: '2019-04-16T15:00:00+00:00', // a property!
+      end: '2019-04-16T16:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'red'
+    },
+    {
+      title: 'Office Hours', // a property!
+      start: '2019-04-17T17:00:00+00:00', // a property!
+      end: '2019-04-17T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'green'
+    }];
+    var flag = 0;
+    console.log("right before click")
     $('.slides').click(function () {
       alert("pop up doc");
-      console.log(this)
+      console.log(this);
     });
+      $('#calendarModal').modal({
+        show: false
+      })
     document.addEventListener('DOMContentLoaded', function() {
-      var eventsArray = [{ // this object will be "parsed" into an Event Object
-        title: 'Department Meeting', // a property!
-        start: '2019-04-16T16:00:00+00:00', // a property!
-        end: '2019-04-16T18:00:00+00:00', // a property! ** see important note below about 'end' **
-        color: 'red'
-      },
-      {
-        title: 'Out For Lunch', // a property!
-        start: '2019-04-16T15:00:00+00:00', // a property!
-        end: '2019-04-16T16:00:00+00:00', // a property! ** see important note below about 'end' **
-        color: 'red'
-      },
-      {
-        title: 'Office Hours', // a property!
-        start: '2019-04-17T17:00:00+00:00', // a property!
-        end: '2019-04-17T18:00:00+00:00', // a property! ** see important note below about 'end' **
-        color: 'green'
-      }];
       var calendarEl = document.getElementById('calendar');
       $('#schedModal').modal({ show: false})
       var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -385,7 +392,6 @@
         },
         select: function(info) {
 
-
         },
         events: eventsArray,
       });
@@ -393,8 +399,9 @@
       calendar.render();
   });
   function secondCalendarInit() {
-    var secondEl = document.getElementById('secondCalendar');
-    var calendar = new FullCalendar.Calendar(secondEl, {
+  var secondEl = document.getElementById('secondCalendar');
+  if(flag != 1) {
+    var secondCalendar = new FullCalendar.Calendar(secondEl, {
       plugins: [ 'timeGrid', 'interaction','dayGrid'],
       selectable: true,
       timeZone: 'local',
@@ -405,18 +412,11 @@
       allDaySlot: false,
       nowIndicator: true,
       slotDuration: '00:30:00',
-      defaultView: 'timeGridDay',
+      defaultView: 'timeGridWeek',
       header: {
-        left: '',
-        center: '',
-        right: 'timeGridThreeDay,timeGridWeek,dayGridMonth,'
-      },
-      views: {
-        timeGridThreeDay: {
-          type: 'timeGrid',
-          duration: { days: 3},
-          buttonText: 'today'
-        }
+        left: 'prev,next',
+        center: 'title',
+        right: 'timeGridWeek,dayGridMonth,'
       },
       eventClick: function(info) {
           var eventObj = info.event;
@@ -426,9 +426,21 @@
       },
       events: eventsArray,
     });
+    secondCalendar.setOption('height', 450)
+    secondCalendar.setOption('aspectRatio', 1.5)
+    secondCalendar.render();
+    flag = 1;
+    }
   }
-  calendar.render(); 
   </script>
+
+  <script type="text/javascript">
+    jssor_1_slider_init();
+    console.log("Made to function")
+  </script>
+<script>
+
+</script>
 
 </body>
 </html>

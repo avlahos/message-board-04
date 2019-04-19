@@ -96,6 +96,28 @@ header {
 #calendar {
 	flex-basis: 90%;
 	margin: 10px;
+
+}
+
+#calendarModal {
+	width: 50em;
+	margin-left: 24vw;
+	margin-bottom: 5em;
+}
+
+.modal-content {
+	width: 95%;
+	max-width: 95%;
+}
+
+.modal-dialog {
+	width: 95%;
+	max-width: 95% !important;
+	align-self: center;
+}
+
+#secondCalendar {
+	width: 95%;
 }
 
 .btnFutureDates {

@@ -1,0 +1,723 @@
+<!doctype html>
+<html>
+<head>
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="fullcalendar/core/main.css" rel="stylesheet" />
+    <link href="fullcalendar/daygrid/main.css" rel="stylesheet" />
+    <link href="fullcalendar/timegrid/main.css" rel="stylesheet" />
+    <link href="fullcalendar/bootstrap/main.css" rel="stylesheet" />
+    <link href="fullcalendarscheduler/bootstrap/main.css" rel="stylesheet" />
+
+    <script src="jssor.slider/js/jssor.slider.min.js"></script>
+    <script src="fullcalendar/core/main.js"></script>
+    <script src="fullcalendar/daygrid/main.js"></script>
+    <script src="fullcalendar/timegrid/main.js"></script>
+    <script src="fullcalendarscheduler/interaction/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+<title>Super Message Board 4</title>
+<style type="text/css">
+@import url("style.css");
+</style>
+</head>
+
+<body>
+	<div id="wrapper">
+		<header>
+		  <div id="name">
+				<h1>Dr. John Dickerson</h1>
+		  </div>
+			<div id="status">
+			  <h3>Out of office.</h3>
+		  </div>
+		</header>
+
+		<div id="content">
+			<div id="col1">
+				<div id="welcome">
+					<div id="photo">
+
+					</div>
+
+					<div id="buttons">
+						<button class="button" data-toggle="modal" data-target="#aboutModal">About Me</button>
+						<button class="button" data-toggle="modal" data-target="#messageModal">Message Me</button>
+						<button class="button" data-toggle="modal" data-target="#directoryModal">Looking for someone else?</button>
+					</div>
+
+				</div>
+
+        <div id="carousel">
+          <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:430px;height:275px;overflow:hidden;visibility:hidden;">
+              <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:430px;height:275px;overflow:hidden;">
+                  <div class="slides">
+                      <img data-u="image" src="competitionflyer.jpg" />
+                  </div>
+                  <div class="slides">
+                      <img data-u="image" src="Golub.jpg" >
+                        <div class="white-text">
+                          <h1>Professor of the Month</h1>
+                          <h3>Congratulations to Dr. Evan Golub</h3>
+                        </div>
+                      </img>
+                  </div>
+                  <div class="slides">
+                      <img data-u="image" src="xkcd_pic.png" />
+                  </div>
+                  <div class="slides">
+                    <img data-u="image" src="Golub.jpg" >
+                      <div class="white-text">
+                        <h1>Professor of the Month</h1>
+                        <h3>Congratulations to Dr. Evan Golub</h3>
+                      </div>
+                    </img>
+                  </div>
+              </div>
+              <!-- Bullet Navigator -->
+              <div data-u="navigator" class="jssorb072" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
+                  <div data-u="prototype" class="i" style="width:24px;height:24px;font-size:12px;line-height:24px;">
+                      <svg viewBox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:-1;">
+                          <circle class="b" cx="8000" cy="8000" r="6666.7"></circle>
+                      </svg>
+                      <div data-u="numbertemplate" class="n"></div>
+                  </div>
+              </div>
+              <!-- Arrow Navigator -->
+              <div data-u="arrowleft" class="jssora073" style="width:40px;height:50px;top:0px;left:30px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
+                  <svg viewBox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                      <path class="a" d="M4037.7,8357.3l5891.8,5891.8c100.6,100.6,219.7,150.9,357.3,150.9s256.7-50.3,357.3-150.9 l1318.1-1318.1c100.6-100.6,150.9-219.7,150.9-357.3c0-137.6-50.3-256.7-150.9-357.3L7745.9,8000l4216.4-4216.4 c100.6-100.6,150.9-219.7,150.9-357.3c0-137.6-50.3-256.7-150.9-357.3l-1318.1-1318.1c-100.6-100.6-219.7-150.9-357.3-150.9 s-256.7,50.3-357.3,150.9L4037.7,7642.7c-100.6,100.6-150.9,219.7-150.9,357.3C3886.8,8137.6,3937.1,8256.7,4037.7,8357.3 L4037.7,8357.3z"></path>
+                  </svg>
+              </div>
+              <div data-u="arrowright" class="jssora073" style="width:40px;height:50px;top:0px;right:30px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75">
+                  <svg viewBox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
+                      <path class="a" d="M11962.3,8357.3l-5891.8,5891.8c-100.6,100.6-219.7,150.9-357.3,150.9s-256.7-50.3-357.3-150.9 L4037.7,12931c-100.6-100.6-150.9-219.7-150.9-357.3c0-137.6,50.3-256.7,150.9-357.3L8254.1,8000L4037.7,3783.6 c-100.6-100.6-150.9-219.7-150.9-357.3c0-137.6,50.3-256.7,150.9-357.3l1318.1-1318.1c100.6-100.6,219.7-150.9,357.3-150.9 s256.7,50.3,357.3,150.9l5891.8,5891.8c100.6,100.6,150.9,219.7,150.9,357.3C12113.2,8137.6,12062.9,8256.7,11962.3,8357.3 L11962.3,8357.3z"></path>
+                  </svg>
+              </div>
+          </div>
+        </div>
+
+			</div>
+		  <div id="col2">
+				<div id="calendar">
+
+				</div>
+				<button class="btnFutureDates" onclick="secondCalendarInit()" data-toggle="modal" data-target="#calendarModal">Check Future Dates</button>
+
+		  </div>
+		</div>
+
+    <div id="aboutModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">John Dickerson</h4>
+          </div>
+          <div class="modal-body">
+            <p>I'm an Assistant Professor in the Department of Computer Science at the University of Maryland, with a joint appointment in the University of Maryland Institute for Advanced Computer Studies (UMIACS).
+              At Maryland, I am also formally affiliated with the Applied Mathematics & Statistics, and Scientific Computation (AMSC) program, as well as the Human-Computer Interaction Laboratory (HCIL).
+              Previously, I was a Ph.D. student in computer science at Carnegie Mellon, lead developer of the US nationwide kidney exchange program, and lead developer of a better way to deal with TV advertisements (currently in the pilot phase with two of the nation's largest MSOs).
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  <!-- Alisha added -->
+    <div id="carouselModal0" class="modal fade" role="dialog">
+      <div class="modal-dialog" >
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Competition Flyer</h4>
+          </div>
+          <div class="modal-body">
+            <p> This is a great team for people who love a challege and want to get experence coding in many different styles and langauges!! Let me know if you plan to join. I would love to hear about the challenges.
+            </p>
+            <img data-u="image" src="competitionflyer.jpg" height="400" width="450" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  <!-- Alisha end -->
+
+    <div id="messageModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Message Me</h4>
+              </div>
+              <div class="modal-body">
+                <div class="modal-header">
+                    <span class="text" id="dirinstuctions">Fill out all textboxes and click send to leave me a message</span>
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Your Name</span>
+                  </div>
+                  <input type="text" id="messageName" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Your DirectoryID or Email</span>
+                  </div>
+                  <input type="text" id="messageID" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Quick Topic</span>
+                  </div>
+                  <input type="text" id="messageTopic" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                  <span class="input-group-text">Quick Message</span>
+                </div>
+                <textarea class="form-control" id="messageBody" aria-label="With textarea"></textarea>
+              </div>
+              <div id="errorEmail"></div>
+              <div class="modal-footer">
+                <button type="button" onClick="clearMessage()" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="button" onClick="sendEmail()" class="btn btn-success">Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div id="schedModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Select A Time</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Name</span>
+                      </div>
+                      <input id="schedName" type="text">
+                    </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Topic</span>
+                      </div>
+                      <input id="schedTopic" type="text">
+                    </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Your DirectoryID or Email</span>
+                      </div>
+                      <input id="schedID" type="text">
+                    </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Start Time</span>
+                      </div>
+                      <input id="startTime" type="time" min="8:00" max="18:00" value="13:30">
+                    </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">End Time</span>
+                      </div>
+                      <input id="endTime" type="time" min="8:00" max="18:00">
+                    </div>
+                  </div>
+                  <div id="errorSched"></div>
+                  <div class="modal-footer">
+                    <button type="button" onClick="clearRequest()" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button id="requestButton" onclick="requestFuction()" type="button" class="btn btn-success">Request</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="waitSchedModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Request Sent</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p> The request has been sent. You will get an email when the professor confirms your appointment!
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+<!-- directory functions -->
+            <div id="directoryModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Professors' Rooms</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="input-group mb-3">
+                      <div class="modal-header">
+                          <span class="text" id="dirinstuctions"> Enter as much of a professor's name as you know and press submit to find their office</span>
+                      </div>
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                      </div>
+                      <input type="text" name="name" id = "dirname" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                      <button type="button" onClick="document.getElementById('result').innerHTML = query(document.getElementById('dirname').value)">Search</button>
+                    </div>
+                    <div id="result"></div>
+                    <div id="bottom" class="modal-footer">
+                      <button type="button" onclick="document.getElementById('dirname').value = '';document.getElementById('result').innerHTML = ''" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+<!-- directory functions end -->
+
+        <div id="calendarModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">My Schedule</h4>
+              </div>
+              <div class="modal-body">
+                <div id="secondCalendar">
+
+        				</div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+<!-- Alisha Added -->
+        <div id="timeButtons">
+          <button class="button" data-toggle="modal" data-target="#aboutModal">Current</button>
+          <button class="button" data-toggle="modal" data-target="#messageModal">Be Back in 15 Mins</button>
+          <button class="button" data-toggle="modal" data-target="#directoryModal">During Office Hours</button>
+          <button class="button" data-toggle="modal" data-target="#directoryModal">10 Mins until Office Hours</button>
+        </div>
+  <!-- Alisha end -->
+
+	</div>
+
+<!-- directory functions -->
+  <script>
+   var rooms = [{name: "Evan Golub", room: "IRB 1209"}, {name: "Michelle Hugue", room: "IRB 1211"}]
+    function query(name) {
+      var ret = "";
+      if(name  === ""){
+        ret = "Enter Professor name";
+        return ret;
+      }
+      for (i = 0; i < rooms.length; i++) {
+        if(rooms[i].name.toLowerCase().includes(name.toLowerCase())){
+          ret += rooms[i].name + " is in room " + rooms[i].room + "<br />";
+        }
+      }
+      if(ret === ""){
+        ret = "No professor found"
+      }
+      return ret;
+    }
+  </script>
+
+  <!-- directory functions end -->
+
+  <script>
+    var toAddress = "alisha.asnani@gmail.com";
+    var dirIDs = ["aasnani","happy","live"];
+    function clearMessage(){
+      document.getElementById('errorEmail').innerHTML = "";
+      document.getElementById('messageName').value = "";
+      document.getElementById('messageID').value = "";
+      document.getElementById('messageTopic').value = "";
+      document.getElementById('messageBody').value = "";
+    }
+    function sendEmail(){
+      //check inputs
+        var name = document.getElementById('messageName').value;
+        var dirID = document.getElementById('messageID').value.toLowerCase();
+        var topic = document.getElementById('messageTopic').value;
+        var mess = document.getElementById('messageBody').value;
+        if (topic === "" || name === "" || dirID === "" || mess === ""){
+           document.getElementById('errorEmail').innerHTML = "Error: Fill out all fields";
+           return;
+        }
+        if(dirID.includes("@umd")){
+          var d = dirID.split("@")[0];
+          if(dirIDs.includes(d) == false){
+            document.getElementById('errorEmail').innerHTML = "Error: Inputed University email does not exist";
+            return;
+          }
+        }
+        else if(!dirID.includes("@" )){
+          if(dirIDs.includes(dirID) == false){
+            document.getElementById('errorEmail').innerHTML = "Error: Inputed Directory ID does not exist";
+            return;
+          }
+        }
+        else{
+        }
+          clearMessage();
+          $("#messageModal").modal("hide");
+        }
+  </script>
+
+
+
+  <script type="text/javascript">
+      jssor_1_slider_init = function() {
+          var jssor_1_SlideshowTransitions = [
+            {$Duration:1400,x:0.25,$Zoom:1.5,$Easing:{$Left:$Jease$.$InWave,$Zoom:$Jease$.$InSine},$Opacity:2,$ZIndex:-10,$Brother:{$Duration:1400,x:-0.25,$Zoom:1.5,$Easing:{$Left:$Jease$.$InWave,$Zoom:$Jease$.$InSine},$Opacity:2,$ZIndex:-10}},
+            {$Duration:1500,x:0.5,$Cols:2,$ChessMode:{$Column:3},$Easing:{$Left:$Jease$.$InOutCubic},$Opacity:2,$Brother:{$Duration:1500,$Opacity:2}},
+            {$Duration:1500,x:0.3,$During:{$Left:[0.6,0.4]},$Easing:{$Left:$Jease$.$InQuad,$Opacity:$Jease$.$Linear},$Opacity:2,$Outside:true,$Brother:{$Duration:1000,x:-0.3,$Easing:{$Left:$Jease$.$InQuad,$Opacity:$Jease$.$Linear},$Opacity:2}},
+            {$Duration:1200,x:0.25,y:0.5,$Rotate:-0.1,$Easing:{$Left:$Jease$.$InQuad,$Top:$Jease$.$InQuad,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$InQuad},$Opacity:2,$Brother:{$Duration:1200,x:-0.1,y:-0.7,$Rotate:0.1,$Easing:{$Left:$Jease$.$InQuad,$Top:$Jease$.$InQuad,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$InQuad},$Opacity:2}},
+            {$Duration:1600,x:1,$Rows:2,$ChessMode:{$Row:3},$Easing:{$Left:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2,$Brother:{$Duration:1600,x:-1,$Rows:2,$ChessMode:{$Row:3},$Easing:{$Left:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2}},
+            {$Duration:1600,y:-1,$Cols:2,$ChessMode:{$Column:12},$Easing:{$Top:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2,$Brother:{$Duration:1600,y:1,$Cols:2,$ChessMode:{$Column:12},$Easing:{$Top:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2}},
+            {$Duration:1200,y:1,$Easing:{$Top:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2,$Brother:{$Duration:1200,y:-1,$Easing:{$Top:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2}},
+            {$Duration:1500,x:-0.1,y:-0.7,$Rotate:0.1,$During:{$Left:[0.6,0.4],$Top:[0.6,0.4],$Rotate:[0.6,0.4]},$Easing:{$Left:$Jease$.$InQuad,$Top:$Jease$.$InQuad,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$InQuad},$Opacity:2,$Brother:{$Duration:1000,x:0.2,y:0.5,$Rotate:-0.1,$Easing:{$Left:$Jease$.$InQuad,$Top:$Jease$.$InQuad,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$InQuad},$Opacity:2}},
+            {$Duration:1600,x:-0.2,$Delay:40,$Cols:12,$During:{$Left:[0.4,0.6]},$SlideOut:true,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Assembly:260,$Easing:{$Left:$Jease$.$InOutExpo,$Opacity:$Jease$.$InOutQuad},$Opacity:2,$Outside:true,$Round:{$Top:0.5},$Brother:{$Duration:1000,x:0.2,$Delay:40,$Cols:12,$Formation:$JssorSlideshowFormations$.$FormationStraight,$Assembly:1028,$Easing:{$Left:$Jease$.$InOutExpo,$Opacity:$Jease$.$InOutQuad},$Opacity:2,$Round:{$Top:0.5}}},
+            {$Duration:700,$Opacity:2,$Brother:{$Duration:1000,$Opacity:2}},
+            {$Duration:1200,x:1,$Easing:{$Left:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2,$Brother:{$Duration:1200,x:-1,$Easing:{$Left:$Jease$.$InOutQuart,$Opacity:$Jease$.$Linear},$Opacity:2}}
+          ];
+          var jssor_1_options = {
+            $AutoPlay: 1,
+            $FillMode: 5,
+            $SlideshowOptions: {
+              $Class: $JssorSlideshowRunner$,
+              $Transitions: jssor_1_SlideshowTransitions,
+              $TransitionsOrder: 1
+            },
+            $ArrowNavigatorOptions: {
+              $Class: $JssorArrowNavigator$
+            },
+            $BulletNavigatorOptions: {
+              $Class: $JssorBulletNavigator$
+            }
+          };
+          var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+          /*#region responsive code begin*/
+          var MAX_WIDTH = 600;
+          function ScaleSlider() {
+              var containerElement = jssor_1_slider.$Elmt.parentNode;
+              var containerWidth = containerElement.clientWidth;
+              if (containerWidth) {
+                  var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
+                  jssor_1_slider.$ScaleWidth(expectedWidth);
+              }
+              else {
+                  window.setTimeout(ScaleSlider, 30);
+              }
+          }
+          ScaleSlider();
+          $Jssor$.$AddEvent(window, "load", ScaleSlider);
+          $Jssor$.$AddEvent(window, "resize", ScaleSlider);
+          $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
+          /*#endregion responsive code end*/
+      };
+  </script>
+  <style>
+      /* jssor slider loading skin spin css */
+      .jssorl-009-spin img {
+          animation-name: jssorl-009-spin;
+          animation-duration: 1.6s;
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+      }
+      @keyframes jssorl-009-spin {
+          from {
+              transform: rotate(0deg);
+          }
+          to {
+              transform: rotate(360deg);
+          }
+      }
+      .jssorb072 .i {position:absolute;color:#000;font-family:"Helvetica neue",Helvetica,Arial,sans-serif;text-align:center;cursor:pointer;z-index:0;}
+      .jssorb072 .i .b {fill:#fff;opacity:.3;}
+      .jssorb072 .i:hover {opacity:.7;}
+      .jssorb072 .iav {color:#fff;}
+      .jssorb072 .iav .b {fill:#000;opacity:.5;}
+      .jssorb072 .i.idn {opacity:.3;}
+      .jssora073 {display:block;position:absolute;cursor:pointer;}
+      .jssora073 .a {fill:#ddd;fill-opacity:.7;stroke:#000;stroke-width:160;stroke-miterlimit:10;stroke-opacity:.7;}
+      .jssora073:hover {opacity:.8;}
+      .jssora073.jssora073dn {opacity:.4;}
+      .jssora073.jssora073ds {opacity:.3;pointer-events:none;}
+  </style>
+<script type="text/javascript">jssor_1_slider_init();</script>
+<script>
+    // $('.slides').click(function () {
+    //   alert("not yet implemented </br> Click the Competition Flyer one");
+    //   console.log(this)
+    // });
+//Alisha Added
+    var div = document.getElementsByClassName('slides');
+     div[0].addEventListener('click', function (event) {
+        $('#carouselModal0').modal('show');
+     });
+     div[1].addEventListener('click', function (event) {
+       alert("Not yet implemented. \n Click the Competition Flyer one");
+       console.log(this)
+     });
+     div[2].addEventListener('click', function (event) {
+       alert("Not yet implemented. \n Click the Competition Flyer one");
+       console.log(this)
+     });
+     div[3].addEventListener('click', function (event) {
+       alert("Not yet implemented. \n Click the Competition Flyer one");
+       console.log(this)
+     });
+//Alisha end
+</script>
+
+<script>
+//Alisha added
+  var dirIDs = ["aasnani","happy","live"];
+  function clearRequest(){
+    document.getElementById('errorSched').innerHTML = "";
+    document.getElementById('schedName').value = "";
+    document.getElementById('schedID').value = "";
+    document.getElementById('schedTopic').value = "";
+    document.getElementById('messageBody').value = "";
+  }
+  function requestFuction(){
+    name = document.getElementById('schedName').value
+    topic = document.getElementById('schedTopic').value
+    dirID = document.getElementById('schedID').value.toLowerCase();
+    startTime = document.getElementById('startTime').value
+    endTime = document.getElementById('endTime').value
+    if (topic === "" || name === "" || dirID === ""){
+       document.getElementById('errorSched').innerHTML = "Error: Fill out all fields";
+       return;
+    }
+    if(dirID.includes("@umd")){
+      var d = dirID.split("@")[0];
+      if(dirIDs.includes(d) == false){
+        document.getElementById('errorEmail').innerHTML = "Error: Inputed University email does not exist";
+        return;
+      }
+    }
+    else if(!dirID.includes("@" )){
+      if(dirIDs.includes(dirID) == false){
+        document.getElementById('errorEmail').innerHTML = "Error: Inputed Directory ID does not exist";
+        return;
+      }
+    }
+    else{
+    }
+      clearRequest();
+      $("#schedModal").modal("hide");
+      $("#waitSchedModal").modal("show");
+      var e = {
+        title: topic,
+        start: startTime,
+        end: endTime,
+        color: 'yellow'}
+      //$('#calendar').fullCalendar('render');
+      //addEvent(e);
+  }
+  function addEvent(e){
+    var eventsArray = [{ // this object will be "parsed" into an Event Object
+      title: 'Department Meeting', // a property!
+      start: '2019-04-16T16:00:00+00:00', // a property!
+      end: '2019-04-16T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'red'
+    },
+    {
+      title: 'Out For Lunch', // a property!
+      start: '2019-04-16T15:00:00+00:00', // a property!
+      end: '2019-04-16T16:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'red'
+    },
+    {
+      title: 'Office Hours', // a property!
+      start: '2019-04-17T17:00:00+00:00', // a property!
+      end: '2019-04-17T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'green'
+    }];
+    eventsArray.push(e);
+    document.ready(function() {
+    ux.load("calendar",function(){
+        var date = new Date();  // set the calendar dates based on today
+        var d = date.getDate(); // d = today's date
+        var m = date.getMonth(); // m = this month
+        var y = date.getFullYear(); // y = this year
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            editable: false,
+            events: eventsArray
+        });
+    });
+});
+    //calendar.setOption('contentHeight', 475);
+    //calendar.render();
+  }
+//Alisha end
+    document.addEventListener('DOMContentLoaded', function() {
+      var eventsArray = [{ // this object will be "parsed" into an Event Object
+        title: 'Department Meeting', // a property!
+        start: '2019-04-16T16:00:00+00:00', // a property!
+        end: '2019-04-16T18:00:00+00:00', // a property! ** see important note below about 'end' **
+        color: 'red'
+      },
+      {
+        title: 'Out For Lunch', // a property!
+        start: '2019-04-16T15:00:00+00:00', // a property!
+        end: '2019-04-16T16:00:00+00:00', // a property! ** see important note below about 'end' **
+        color: 'red'
+      },
+      {
+        title: 'Office Hours', // a property!
+        start: '2019-04-17T17:00:00+00:00', // a property!
+        end: '2019-04-17T18:00:00+00:00', // a property! ** see important note below about 'end' **
+        color: 'green'
+      }];
+      var calendarEl = document.getElementById('calendar');
+      $('#schedModal').modal({ show: false})
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        plugins: [ 'timeGrid', 'interaction','dayGrid'],
+        selectable: true,
+        timeZone: 'local',
+        weekends: false,
+        minTime: "08:00:00",
+        maxTime: "19:00:00",
+        schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
+        allDaySlot: false,
+        nowIndicator: true,
+        slotDuration: '00:30:00',
+        defaultView: 'timeGridDay',
+        header: {
+          left: '',
+          center: 'title',
+          right: ''
+        },
+        views: {
+          timeGridThreeDay: {
+            type: 'timeGrid',
+            duration: { days: 1 },
+            buttonText: 'today'
+          }
+        },
+        eventClick: function(info) {
+            var eventObj = info.event;
+            alert(eventObj.title);
+        },
+        select: function(info) {
+          $('#schedModal').modal('show');
+          console.log(info)
+          $('#startTime').val(info.startStr.slice(11,16));
+          $('#endTime').val(info.endStr.slice(11,16));
+          //$('#requestButton').click()
+          end = moment(info.startStr,'h:mm tt');
+          start = moment(info.endStr,'ddd, MMM d, h:mm tt');
+          var mywhen = start + ' - ' + end;
+          $('#createEventModal #apptStartTime').val(start);
+          $('#createEventModal #apptEndTime').val(end);
+          //$('#createEventModal #apptAllDay').val(allDay);
+          $('#createEventModal #when').text(mywhen);
+          $('#createEventModal').modal('show');
+        },
+        events: eventsArray,
+      });
+      calendar.setOption('contentHeight', 475);
+      calendar.render();
+  });
+  function secondCalendarInit() {
+    var eventsArray = [{ // this object will be "parsed" into an Event Object
+      title: 'Department Meeting', // a property!
+      start: '2019-04-16T16:00:00+00:00', // a property!
+      end: '2019-04-16T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'red'
+    },
+    {
+      title: 'Out For Lunch', // a property!
+      start: '2019-04-16T15:00:00+00:00', // a property!
+      end: '2019-04-16T16:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'red'
+    },
+    {
+      title: 'Office Hours', // a property!
+      start: '2019-04-17T17:00:00+00:00', // a property!
+      end: '2019-04-17T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'green'
+    }];
+    var secondEl = document.getElementById('secondCalendar');
+    var calendar = new FullCalendar.Calendar(secondEl, {
+      plugins: [ 'timeGrid', 'interaction','dayGrid'],
+      selectable: true,
+      timeZone: 'local',
+      weekends: false,
+      minTime: "08:00:00",
+      maxTime: "19:00:00",
+      schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
+      allDaySlot: false,
+      nowIndicator: true,
+      slotDuration: '00:30:00',
+      defaultView: 'timeGridDay',
+      header: {
+        left: '',
+        center: '',
+        right: 'timeGridThreeDay,timeGridWeek,dayGridMonth,'
+      },
+      views: {
+        timeGridThreeDay: {
+          type: 'timeGrid',
+          duration: { days: 3},
+          buttonText: 'today'
+        }
+      },
+      eventClick: function(info) {
+          var eventObj = info.event;
+          alert(eventObj.title);
+      },
+      select: function(info) {
+      },
+      events: eventsArray,
+    });
+  calendar.render();
+  }
+  </script>
+
+</body>
+</html>
