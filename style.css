@@ -1,0 +1,115 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#wrapper {
+	border: 1px solid black;
+	height: 43.3em;
+  width: 57.8em;
+	display: flex;
+	flex-direction: column;
+}
+
+header {
+	border-bottom: 1px solid black;
+	flex-basis: 10%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#carousel{
+	display: flex;
+	background-color: black;
+	align-self: center;
+}
+
+#name{
+	padding-top:1%;
+	padding-left:2%;
+}
+
+#status {
+	margin: 10px;
+	background-color: red;
+	padding-top:1%;
+	padding-left: 2%;
+	padding-right: 2%;
+	flex-basis: 48%;
+
+}
+
+#content {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: row;
+}
+
+#col1 {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+#welcome {
+	flex-basis:50%;
+	display: flex;
+	flex-direction: row;
+	margin: 10px;
+}
+
+#photo {
+	background-position: center;
+  background-size: cover;
+  background-image: url("dickerson_propic.jpg");
+	flex-grow:1;
+	margin:5px;
+
+}
+
+#buttons {
+	flex-basis: 50%;
+	display: flex;
+	flex-direction: column;
+}
+
+.button {
+	flex-grow: 1;
+	margin: 5px;
+}
+
+#resources {
+	flex-basis:50%;
+}
+
+#col2 {
+	flex-basis:50%;
+	display: flex;
+	flex-direction: column;
+}
+
+#calendar {
+	flex-basis: 90%;
+	margin: 10px;
+}
+
+.btnFutureDates {
+	flex-basis: 10%;
+	margin: 10px;
+}
+
+.white-text {
+	color: white;
+	text-decoration: black;
+	text-align: center;
+	text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
