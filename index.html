@@ -51,7 +51,7 @@
 					<div id="buttons">
 						<button class="button" data-toggle="modal" data-target="#aboutModal">About Me</button>
 						<button class="button" data-toggle="modal" data-target="#messageModal">Message Me</button>
-						<button class="button" data-toggle="modal" data-target="#messageModal">Looking for someone else?</button>
+						<button class="button" data-toggle="modal" data-target="#directoryModal">Looking for someone else?</button>
 					</div>
 
 				</div>
@@ -121,10 +121,12 @@
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">About Me</h4>
+            <h4 class="modal-title">John Dickerson</h4>
           </div>
           <div class="modal-body">
-            <p>I'm an Assistant Professor in the Department of Computer Science at the University of Maryland, with a joint appointment in the University of Maryland Institute for Advanced Computer Studies (UMIACS). At Maryland, I am also formally affiliated with the Applied Mathematics & Statistics, and Scientific Computation (AMSC) program, as well as the Human-Computer Interaction Laboratory (HCIL). Previously, I was a Ph.D. student in computer science at Carnegie Mellon, lead developer of the US nationwide kidney exchange program, and lead developer of a better way to deal with TV advertisements (currently in the pilot phase with two of the nation's largest MSOs).
+            <p>I'm an Assistant Professor in the Department of Computer Science at the University of Maryland, with a joint appointment in the University of Maryland Institute for Advanced Computer Studies (UMIACS).
+              At Maryland, I am also formally affiliated with the Applied Mathematics & Statistics, and Scientific Computation (AMSC) program, as well as the Human-Computer Interaction Laboratory (HCIL).
+              Previously, I was a Ph.D. student in computer science at Carnegie Mellon, lead developer of the US nationwide kidney exchange program, and lead developer of a better way to deal with TV advertisements (currently in the pilot phase with two of the nation's largest MSOs).
             </p>
           </div>
           <div class="modal-footer">
@@ -135,6 +137,30 @@
       </div>
     </div>
 
+  <!-- Alisha added -->
+    <div id="carouselModal0" class="modal fade" role="dialog">
+      <div class="modal-dialog" >
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Competition Flyer</h4>
+          </div>
+          <div class="modal-body">
+            <p> This is a great team for people who love a challege and want to get experence coding in many different styles and langauges!! Let me know if you plan to join. I would love to hear about the challenges.
+            </p>
+            <img data-u="image" src="competitionflyer.jpg" height="400" width="450" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  <!-- Alisha end -->
+
     <div id="messageModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
             <!-- Modal content-->
@@ -143,6 +169,9 @@
                 <h4 class="modal-title">Message Me</h4>
               </div>
               <div class="modal-body">
+                <div class="modal-header">
+                    <span class="text" id="dirinstuctions">Fill out all textboxes and click send to leave me a message</span>
+                </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">Your Name</span>
@@ -188,6 +217,24 @@
                   <div class="modal-body">
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Name</span>
+                      </div>
+                      <input id="schedName" type="text">
+                    </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Topic</span>
+                      </div>
+                      <input id="schedTopic" type="text">
+                    </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">DirectoryID</span>
+                      </div>
+                      <input id="schedID" type="text">
+                    </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Start Time</span>
                       </div>
                       <input id="startTime" type="time" min="8:00" max="18:00" value="13:30">
@@ -199,23 +246,29 @@
                       <input id="endTime" type="time" min="8:00" max="18:00">
                     </div>
                   </div>
+                  <div id="errorSched"></div>
                   <div class="modal-footer">
-                    <button id="requestButton" type="button" class="btn btn-success" data-dismiss="modal">Request</button>
+                    <button type="button" onClick="clearRequest()" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button id="requestButton" onclick="requestFuction()" type="button" class="btn btn-success">Request</button>
                   </div>
                 </div>
               </div>
             </div>
 
+<!-- directory functions -->
             <div id="directoryModal" class="modal fade" role="dialog">
               <div class="modal-dialog">
 
                 <!-- Modal content-->
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title">Search for Other Professors' Rooms</h4>
+                    <h4 class="modal-title">Professors' Rooms</h4>
                   </div>
                   <div class="modal-body">
                     <div class="input-group mb-3">
+                      <div class="modal-header">
+                          <span class="text" id="dirinstuctions"> Enter as much of a professor's name as you know and press submit to find their office</span>
+                      </div>
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
                       </div>
@@ -228,8 +281,10 @@
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
+<!-- directory functions end -->
 
         <div id="calendarModal" class="modal fade" role="dialog">
           <div class="modal-dialog">
@@ -254,10 +309,15 @@
 
 	</div>
 
+<!-- directory functions -->
   <script>
    var rooms = [{name: "Evan Golub", room: "IRB 1209"}, {name: "Michelle Hugue", room: "IRB 1211"}]
     function query(name) {
       var ret = "";
+      if(name  === ""){
+        ret = "Enter Professor name";
+        return ret;
+      }
       for (i = 0; i < rooms.length; i++) {
         if(rooms[i].name.toLowerCase().includes(name.toLowerCase())){
           ret += rooms[i].name + " is in room " + rooms[i].room + "<br />";
@@ -271,6 +331,8 @@
       return ret;
     }
   </script>
+
+  <!-- directory functions end -->
 
   <script>
     var toAddress = "alisha.asnani@gmail.com";
@@ -287,16 +349,16 @@
     function sendEmail(name, dirID, topic, mess){
       //check inputs
 
-      if (topic === "" || name === "" || dirID === "" || mess === ""){
-         document.getElementById('errorEmail').innerHTML = "Error: Fill out all fields";
-      }
-      else if(dirIDs.includes(dirID) == false){
-        document.getElementById('errorEmail').innerHTML = "Error: Inputed dirID does not exist";
-      }
-      else{
-        clearMessage();
-        $("#messageModal").modal("hide");
-      }
+        if (topic === "" || name === "" || dirID === "" || mess === ""){
+           document.getElementById('errorEmail').innerHTML = "Error: Fill out all fields";
+        }
+        else if(dirIDs.includes(dirID) == false){
+          document.getElementById('errorEmail').innerHTML = "Error: Inputed Directory ID does not exist";
+        }
+        else{
+          clearMessage();
+          $("#messageModal").modal("hide");
+        }
 
       // <?php
       //   $to = toAddress;
@@ -312,6 +374,8 @@
       // ?>
 
     }
+
+
   </script>
 
 
@@ -412,10 +476,79 @@
   </style>
 <script type="text/javascript">jssor_1_slider_init();</script>
 <script>
-    $('.slides').click(function () {
-      alert("pop up doc");
-      console.log(this)
-    });
+    // $('.slides').click(function () {
+    //   alert("not yet implemented </br> Click the Competition Flyer one");
+    //   console.log(this)
+    // });
+
+//Alisha Added
+    var div = document.getElementsByClassName('slides');
+     div[0].addEventListener('click', function (event) {
+        $('#carouselModal0').modal('show');
+     });
+     div[1].addEventListener('click', function (event) {
+       alert("Not yet implemented. \n Click the Competition Flyer one");
+       console.log(this)
+     });
+     div[2].addEventListener('click', function (event) {
+       alert("Not yet implemented. \n Click the Competition Flyer one");
+       console.log(this)
+     });
+     div[3].addEventListener('click', function (event) {
+       alert("Not yet implemented. \n Click the Competition Flyer one");
+       console.log(this)
+     });
+
+//Alisha end
+
+</script>
+
+<script>
+
+//Alisha added
+  var dirIDs = ["aasnani","happy","live"];
+
+  function clearRequest(){
+    document.getElementById('errorSched').innerHTML = "";
+    document.getElementById('schedName').value = "";
+    document.getElementById('schedID').value = "";
+    document.getElementById('schedTopic').value = "";
+    document.getElementById('messageBody').value = "";
+  }
+
+
+  function requestFuction(){
+    name = document.getElementById('schedName').value
+    topic = document.getElementById('schedTopic').value
+    dirID = document.getElementById('schedID').value
+    startTime = document.getElementById('startTime').value
+    endTime = document.getElementById('endTime').value
+
+    if (topic === "" || name === "" || dirID === ""){
+       document.getElementById('errorSched').innerHTML = "Error: Fill out all fields";
+    }
+    else if(dirIDs.includes(dirID) == false){
+      document.getElementById('errorSched').innerHTML = "Error: Inputed Directory ID does not exist";
+    }
+    else{
+      clearMessage();
+      $("#schedModal").modal("hide");
+
+      var e = {
+        title: topic,
+        start: startTime,
+        end: endTime,
+        color: 'yellow'}
+
+      console.log(document.getElementById('calendar'));
+      console.log(document.getElementById('calendar').events);
+      document.getElementById('calendar').addEvent(e);
+      document.getElementById('calendar').render();
+    }
+  }
+
+//Alisha end
+
     document.addEventListener('DOMContentLoaded', function() {
       var eventsArray = [{ // this object will be "parsed" into an Event Object
         title: 'Department Meeting', // a property!
@@ -466,14 +599,27 @@
             alert(eventObj.title);
         },
         select: function(info) {
-
-
+          $('#schedModal').modal('show');
+          console.log(info)
+          $('#startTime').val(info.startStr.slice(11,16));
+          $('#endTime').val(info.endStr.slice(11,16));
+          //$('#requestButton').click()
+          end = moment(info.startStr,'h:mm tt');
+          start = moment(info.endStr,'ddd, MMM d, h:mm tt');
+          var mywhen = start + ' - ' + end;
+          $('#createEventModal #apptStartTime').val(start);
+          $('#createEventModal #apptEndTime').val(end);
+          //$('#createEventModal #apptAllDay').val(allDay);
+          $('#createEventModal #when').text(mywhen);
+          $('#createEventModal').modal('show');
         },
         events: eventsArray,
       });
       calendar.setOption('contentHeight', 475);
       calendar.render();
   });
+
+
   function secondCalendarInit() {
     var secondEl = document.getElementById('secondCalendar');
     var calendar = new FullCalendar.Calendar(secondEl, {
@@ -508,8 +654,10 @@
       },
       events: eventsArray,
     });
-  }
+
+
   calendar.render();
+  }
   </script>
 
 </body>
