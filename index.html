@@ -30,8 +30,6 @@
     <link href="assets/plugin/jquery.virtual_plugin/jquery.virtual_plugin.css" rel="stylesheet"/>
     <script src="assets/plugin/jquery.virtual_plugin/jquery.virtual_plugin.js"></script>
 
-    <script> $('textarea').keyboard({}); </script>
-
 <title>Super Message Board 4</title>
 <style type="text/css">
 @import url("stylenew.css");
@@ -389,7 +387,7 @@ function countDown(diff){
     function query(name) {
       var ret = "";
       if(name  === ""){
-        ret = "Enter Professor name".bold();
+        ret = "Enter professor name".bold();
         return ret;
       }
       for (i = 0; i < rooms.length; i++) {
