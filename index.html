@@ -12,6 +12,7 @@
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+
     <link href="fullcalendar/core/main.css" rel="stylesheet" />
     <link href="fullcalendar/daygrid/main.css" rel="stylesheet" />
     <link href="fullcalendar/timegrid/main.css" rel="stylesheet" />
@@ -24,6 +25,13 @@
     <script src="fullcalendar/timegrid/main.js"></script>
     <script src="fullcalendarscheduler/interaction/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+
+    <link href="assets/plugin/jquery.virtual_plugin/jquery.virtual_plugin.css" rel="stylesheet"/>
+    <script src="assets/plugin/jquery.virtual_plugin/jquery.virtual_plugin.js"></script>
+
+    <script> $('textarea').keyboard({}); </script>
+
 <title>Super Message Board 4</title>
 <style type="text/css">
 @import url("stylenew.css");
@@ -325,7 +333,6 @@
 
           </div>
         </div>
-
 	</div>
 
   <!-- Alisha Added -->
@@ -382,7 +389,7 @@ function countDown(diff){
     function query(name) {
       var ret = "";
       if(name  === ""){
-        ret = "Enter Professor name";
+        ret = "Enter Professor name".bold();
         return ret;
       }
       for (i = 0; i < rooms.length; i++) {
@@ -392,7 +399,7 @@ function countDown(diff){
       }
 
       if(ret === ""){
-        ret = "No professor found"
+        ret = "No professor found".bold();
       }
 
       return ret;
@@ -421,20 +428,20 @@ function countDown(diff){
         var mess = document.getElementById('messageBody').value;
 
         if (topic === "" || name === "" || dirID === "" || mess === ""){
-           document.getElementById('errorEmail').innerHTML = "Error: Fill out all fields";
+           document.getElementById('errorEmail').innerHTML = ("Error".fontcolor("red")+": Fill out all fields").bold();
            return;
         }
 
         if(dirID.includes("@umd")){
           var d = dirID.split("@")[0];
           if(dirIDs.includes(d) == false){
-            document.getElementById('errorEmail').innerHTML = "Error: Inputed University email does not exist";
+            document.getElementById('errorEmail').innerHTML = ("Error".fontcolor("red")+": Inputed University email does not exist").bold();
             return;
           }
         }
         else if(!dirID.includes("@" )){
           if(dirIDs.includes(dirID) == false){
-            document.getElementById('errorEmail').innerHTML = "Error: Inputed Directory ID does not exist";
+            document.getElementById('errorEmail').innerHTML = ("Error".fontcolor("red")+": Inputed Directory ID does not exist").bold();
             return;
           }
         }
@@ -596,20 +603,20 @@ function countDown(diff){
 
 
     if (topic === "" || name === "" || dirID === ""){
-       document.getElementById('errorSched').innerHTML = "Error: Fill out all fields";
+       document.getElementById('errorSched').innerHTML = ("Error".fontcolor("red")+": Fill out all fields").bold();
        return;
     }
 
     if(dirID.includes("@umd")){
       var d = dirID.split("@")[0];
       if(dirIDs.includes(d) == false){
-        document.getElementById('errorSched').innerHTML = "Error: Inputed University email does not exist";
+        document.getElementById('errorSched').innerHTML = ("Error".fontcolor("red")+": Inputed University email does not exist").bold();
         return;
       }
     }
     else if(!dirID.includes("@" )){
       if(dirIDs.includes(dirID) == false){
-        document.getElementById('errorSched').innerHTML = "Error: Inputed Directory ID does not exist";
+        document.getElementById('errorSched').innerHTML = ("Error".fontcolor("red")+": Inputed Directory ID does not exist").bold();
         return;
       }
     }
@@ -618,14 +625,14 @@ function countDown(diff){
     }
 
     if(startTime > endTime){
-      document.getElementById('errorSched').innerHTML = "End Time is before Start Time";
+      document.getElementById('errorSched').innerHTML = ("Error".fontcolor("red")+": End Time is before Start Time").bold();
       return;
     }
 
     console.log(startTime)
     console.log(""+new Date().getHours()+":"+new Date().getMinutes())
     if(startTime < ""+new Date().getHours()+":"+new Date().getMinutes()){
-      document.getElementById('errorSched').innerHTML = "Start Time already past";
+      document.getElementById('errorSched').innerHTML = ("Error".fontcolor("red")+": Start Time already past").bold();
       return;
     }
       clearRequest();
