@@ -13,6 +13,7 @@
 
     <style>
       #profName {
+        margin-left: 0.5em;
         font-size: 45px;
       }
       #profStatus {
@@ -142,15 +143,16 @@
 
       #carouselExampleCaptions {
         background-color: black;
-        margin-left: auto;
+        margin-left: 25%;
         margin-top: .5em;
         margin-bottom: 1em;
-        height: 15em;
-        width: 25em;
+        height: 30em;
+        width: 45em;
       }
      .carouselPic {
-       height: 15em;
-       width: 20em;
+       height: 30em;
+       width: 35em;
+       zoom: 90%;
        object-fit: contain;
       }
 
@@ -219,16 +221,48 @@
 
       <div id="DirectionButton" class="d-flex flex-column p-2">
         <div class="direction">
-          <button class="btn"><img src="maps-icon.png" alt="Mail"><div class="butex">Directory</div></button>
+          <button class="button btn" data-toggle="modal" data-target="#directoryModal"><img src="maps-icon.png" alt="Mail"><div class="butex">Directory</div></button>
         </div>
       </div>
 
+
       <div id="DirectionButton" class="d-flex flex-column p-2">
         <div class="direction">
-          <button class="setting"><img src="setting-icon.png" alt="Mail"><div class="butex">Directory</div></button>
+          <button class="setting"><img src="setting-icon.png" alt="Mail"><div class="butex">Setting</div></button>
         </div>
       </div>
     </div>
+
+    <!-- directory functions -->
+                <div id="directoryModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Professors' Rooms</h4>
+                      </div>
+                      <div class="modal-body">
+                        <div class="input-group mb-3">
+                          <div class="modal-header">
+                              <span class="text" id="dirinstuctions"> Enter as much of a professor's name as you know and press submit to find their office</span>
+                          </div>
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                          </div>
+                          <input type="text" name="name" id = "dirname" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                          <button type="button" onClick="document.getElementById('result').innerHTML = query(document.getElementById('dirname').value)">Search</button>
+                        </div>
+                        <div id="result"></div>
+                        <div id="bottom" class="modal-footer">
+                          <button type="button" onclick="document.getElementById('dirname').value = '';document.getElementById('result').innerHTML = ''" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+    <!-- directory functions end -->
+
 
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -267,9 +301,43 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
+
+      <div class="col-md-6 text-right">
+        <button type="button" class="btn btn-success">Add</button>
+        <button type="button" class="btn btn-primary">Edit</button>
+        <button type="button" class="btn btn-danger">Delete</button>
+      </div>
+
     </div>
 
+
     <!-- Optional JavaScript -->
+
+      <!-- directory functions -->
+      <script>
+       var rooms = [{name: "Evan Golub", room: "IRB 1209"}, {name: "Michelle Hugue", room: "IRB 1211"}]
+        function query(name) {
+          var ret = "";
+          if(name  === ""){
+            ret = "Enter Professor name";
+            return ret;
+          }
+          for (i = 0; i < rooms.length; i++) {
+            if(rooms[i].name.toLowerCase().includes(name.toLowerCase())){
+              ret += rooms[i].name + " is in room " + rooms[i].room + "<br />";
+            }
+          }
+
+          if(ret === ""){
+            ret = "No professor found"
+          }
+
+          return ret;
+        }
+      </script>
+
+      <!-- directory functions end -->
+
     <script>
     $(".dropdown-menu li a").click(function(){
       $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
