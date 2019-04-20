@@ -37,7 +37,7 @@
 				<h1>Dr. John Dickerson</h1>
 		  </div>
 			<div id="status">
-			  <h3>Out of office.</h3>
+			  <h3 id="statusHeader">Out of office.</h3>
 		  </div>
 		</header>
 
@@ -326,17 +326,56 @@
           </div>
         </div>
 
-<!-- Alisha Added -->
-        <div id="timeButtons">
-          <button class="button" data-toggle="modal" data-target="#aboutModal">Current</button>
-          <button class="button" data-toggle="modal" data-target="#messageModal">Be Back in 15 Mins</button>
-          <button class="button" data-toggle="modal" data-target="#directoryModal">During Office Hours</button>
-          <button class="button" data-toggle="modal" data-target="#directoryModal">10 Mins until Office Hours</button>
-        </div>
-  <!-- Alisha end -->
-
 	</div>
 
+  <!-- Alisha Added -->
+          <div id="timeButtons">
+            <button class="button" onClick = "ChangeToCurrent()" data-toggle="modal" >Current</button>
+            <button class="button" onClick = "ChangeToBeBack()" data-toggle="modal" >Be Back in 15 Mins</button>
+            <button class="button" onClick = "ChangeToOfficeHours()" data-toggle="modal">During Office Hours</button>
+          </div>
+    <!-- Alisha end -->
+
+<!-- Alisha Added -->
+<script>
+var currTimeOut;
+function ChangeToOfficeHours(){
+  document.getElementById("statusHeader").innerText = "In Office";
+  document.getElementById("status").style.backgroundColor = "green"
+
+  clearTimeout(currTimeOut);
+  currTimeOut = setTimeout(ChangeToCurrent, 3000); //TODO  fix to 60000*15 (15 min)
+  //add office hours event in Calender here
+}
+function ChangeToCurrent(){
+  document.getElementById("statusHeader").innerText = "Out of office.";
+  document.getElementById("status").style.backgroundColor = "red"
+  clearTimeout(currTimeOut);
+  //remove office hours event in Calender here
+}
+function ChangeToBeBack(){
+  var count = 15;
+  clearTimeout(currTimeOut);
+  countDown(count);
+
+}
+function countDown(diff){
+  document.getElementById("statusHeader").innerText = "Be Back in "+diff+" Mins";
+  document.getElementById("status").style.backgroundColor = "yellow"
+  console.log(diff);
+
+  if(diff > 0){
+    //var diff = (newDateObj.getTime() - currentDate.getTime())/60000;
+   currTimeOut = setTimeout(function() {countDown(--diff);}, 3000); //TODO fix to 60000 (one min)
+  }
+  else{
+    ChangeToOfficeHours();
+  }
+}
+
+
+</script>
+<!-- Alisha Ended -->
 <!-- directory functions -->
   <script>
    var rooms = [{name: "Evan Golub", room: "IRB 1209"}, {name: "Michelle Hugue", room: "IRB 1211"}]
