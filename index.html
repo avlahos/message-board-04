@@ -155,7 +155,47 @@
           <div class="modal-body">
             <p> This is a great team for people who love a challege and want to get experence coding in many different styles and langauges!! Let me know if you plan to join. I would love to hear about the challenges.
             </p>
-            <img data-u="image" src="competitionflyer.jpg" height="400" width="450" />
+            <img data-u="image" src="competitionflyer.jpg" height="350" width="450" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="carouselModal1" class="modal fade" role="dialog">
+      <div class="modal-dialog" >
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Professor of Month</h4>
+          </div>
+          <div class="modal-body">
+            <p> Congratulations to Doctor Evan Golub! He is doing a amazing job teaching his classes and his break throughs in Human Computer Interaction.
+            </p>
+            <img data-u="image" src="Golub.jpg" height="250" width="350" />
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="carouselModal2" class="modal fade" role="dialog">
+      <div class="modal-dialog" >
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Windows File Comic</h4>
+          </div>
+          <div class="modal-body">
+            <img data-u="image" src="xkcd_pic.png" height="400" width="450" />
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -562,15 +602,15 @@ function countDown(diff){
         $('#carouselModal0').modal('show');
      });
      div[1].addEventListener('click', function (event) {
-       alert("Not yet implemented. \n Click the Competition Flyer one");
+       $('#carouselModal1').modal('show');
        console.log(this)
      });
      div[2].addEventListener('click', function (event) {
-       alert("Not yet implemented. \n Click the Competition Flyer one");
+        $('#carouselModal2').modal('show');
        console.log(this)
      });
      div[3].addEventListener('click', function (event) {
-       alert("Not yet implemented. \n Click the Competition Flyer one");
+       $('#carouselModal1').modal('show');
        console.log(this)
      });
 
