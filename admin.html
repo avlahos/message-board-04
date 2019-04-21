@@ -42,6 +42,7 @@
       }
       #statusBar {
         height: 6em;
+        margin-top: 0em;
         background-color: #FFFF88;
       }
       #upDateButton {
@@ -51,8 +52,33 @@
       }
       #statusOutline {
         margin-right: 1em;
-        background-color: #fa8a00;
       }
+      #statusOutline2 {
+        margin-right: 2em;
+      }
+      .select option {
+        margin: 40px;
+        background: rgba(0, 0, 0, 0.3);
+        color: #fff;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+      }
+
+      .select option[value="1"] {
+        background: rgba(100, 100, 100, 0.3);
+      }
+
+      .select option[value="2"] {
+        background: rgba(150, 150, 150, 0.3);
+      }
+
+      .select option[value="3"] {
+        background: rgba(200, 200, 200, 0.3);
+      }
+
+      .select option[value="4"] {
+        background: rgba(250, 250, 250, 0.3);
+      }
+
       #proPic {
         margin-top: 2em;
         margin-left: 2.5em;
@@ -201,52 +227,50 @@
        object-fit: contain;
       }
 
+    .green {
+      background-color: green;
+    }
+    .yellow {
+        background-color: yellow;
+    }
+    .red {
+        background-color: red;
+    }
+    .white {
+        background-color: white;
+    }
     </style>
 
-  </head>
-    <h1> </h1>
+  <head>
     <div id="statusBar" class="d-flex align-items-center border border-dark">
     <!--  <div class="border border-dark mr-auto p-2"> -->
       <div id="profName" class="mr-auto p-2">John Dickerson</div>
     <!--  </div> -->
-    <div id="statusOutline" class="border border-dark p-2">
-      <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          Status Selection
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" background-color="rgba(0, 0, 0, 0.3)">
-          <li><a href="#" data-value="I am here." style="color:green">I am here.</a></li>
-          <li><a href="#" data-value="Be Back in" style="color:Yellow">Be Back in</a></li>
-          <li><a href="#" data-value="Out for Today!" style="color:Red">Out for Today!</a></li>
-          <div class="dropdown-divider"></div>
-          <li><a href="#" data-value=" " style="color:#00e4ff">(empty)</a></li>
-        </ul>
-      </div>
-        <!--<div id="profStatus" >Be back in 15 mins!</div>-->
-      </div>
-      <div id="statusOutline" class="border border-dark p-2">
-        <div class="dropdown">
-          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-            Status Selection
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-            <li><a href="#" data-value="Come in!" style="color:green">Come in!</a></li>
-            <li><a href="#" data-value="15 minutes." style="color:Yellow">15 minutes.</a></li>
-            <li><a href="#" data-value="30 minutes." style="color:Yellow">30 minutes.</a></li>
-            <li><a href="#" data-value="an hour." style="color:Yellow">an hour.</a></li>
-            <li><a href="#" data-value="two hours." style="color:Yellow">two hours.</a></li>
-            <li><a href="#" data-value="four hours." style="color:Yellow">four hours.</a></li>
-            <li><a href="#" data-value="See you!" style="color:Red">See you!</a></li>
-            <div class="dropdown-divider"></div>
-            <li><a href="#" data-value=" " style="color:#00e4ff">(empty)</a></li>
-          </ul>
-        </div>
+    <span class="border border-dark p-2">
+      <span id="status" size ="100px" align = 'right'> <font size="4.5"> Status: </font size="4.5">   </span>
+      <span id="statusOutline">
+        <span class="dropdown">
+          <select id = "firstSelect" class="">
+            <option class = "white" value="">Please choose</option>
+            <option class = "green" value ="1"> I am here.</option>
+            <option class = "yellow" value ="2" style="background-color: yellow"> Be Back in</option>
+            <option class = "red" value ='3' style="background-color: red"> Out for Today!</option>
+          </select>
+        </span>
           <!--<div id="profStatus" >Be back in 15 mins!</div>-->
-        </div>
-
-    </div>
+      </span>
+        <span id="statusOutline2" style="display:none">
+          <select>
+              <option style="background-color:white">15 minutes.</option>
+              <option style="background-color:white">30 minutes.</option>
+              <option style="background-color:white">an hour.</option>
+              <option style="background-color:white">two hours.</option>
+              <option style="background-color:white">four hours.</option>
+            </select>
+            <!--<div id="profStatus" >Be back in 15 mins!</div>-->
+      </span>
+    </span>
+  </div>
   </head>
 
 <body>
@@ -261,11 +285,12 @@
   </section>
 
   <section1 id = "sec1">
-      <div id = "messageBoard" width="450" align = "center" style="display:block">
+      <div id = "messageBoard" width="450" align = "left" style="display:block">
+        <h4> Inbox </h4>
         <table id="example" width="900" align = 'center'>
           <tr id="messTitle" align = "center">
             <th>&nbsp;</th>
-            <th>New Messages</th>
+            <th>&nbsp;</th>
             <th>&nbsp;</th>
           </tr>
           <tr align = "center">
@@ -282,11 +307,6 @@
               <td>Jane Smith</td>
               <td>Lecture</td>
               <td>jsmith12@umd.edu</td>
-          </tr>
-          <tr id="mess4" align = "center">
-              <td>Alex M</td>
-              <td>Project Questions</td>
-              <td>Amake@umd.edu</td>
           </tr>
         </table>
       </div>
@@ -459,6 +479,57 @@
     </div>
   </div>
 
+  <div id="Mess03Modual" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Lecture</h4> </br>
+          <h6 class="modal-title">Jane Smith</h6>
+          <h6 class="modal-title">jsmith12@umd.edu</h6>
+        </div>
+        <div class="modal-body">
+          <p> Hi Professor Dickerson, </br> </br>
+              I stopped by to pick up the leture notes we talked about
+              but you were not here. I will try again tomorrow during office hours.</br></br>
+             Thanks, </br>
+             Jane Smith
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" onClick = "$('#Reply03').modal('show')" class="btn btn-success">Reply</button>
+          <button type="button" onClick = "document.getElementById('example').deleteRow(3)" class="btn btn-danger" data-dismiss="modal">Delete</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<div id="Reply03" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Re: Lecture</h4>
+      <h6>Jane Smith</h6>
+    </div>
+      <p> Type in your response in the textbox below. </p>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">response</span>
+        </div>
+        <textarea class="form-control" id="messageBody" aria-label="With textarea"></textarea>
+      </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" data-dismiss="modal">Send</button>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
 
     </div>
 
@@ -538,10 +609,29 @@
           $("#Mess02Modual").modal("show")
           this.backgroundColor = '#717D7E';
         });
+        $('#example tr#mess3').click(function() {
+          console.log("here3");
+          $("#Mess03Modual").modal("show")
+          this.backgroundColor = '#717D7E';
+        });
       });
+
     </script>
 
+    <script>
+    $("#firstSelect").change(function(){
+        var color = $("option:selected", this).attr("class");
+        console.log(color);
+        $("#firstSelect").attr("class", color);
 
+        if( $("option:selected", this).attr("value") == "2"){
+          document.getElementById("statusOutline2").style.display = "inline";
+        }
+        else{
+          document.getElementById("statusOutline2").style.display = "none";
+        }
+    });
+    </script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
