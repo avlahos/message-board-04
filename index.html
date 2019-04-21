@@ -80,12 +80,10 @@
                       <img data-u="image" src="xkcd_pic.png" />
                   </div>
                   <div class="slides">
-                    <img data-u="image" src="Golub.jpg" >
                       <div class="white-text">
-                        <h1>Professor of the Month</h1>
-                        <h3>Congratulations to Dr. Evan Golub</h3>
+                        <h5>Testudo Home Page</h5>
                       </div>
-                    </img>
+                      <img data-u="image" src="qr-code.png" />
                   </div>
               </div>
               <!-- Bullet Navigator -->
@@ -205,6 +203,25 @@
       </div>
     </div>
 
+
+    <div id="carouselModal3" class="modal fade" role="dialog">
+      <div class="modal-dialog" >
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Testudo Home Page</h4>
+          </div>
+          <div class="modal-body">
+            <img data-u="image" src="qr-code.png" height="400" width="400"/>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
   <!-- Alisha end -->
 
     <div id="messageModal" class="modal fade" role="dialog">
@@ -610,7 +627,7 @@ function countDown(diff){
        console.log(this)
      });
      div[3].addEventListener('click', function (event) {
-       $('#carouselModal1').modal('show');
+       $('#carouselModal3').modal('show');
        console.log(this)
      });
 
