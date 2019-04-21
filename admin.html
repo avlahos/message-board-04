@@ -32,6 +32,20 @@
           cursor: pointer;
       }
 
+      table#example2 {
+          border-collapse: collapse;
+      }
+      #example2 tr {
+          background-color: #eee;
+          border-top: 1px solid #fff;
+      }
+      #example2 th {
+          background-color: #fff;
+      }
+      #example2 th, #example td {
+          padding: 3px 5px;
+      }
+
 
       #profName {
         margin-left: 0.5em;
@@ -61,22 +75,6 @@
         background: rgba(0, 0, 0, 0.3);
         color: #fff;
         text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
-      }
-
-      .select option[value="1"] {
-        background: rgba(100, 100, 100, 0.3);
-      }
-
-      .select option[value="2"] {
-        background: rgba(150, 150, 150, 0.3);
-      }
-
-      .select option[value="3"] {
-        background: rgba(200, 200, 200, 0.3);
-      }
-
-      .select option[value="4"] {
-        background: rgba(250, 250, 250, 0.3);
       }
 
       #proPic {
@@ -241,8 +239,8 @@
     }
 
     .button5 {
-      border-radius: 40%;
-      font-size: 6px;
+      radius: 40%;
+      font-size: 8px;
     }
 
     #footer{
@@ -262,19 +260,20 @@
           <select id = "firstSelect" class="" style="width: 150px;">
             <option class = "white" value="">Please choose</option>
             <option class = "green" value ="1"> I am in my office.</option>
-            <option class = "yellow" value ="2" style="background-color: yellow"> Be Back in</option>
+            <option class = "yellow" value ="2" style="background-color: yellow"> Be Back in ...  </option>
             <option class = "red" value ='3' style="background-color: red"> Out for Today!</option>
           </select>
         </span>
           <!--<div id="profStatus" >Be back in 15 mins!</div>-->
       </span>
         <span id="statusOutline2" style="display:none">
-          <select style="width: 150px;">
-              <option style="background-color:white">15 minutes.</option>
-              <option style="background-color:white">30 minutes.</option>
-              <option style="background-color:white">an hour.</option>
-              <option style="background-color:white">two hours.</option>
-              <option style="background-color:white">four hours.</option>
+          <select class = "yellow" style="width: 150px;">
+              <option class = "yellow" style="background-color:yellow">15 minutes</option>
+              <option class = "yellow" style="background-color:yellow">30 minutes</option>
+              <option class = "yellow" style="background-color:yellow">an hour</option>
+              <option class = "yellow" style="background-color:yellow">two hours</option>
+              <option class = "yellow" style="background-color:yellow">four hours</option>
+              <option class = "yellow" style="background-color:yellow">six hours</option>
             </select>
             <!--<div id="profStatus" >Be back in 15 mins!</div>-->
       </span>
@@ -317,6 +316,7 @@
               <td>jsmith12@umd.edu</td>
           </tr>
         </table>
+        <button type="button" class="button button5" onClick="$('#helpMessages').modal('show')">Need Help?</button>
       </div>
 
           <div id="carouselModal" role="dialog" style="display:none">
@@ -357,11 +357,10 @@
                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
                  <span class="sr-only">Next</span>
                </a>
-              </div>
-               <div class="col-md-6 text-right">
-                 <button type="button" onClick = "notImplemented()" class="btn btn-success">Add</button>
-                 <button type="button" onClick = "notImplemented()" class="btn btn-primary">Edit</button>
-                 <button type="button" onClick = "notImplemented()" class="btn btn-danger">Delete</button>
+               <div> <br> </br> </div>
+                 <button type="button" onClick = "notImplemented()" class="btn btn-success">Add a slide</button>
+                 <button type="button" onClick = "notImplemented()" class="btn btn-primary">Edit order</button>
+                 <button type="button" onClick = "notImplemented()" class="btn btn-danger">Delete a slide</button>
                </div>
            </div>
 
@@ -395,7 +394,7 @@
                 <div>
                   <h4>Settings</h4>
                 </div>
-                <table id="example" width="900" align = 'center'>
+                <table id="example2" width="900" align = 'center'>
                   <tr align = "left">
                       <td><img id="proPic" src="dickerson_propic.jpg" alt="ProfilePic"></td>
                       <td><button type="button" onClick='notImplemented()'>Edit Picture</a></td>
@@ -413,7 +412,7 @@
                       </td>
                   <tr align = "left">
                       <td>Do you want messages forwared to your email?
-                        <button type="button" class="button button5" onClick='notImplemented()'>?</button>
+                        <button type="button" class="button button5" onClick="$('#helpModalForward').modal('show')">?</button>
                       </td>
                       <td>
                         <select>
@@ -423,7 +422,9 @@
                       </td>
                   </tr>
                   <tr align = "left">
-                      <td>Do you want your replies to messages forwared to your email?</td>
+                      <td>Do you want your replies to messages forwared to your email?
+                          <button type="button" class="button button5" onClick="$('#helpModalForwardReply').modal('show')">?</button>
+                      </td>
                       <td>
                         <select>
                           <option value="Yes">Yes</option>
@@ -464,7 +465,6 @@
             <div class="modal-header">
               <h4 class="modal-title">Grades</h4> </br>
               <h6 class="modal-title">John Smith</h6>
-              <h6 class="modal-title">jsmith@umd.edu</h6>
             </div>
             <div class="modal-body">
               <p> Hi Professor Dickerson, </br>
@@ -511,9 +511,8 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Lecture</h4> </br>
+            <h4 class="modal-title">Lecture</h4>
           <h6 class="modal-title">Jane Smith</h6>
-          <h6 class="modal-title">jsmith12@umd.edu</h6>
         </div>
         <div class="modal-body">
           <p> Hi Professor Dickerson, </br> </br>
@@ -553,6 +552,62 @@
     </div>
   </div>
 </div>
+</div>
+
+
+<div id="helpModalForward" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title"> Message Forwarding</h4>
+    </div>
+    <div class="modal-body">
+      <p> By selecting yes to message forwarding, every message that is left at your door will be automatically sent to your email specified above.
+          You can reply to the message through your email. The message will still be shown in the messages tab here and can be reply through this system as well.
+      </p>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="helpModalForwardReply" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title"> Message Reply Forwarding </h4>
+    </div>
+    <div class="modal-body">
+      <p> By selecting yes to Message Reply Forwarding, every reply you send out using this system (in the messages tab) will be sent to your email address
+        as well as the address of the person who left the message.
+      </p>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="helpMessages" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title"> Using the Message System</h4>
+    </div>
+    <div class="modal-body">
+      <p> All non-deleted messages are shown in the table above. In order to read the full message, hover over the message, so the row is highlighted, and click on message. The message should popup in a window.
+        Through this system, you can reply to the sender, delete the message, or close the window.
+      </p>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 
