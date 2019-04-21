@@ -473,7 +473,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" onClick = "$('#Reply02').modal('show')" class="btn btn-success">Reply</button>
-              <button type="button" onClick = "document.getElementById('example').deleteRow(2)" class="btn btn-danger" data-dismiss="modal">Delete</button>
+              <button type="button" onClick = "deleteMess('mess2')" class="btn btn-danger" data-dismiss="modal">Delete</button>
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
             </div>
           </div>
@@ -522,7 +522,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" onClick = "$('#Reply03').modal('show')" class="btn btn-success">Reply</button>
-          <button type="button" onClick = "document.getElementById('example').deleteRow(3)" class="btn btn-danger" data-dismiss="modal">Delete</button>
+          <button type="button" onClick = "deleteMess('mess3')"class="btn btn-danger" data-dismiss="modal">Delete</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -714,6 +714,20 @@
           this.backgroundColor = '#717D7E';
         });
       });
+
+      function deleteMess(id){
+        document.getElementById('example').deleteRow(document.getElementById(id).rowIndex);
+        console.log(document.getElementById('example').rows.length);
+        if(document.getElementById('example').rows.length <= 2){
+            let newRow = document.getElementById('example').insertRow(-1);
+            newRow.insertCell(0);
+            let newCell = newRow.insertCell(1);
+            newRow.insertCell(2);
+            let newText = document.createTextNode('No Messages');
+            newCell.appendChild(newText);
+            newCell.style.textAlign = 'center';
+        }
+      }
 
     </script>
 
