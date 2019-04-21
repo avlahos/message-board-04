@@ -262,9 +262,27 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h4 class="modal-title">Select A Time</h4>
+                    <h4 class="modal-title">Make an appointment</h4>
                   </div>
                   <div class="modal-body">
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Name</span>
+                      </div>
+                      <input id="schedName" type="text">
+                    </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Topic</span>
+                      </div>
+                      <input id="schedTopic" type="text">
+                    </div>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Your DirectoryID or Email</span>
+                      </div>
+                      <input id="schedID" type="text">
+                    </div>
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Start Time</span>
@@ -277,6 +295,7 @@
                       </div>
                       <input id="endTime" type="time" min="8:00" max="18:00">
                     </div>
+                    <div id="errorSched"></div>
                   </div>
                   <div class="modal-footer">
                     <button id="requestButton" type="button" class="btn btn-success" data-dismiss="modal">Request</button>
@@ -332,6 +351,12 @@
     </div>
 
   <script>
+    function clearRequest(){
+      document.getElementById('errorSched').innerHTML = "";
+      document.getElementById('schedName').value = "";
+      document.getElementById('schedID').value = "";
+      document.getElementById('schedTopic').value = "";
+    }
     var eventsArray = [{ // this object will be "parsed" into an Event Object
       title: 'Department Meeting', // a property!
       start: '2019-04-16T16:00:00+00:00', // a property!
@@ -395,15 +420,19 @@
           $('#schedModal').modal('show');
           document.getElementById('startTime').value = info.startStr.slice(11,16)
           document.getElementById('endTime').value = info.endStr.slice(11,16)
-          $('#requestButton').click(function() {
-            var event = {
-              title: 'dynamic event',
-              start: info.startStr,
-              end: info.endStr,
-              sticky: true
-            }
-            eventsArray.push(event)
-            calendar.addEvent(event)
+          var name = document.getElementById('schedName').value
+          var dirID = document.getElementById('schedID').value.toLowerCase();
+          $('#requestButton').off("click").click(function() {
+              var topic = document.getElementById('schedTopic').value
+              var event = {
+                title: topic,
+                start: info.startStr,
+                end: info.endStr,
+                sticky: true
+              }
+              eventsArray.push(event)
+              calendar.addEvent(event)
+              clearRequest()
           })
         },
         events: eventsArray,
