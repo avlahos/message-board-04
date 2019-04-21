@@ -228,7 +228,7 @@
       }
 
     .green {
-      background-color: green;
+      background-color: #00ff00;
     }
     .yellow {
         background-color: yellow;
@@ -239,6 +239,15 @@
     .white {
         background-color: white;
     }
+
+    .button5 {
+      border-radius: 40%;
+      font-size: 6px;
+    }
+
+    #footer{
+      margin-top: 1em;
+    }
     </style>
 
   <head>
@@ -247,12 +256,12 @@
       <div id="profName" class="mr-auto p-2">John Dickerson</div>
     <!--  </div> -->
     <span class="border border-dark p-2">
-      <span id="status" size ="100px" align = 'right'> <font size="4.5"> Status: </font size="4.5">   </span>
+      <span id="status" size ="100px" align = 'right'> <font size="4"><b> Select your Current Status: </b> </font size="4.5">   </span>
       <span id="statusOutline">
         <span class="dropdown">
-          <select id = "firstSelect" class="">
+          <select id = "firstSelect" class="" style="width: 150px;">
             <option class = "white" value="">Please choose</option>
-            <option class = "green" value ="1"> I am here.</option>
+            <option class = "green" value ="1"> I am in my office.</option>
             <option class = "yellow" value ="2" style="background-color: yellow"> Be Back in</option>
             <option class = "red" value ='3' style="background-color: red"> Out for Today!</option>
           </select>
@@ -260,7 +269,7 @@
           <!--<div id="profStatus" >Be back in 15 mins!</div>-->
       </span>
         <span id="statusOutline2" style="display:none">
-          <select>
+          <select style="width: 150px;">
               <option style="background-color:white">15 minutes.</option>
               <option style="background-color:white">30 minutes.</option>
               <option style="background-color:white">an hour.</option>
@@ -286,7 +295,6 @@
 
   <section1 id = "sec1">
       <div id = "messageBoard" width="450" align = "left" style="display:block">
-        <h4> Inbox </h4>
         <table id="example" width="900" align = 'center'>
           <tr id="messTitle" align = "center">
             <th>&nbsp;</th>
@@ -395,7 +403,7 @@
                   <tr align = "left">
                       <td>About Me </td>
                       <td>
-                        <button type="button" onClick='notImplemented()'>Edit About Me
+                        <button type="button" onClick='notImplemented()'>Edit About Me </button>
                       </td>
                     </tr>
                   <tr align = "left">
@@ -404,7 +412,9 @@
                         <input type = "text" value = "testing@umd.edu"></input>
                       </td>
                   <tr align = "left">
-                      <td>Do you want messages forwared to your email?</td>
+                      <td>Do you want messages forwared to your email?
+                        <button type="button" class="button button5" onClick='notImplemented()'>?</button>
+                      </td>
                       <td>
                         <select>
                           <option value="Yes">Yes</option>
@@ -422,13 +432,29 @@
                       </td>
                   </tr>
                 </table>
-              </div>
+                <div id=footer >
+                  <button type="button" onCLick="$('#updateModal').modal('show')" align = "right"> Update Settings</button>
                 </div>
+              </div>
             </div>
+          </div>
 
     </section1>
     </body>
     <!-- directory functions end -->
+
+    <div id="updateModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h4>Settings Updated!</h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
       <div id="Mess02Modual" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -600,7 +626,7 @@
 
     <script>
       function notImplemented(){
-        alert("Not yet implemented");
+        alert("Under Development");
       }
 
       $(document).ready(function() {
