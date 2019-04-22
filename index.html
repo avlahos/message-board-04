@@ -3,14 +3,15 @@
 <head>
 <!-- Required meta tags -->
     <meta charset="utf-8">
+    <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/font-awesome.min.css">
 
     <link href="fullcalendar/core/main.css" rel="stylesheet" />
     <link href="fullcalendar/daygrid/main.css" rel="stylesheet" />
@@ -24,6 +25,106 @@
     <script src="fullcalendar/timegrid/main.js"></script>
     <script src="fullcalendarscheduler/interaction/main.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.5.0/papaparse.min.js">
+    </script>
+
+    <script>
+    const csv = "https://www.cs.umd.edu/~egolub/Iribe/info.csv";
+    let results = [];
+    const csvData = Papa.parse(csv, {
+      header: true,
+      download: true,
+      complete: response => {
+        results = response.data;
+        // You can access the data here
+        //document.body.innerHTML += findOfficeByName("golub");
+      }
+    });
+
+
+    function findByName(name) {
+      retval="";
+      lName=name.toLowerCase();
+      for (i=0; i<results.length; i++) {
+        if (
+          results[i].LDAP && results[i].LDAP.toLowerCase().includes(lName) ||
+          results[i].LastName && results[i].LastName.toLowerCase().includes(lName) ||
+          results[i].FirstName && results[i].FirstName.toLowerCase().includes(lName)
+        ) {
+          retval+=results[i].FirstName + " " + results[i].LastName +
+          " is in IRB " +
+          results[i].Room+".<br>";
+        }
+      }
+      return retval;
+    }
+
+    </script>
+
+  </script>
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+    <link rel="stylesheet" type="text/css" href="https://mottie.github.io/Keyboard/css/keyboard.css">
+    <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css">
+    <script type="text/javascript" src="https://mottie.github.io/Keyboard/js/jquery.keyboard.js"></script>
+    <script type="text/javascript" src="https://mottie.github.io/Keyboard/js/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="https://mottie.github.io/Keyboard/js/jquery.keyboard.extension-typing.js"></script>
+
+<style id="compiled-css" type="text/css">
+    /* position keyboard at bottom of the screen - jQuery UI isn't even loaded! */
+
+.ui-keyboard {
+border-radius: 0;
+left: 0;
+top: auto;
+bottom: 0;
+position: fixed;
+width: 100%;
+}
+
+</style>
+
+<script type="text/javascript">
+
+
+  $(function(){
+
+/* VIRTUAL KEYBOARD DEMO - https://github.com/Mottie/Keyboard */
+$(function() {
+
+$('input').keyboard({
+    usePreview: false
+  })
+  // activate the typing extension
+  .addTyping({
+    showTyping: true,
+    delay: 250
+  });
+
+});
+
+$(function() {
+
+$('textarea').keyboard({
+    usePreview: false
+  })
+  // activate the typing extension
+  .addTyping({
+    showTyping: true,
+    delay: 250
+  });
+
+});
+
+
+  });
+
+</script>
+
 <title>Super Message Board 4</title>
 <style type="text/css">
 @import url("style.css");
@@ -124,6 +225,12 @@
       .jssora073.jssora073dn {opacity:.4;}
       .jssora073.jssora073ds {opacity:.3;pointer-events:none;}
   </style>
+  <div id="testButtons">
+    <button class="btnFutureDates" id="office_out" onclick="adjustStatus('office_out')">Out of office</button>
+    <button class="btnFutureDates" id="office_in" onclick="adjustStatus('office_in')">In office hours</button>
+    <button class="btnFutureDates" id="office_out_meeting" onclick="adjustStatus('office_out_meeting')">In a meeting</button>
+    <button class="btnFutureDates" id="office_back_soon" onclick="adjustStatus('office_back_soon')">Be back in 15 minutes</button>
+  </div>
 	<div id="wrapper">
 		<header>
 		  <div id="name">
@@ -142,9 +249,9 @@
 					</div>
 
 					<div id="buttons">
-						<button class="button" data-toggle="modal" data-target="#aboutModal">About Me</button>
-						<button class="button" data-toggle="modal" data-target="#messageModal">Message Me</button>
-						<button class="button" data-toggle="modal" data-target="#messageModal">Looking for someone else?</button>
+						<a class="btn btn-secondary button" data-toggle="modal" data-target="#aboutModal"><i class="fas fa-book-reader fa-2x pull-left"></i><br>Read about me</a>
+						<a class="btn btn-secondary button" data-toggle="modal" data-target="#messageModal"><i class="fas fa-sticky-note fa-2x pull-left"></i><br>Leave a message</a>
+						<a class="btn btn-secondary button" data-toggle="modal" data-target="#directoryModal"><i class="fas fa-search-location fa-2x pull-left"></i><br>Looking for someone else?</a>
 					</div>
 
 				</div>
@@ -203,7 +310,7 @@
 				<div id="calendar">
 
 				</div>
-				<button class="btnFutureDates" data-toggle="modal" data-target="#calendarModal">Check Future Dates</button>
+				<button class="btn btn-secondary btnFutureDates" data-toggle="modal" data-target="#calendarModal">Check Future Dates</button>
 
 		  </div>
 		</div>
@@ -229,32 +336,76 @@
 
     <div id="messageModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
-
             <!-- Modal content-->
             <div class="modal-content">
               <div class="modal-header">
                 <h4 class="modal-title">Message Me</h4>
               </div>
               <div class="modal-body">
+                <div class="modal-header">
+                    <span class="text" id="dirinstuctions">Fill out all textboxes and click send to leave me a message</span>
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Your Name</span>
+                  </div>
+                  <input type="text" id="messageName" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Your DirectoryID or Email</span>
+                  </div>
+                  <input type="text" id="messageID" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                </div>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="inputGroup-sizing-default">Quick Topic</span>
                   </div>
-                  <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                  <input type="text" id="messageTopic" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="input-group">
                   <div class="input-group-prepend">
                   <span class="input-group-text">Quick Message</span>
                 </div>
-                <textarea class="form-control" aria-label="With textarea"></textarea>
+                <textarea class="form-control" id="messageBody" aria-label="With textarea"></textarea>
               </div>
-              </div>
+              <div id="errorEmail"></div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-dismiss="modal">Send</button>
+                <button type="button" onClick="clearMessage()" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="button" onClick="sendEmail()" class="btn btn-success">Send</button>
               </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <div id="directoryModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Professors' Rooms</h4>
+            </div>
+            <div class="modal-body">
+              <div class="input-group mb-3">
+                <div class="modal-header">
+                    <span class="text" id="dirinstuctions">Enter as much of a professor's name as you know and press submit to find their office</span>
+                </div>
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                </div>
+                <input type="text" name="name" id = "dirname" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                <button class="btn btn-secondary" type="button" onClick="document.getElementById('result').innerHTML = query(document.getElementById('dirname').value)">Search</button>
+              </div>
+              <div id="result"></div>
+              <div id="bottom" class="modal-footer">
+                <button type="button" onclick="document.getElementById('dirname').value = '';document.getElementById('result').innerHTML = ''" class="btn btn-danger" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
         <div id="schedModal" class="modal fade" role="dialog">
           <div class="modal-dialog">
@@ -350,6 +501,229 @@
           </div>
     </div>
 
+    <div id="resourcesModal1" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-lg" >
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Competition Flyer 1</h4>
+          </div>
+          <div class="modal-body">
+            <p> This is a great team for people who love a challege and want to get experence coding in many different styles and langauges!! Let me know if you plan to join. I would love to hear about the challenges.
+            </p>
+            <!-- <img data-u="image" src="competitionflyer.jpg" height="400" width="450" /> -->
+            <div style="text-align:center">
+                <iframe src="https://docs.google.com/viewer?url=http://www.pdf995.com/samples/pdf.pdf&embedded=true" frameborder="0" height="400px" width="100%"></iframe>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <span class="input-group-text" id="basic-addon3">University email</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Send</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="resourcesModal2" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-lg" >
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Competition Flyer 2</h4>
+          </div>
+          <div class="modal-body">
+            <p> This is a great team for people who love a challege and want to get experence coding in many different styles and langauges!! Let me know if you plan to join. I would love to hear about the challenges.
+            </p>
+            <!-- <img data-u="image" src="competitionflyer.jpg" height="400" width="450" /> -->
+            <div style="text-align:center">
+                <iframe src="https://docs.google.com/viewer?url=http://www.pdf995.com/samples/pdf.pdf&embedded=true" frameborder="0" height="400px" width="100%"></iframe>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <span class="input-group-text" id="basic-addon3">University email</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Send</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="resourcesModal3" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-lg" >
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Competition Flyer 3</h4>
+          </div>
+          <div class="modal-body">
+            <p> This is a great team for people who love a challege and want to get experence coding in many different styles and langauges!! Let me know if you plan to join. I would love to hear about the challenges.
+            </p>
+            <!-- <img data-u="image" src="competitionflyer.jpg" height="400" width="450" /> -->
+            <div style="text-align:center">
+                <iframe src="https://docs.google.com/viewer?url=http://www.pdf995.com/samples/pdf.pdf&embedded=true" frameborder="0" height="400px" width="100%"></iframe>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <span class="input-group-text" id="basic-addon3">University email</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Send</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div id="resourcesModal4" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-lg" >
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Competition Flyer 4</h4>
+          </div>
+          <div class="modal-body">
+            <p> This is a great team for people who love a challege and want to get experence coding in many different styles and langauges!! Let me know if you plan to join. I would love to hear about the challenges.
+            </p>
+            <!-- <img data-u="image" src="competitionflyer.jpg" height="400" width="450" /> -->
+            <div style="text-align:center">
+                <iframe src="https://docs.google.com/viewer?url=http://www.pdf995.com/samples/pdf.pdf&embedded=true" frameborder="0" height="400px" width="100%"></iframe>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <span class="input-group-text" id="basic-addon3">University email</span>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Send</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- directory functions -->
+      <script>
+       var rooms = [{name: "Evan Golub", room: "IRB 1209"}, {name: "Michelle Hugue", room: "IRB 1211"}]
+        function query(name) {
+          var ret = "";
+          if(name  === ""){
+            ret = "Enter Professor name";
+            return ret;
+          }
+          for (i = 0; i < rooms.length; i++) {
+            if(rooms[i].name.toLowerCase().includes(name.toLowerCase())){
+              ret += rooms[i].name + " is in " + rooms[i].room + "<br />";
+            }
+          }
+          if(ret === ""){
+            ret = "No professor found"
+          }
+          return ret;
+        }
+      </script>
+
+      <script>
+      function adjustStatus(task) {
+          var status = document.getElementById("status");
+          if (task == "office_out"){
+            status.innerHTML = "<h3>Out of office.</h3>"
+            status.style.background = '#c43c48';
+          } else if (task == "office_in"){
+            status.innerHTML = "<h3>Currently holding office hours.</h3>"
+            status.style.background = '#28a745';
+          } else if (task == "office_out_meeting"){
+            status.innerHTML = "<h3>Currently in a meeting.</h3>"
+            status.style.background = '#c43c48';
+          } else if (task == "office_back_soon"){
+            var today = new Date();
+            var date = (today.getMonth()+1)+'-'+today.getDate();
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            var dateTime = date+' '+time;
+            status.innerHTML = "<h3>Be back in 15 minutes! <small><small><small>"+dateTime+"</small></small></small></h3>";
+            status.style.background = '#c43c48';
+          }
+
+      }
+      </script>
+
+
+      <!-- directory functions end -->
+
+      <script>
+        var toAddress = "alisha.asnani@gmail.com";
+        var dirIDs = ["aasnani","happy","live"];
+        function clearMessage(){
+          document.getElementById('errorEmail').innerHTML = "";
+          document.getElementById('messageName').value = "";
+          document.getElementById('messageID').value = "";
+          document.getElementById('messageTopic').value = "";
+          document.getElementById('messageBody').value = "";
+        }
+        function sendEmail(){
+          //check inputs
+            var name = document.getElementById('messageName').value;
+            var dirID = document.getElementById('messageID').value.toLowerCase();
+            var topic = document.getElementById('messageTopic').value;
+            var mess = document.getElementById('messageBody').value;
+            if (topic === "" || name === "" || dirID === "" || mess === ""){
+               document.getElementById('errorEmail').innerHTML = "Error: Fill out all fields";
+               return;
+            }
+            if(dirID.includes("@umd")){
+              var d = dirID.split("@")[0];
+              if(dirIDs.includes(d) == false){
+                document.getElementById('errorEmail').innerHTML = "Error: Inputed University email does not exist";
+                return;
+              }
+            }
+            else if(!dirID.includes("@" )){
+              if(dirIDs.includes(dirID) == false){
+                document.getElementById('errorEmail').innerHTML = "Error: Inputed Directory ID does not exist";
+                return;
+              }
+            }
+            else{
+            }
+              clearMessage();
+              $("#messageModal").modal("hide");
+            }
+      </script>
+
+    <script>
+        // $('.slides').click(function () {
+        //   alert("not yet implemented </br> Click the Competition Flyer one");
+        //   console.log(this)
+        // });
+    //Alisha Added
+        var div = document.getElementsByClassName('slides');
+         div[0].addEventListener('click', function (event) {
+            $('#resourcesModal1').modal('show');
+         });
+         div[1].addEventListener('click', function (event) {
+           //alert("Not yet implemented. \n Click the Competition Flyer one");
+           //console.log(this)
+           $('#resourcesModal2').modal('show');
+         });
+         div[2].addEventListener('click', function (event) {
+           //alert("Not yet implemented. \n Click the Competition Flyer one");
+           //console.log(this)
+           $('#resourcesModal3').modal('show');
+         });
+         div[3].addEventListener('click', function (event) {
+           //alert("Not yet implemented. \n Click the Competition Flyer one");
+           //console.log(this)
+           $('#resourcesModal4').modal('show');
+         });
+    //Alisha end
+    </script>
   <script>
     function clearRequest(){
       document.getElementById('errorSched').innerHTML = "";
@@ -359,31 +733,23 @@
     }
     var eventsArray = [{ // this object will be "parsed" into an Event Object
       title: 'Department Meeting', // a property!
-      start: '2019-04-16T16:00:00+00:00', // a property!
-      end: '2019-04-16T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      start: '2019-04-22T16:00:00+00:00', // a property!
+      end: '2019-04-22T18:00:00+00:00', // a property! ** see important note below about 'end' **
       color: 'red'
     },
     {
       title: 'Out For Lunch', // a property!
-      start: '2019-04-16T15:00:00+00:00', // a property!
-      end: '2019-04-16T16:00:00+00:00', // a property! ** see important note below about 'end' **
+      start: '2019-04-22T15:00:00+00:00', // a property!
+      end: '2019-04-22T16:00:00+00:00', // a property! ** see important note below about 'end' **
       color: 'red'
     },
     {
       title: 'Office Hours', // a property!
-      start: '2019-04-17T17:00:00+00:00', // a property!
-      end: '2019-04-17T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      start: '2019-04-23T17:00:00+00:00', // a property!
+      end: '2019-04-23T18:00:00+00:00', // a property! ** see important note below about 'end' **
       color: 'green'
     }];
     var flag = 0;
-    console.log("right before click")
-    $('.slides').click(function () {
-      alert("pop up doc");
-      console.log(this);
-    });
-      $('#calendarModal').modal({
-        show: false
-      })
     document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
       $('#schedModal').modal({ show: false})
@@ -437,6 +803,12 @@
           })
         },
         events: eventsArray,
+        //{ // you can also specify a plain string like 'json/events.json'
+          //url: 'json/events.json',
+          //failure: function() {
+            //document.getElementById('script-warning').style.display = 'block';
+          //}
+        //}
       });
       calendar.setOption('contentHeight', 475);
       calendar.render();
@@ -485,6 +857,19 @@
 <script>
 
 </script>
+
+<script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "qnoga7vj"
+      }], "*")
+    }
+
+    // always overwrite window.name, in case users try to set it manually
+    window.name = "result"
+  </script>
 
 </body>
 </html>
