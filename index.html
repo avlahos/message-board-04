@@ -108,12 +108,15 @@
               </div>
           </div>
         </div>
+        <div> <font size='2'> &nbsp;&nbsp;&nbsp; Tap to expand page </font></div>
 
 			</div>
 		  <div id="col2">
+
 				<div id="calendar">
 
 				</div>
+        <font size='2'> &nbsp;&nbsp; Tap on time block to request an appointment </font>
 				<button class="btnFutureDates" onclick="secondCalendarInit()" data-toggle="modal" data-target="#calendarModal">Check Future Dates</button>
 
 		  </div>
@@ -431,7 +434,7 @@ function countDown(diff){
    currTimeOut = setTimeout(function() {countDown(--diff);}, 3000); //TODO fix to 60000 (one min)
   }
   else{
-    ChangeToOfficeHours();
+    document.getElementById("statusHeader").innerText = "Be Back Soon";
   }
 }
 
