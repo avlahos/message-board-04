@@ -563,18 +563,23 @@ $('textarea').keyboard({
       </script>
 
       <script>
+      var currTimeOut;
       function adjustStatus(task) {
           var status = document.getElementById("status");
           if (task == "office_out"){
+            clearTimeout(currTimeOut);
             status.innerHTML = "<h3>Out of office.</h3>"
             status.style.background = '#c43c48';
           } else if (task == "office_in"){
+            clearTimeout(currTimeOut);
             status.innerHTML = "<h3>Currently holding office hours.</h3>"
             status.style.background = '#28a745';
           } else if (task == "office_out_meeting"){
+            clearTimeout(currTimeOut);
             status.innerHTML = "<h3>Currently in a meeting.</h3>"
             status.style.background = '#c43c48';
           } else if (task == "office_back_soon"){
+            clearTimeout(currTimeOut);
             var today = new Date();
             var date = (today.getMonth()+1)+'-'+today.getDate();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();

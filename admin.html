@@ -57,7 +57,7 @@
       #statusBar {
         height: 6em;
         margin-top: 0em;
-        background-color: #FFFF88;
+        background-color: #afafcc;
       }
       #upDateButton {
         font-size:  20px;
@@ -84,8 +84,6 @@
         width: 12em;
       }
 
-
-
       .btn-group-vertical button {
         background-color: #eee;
         border: 1px solid gray;
@@ -104,10 +102,12 @@
       section {
         float: left;
         margin-left: 0em;
+        display: inline;
       }
       section1 {
         float: left;
         margin-left: 3.0em;
+        display: inline;
       }
 
       .message {
@@ -280,16 +280,15 @@
   </head>
 
 <body>
-<section>
-      <div class= "btn-group-vertical">
-        <!-- <img id="proPic" src="dickerson_propic.jpg" alt="ProfilePic"><div></div> -->
-        <button id = "messagesButton" style="background-color:#bbb" type="button" onClick = "addMessages()" data-toggle="modal"><img src="windows-10-mail-icon.png" style="width: 50px; height: 50px" class="rounded mx-auto d-block" alt="Mail">Messages</button>
-        <button id = "carouselButton" type="button" onClick = "addCarousel()" data-toggle="modal"><img src="events-icon.png" style="width: 50px; height: 50px" class="rounded mx-auto d-block" alt="Events">Update Events</button>
-        <button id = "directoryButton" type="button" onclick = "addDirectory()" data-toggle="modal"><img src="maps-icon.png" style="width: 50px; height: 50px" class="rounded mx-auto d-block" alt="Maps">Room Directory</button>
-        <button id = "settingsButton" type="button" onClick = "addSettings()" data-toggle="modal"><img src="settings-icon.png" style="width: 50px; height: 50px" class="rounded mx-auto d-block" alt="Settings">Settings</button>
-      </div>
-  </section>
-
+  <section>
+            <div class= "btn-group-vertical">
+              <!-- <img id="proPic" src="dickerson_propic.jpg" alt="ProfilePic"><div></div> -->
+              <button id = "messagesButton" style="background-color:#bbb" type="button" onClick = "addMessages()" data-toggle="modal"><img src="windows-10-mail-icon.png" style="width: 50px; height: 50px" class="rounded mx-auto d-block" alt="Mail">Messages</button>
+              <button id = "carouselButton" type="button" onClick = "addCarousel()" data-toggle="modal"><img src="events-icon.png" style="width: 50px; height: 50px" class="rounded mx-auto d-block" alt="Events">Update Events</button>
+              <button id = "directoryButton" type="button" onclick = "addDirectory()" data-toggle="modal"><img src="maps-icon.png" style="width: 50px; height: 50px" class="rounded mx-auto d-block" alt="Maps">Room Directory</button>
+              <button id = "settingsButton" type="button" onClick = "addSettings()" data-toggle="modal"><img src="settings-icon.png" style="width: 50px; height: 50px" class="rounded mx-auto d-block" alt="Settings">Settings</button>
+            </div>
+    </section>
   <h4></h4>
   <section1 id = "sec1">
       <div id = "messageBoard" width="450" align = "left" style="display:block">
