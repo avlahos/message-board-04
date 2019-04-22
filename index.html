@@ -647,11 +647,26 @@ $('textarea').keyboard({
             var date = (today.getMonth()+1)+'-'+today.getDate();
             var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
             var dateTime = date+' '+time;
-            status.innerHTML = "<h3>Be back in 15 minutes! <small><small><small>"+dateTime+"</small></small></small></h3>";
-            status.style.background = '#c43c48';
+            countDown(15);
+            //status.innerHTML = "<h3>Be back in 15 minutes! <small><small><small>"+dateTime+"</small></small></small></h3>";
+            status.style.background = 'yellow';
           }
 
       }
+
+      function countDown(diff){
+        document.getElementById("status").innerHTML = "<h3>Be back in "+diff+" minutes!</h3>";
+        console.log(diff);
+
+        if(diff > 0){
+          //var diff = (newDateObj.getTime() - currentDate.getTime())/60000;
+         currTimeOut = setTimeout(function() {countDown(--diff);}, 3000); //TODO fix to 60000 (one min)
+        }
+        else{
+            document.getElementById("status").innerHTML = "<h3>Be Back Soon!</h3>";
+        }
+      }
+
       </script>
 
 
