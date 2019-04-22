@@ -183,6 +183,7 @@ $('textarea').keyboard({
     <button class="btnFutureDates" id="office_in" onclick="adjustStatus('office_in')">In office hours</button>
     <button class="btnFutureDates" id="office_out_meeting" onclick="adjustStatus('office_out_meeting')">In a meeting</button>
     <button class="btnFutureDates" id="office_back_soon" onclick="adjustStatus('office_back_soon')">Be back in 15 minutes</button>
+    <button class="btnFutureDates" data-toggle="modal" data-target="#doomsday">Doomsday</button>
   </div>
 	<div id="wrapper">
 		<header>
@@ -565,6 +566,24 @@ $('textarea').keyboard({
       </div>
     </div>
 
+    <div id="doomsday" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content" id="doomsdayContent">
+          <div class="modal-header">
+            <h2 class="modal-title"><b>The University is closed due to bad weather<b></h2>
+          </div>
+          <div class="modal-body">
+            <h4>Please go home! I am available through email if you have an urgent need.</h4>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
     <!-- directory functions -->
       <script>
        var rooms = [{name: "Evan Golub", room: "IRB 1209"}, {name: "Michelle Hugue", room: "IRB 1211"}]
@@ -694,6 +713,11 @@ $('textarea').keyboard({
            $('#resourcesModal4').modal('show');
          });
     //Alisha end
+    </script>
+    <script>
+    function doomsday() {
+      $('#doomsday').modal("show")
+    }
     </script>
   <script>
     function clearRequest(){

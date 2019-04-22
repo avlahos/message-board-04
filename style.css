@@ -19,6 +19,17 @@ body {
 	background-color: rgba(240, 240, 240, 1);
 }
 
+#doomsday{
+
+}
+
+#doomsdayContent {
+	background-image: url("danger-icon.png");
+	background-repeat: no-repeat;
+	height: 40em;
+	background-position: center; 
+}
+
 .fc-header-toolbar{
 	margin-bottom: .5em !important;
 }
