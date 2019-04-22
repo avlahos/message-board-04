@@ -8,6 +8,17 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="fullcalendar/core/main.css" rel="stylesheet" />
+    <link href="fullcalendar/daygrid/main.css" rel="stylesheet" />
+    <link href="fullcalendar/timegrid/main.css" rel="stylesheet" />
+    <link href="fullcalendar/bootstrap/main.css" rel="stylesheet" />
+    <link href="fullcalendarscheduler/bootstrap/main.css" rel="stylesheet" />
+    <script src="jssor.slider/js/jssor.slider.min.js"></script>
+    <script src="fullcalendar/core/main.js"></script>
+    <script src="fullcalendar/daygrid/main.js"></script>
+    <script src="fullcalendar/timegrid/main.js"></script>
+    <script src="fullcalendarscheduler/interaction/main.js"></script>
 
     <title>SuperMessageBoard4_admin</title>
 
@@ -284,13 +295,72 @@
             <div class= "btn-group-vertical">
               <!-- <img id="proPic" src="dickerson_propic.jpg" alt="ProfilePic"><div></div> -->
               <button id = "messagesButton" style="background-color:#bbb" type="button" onClick = "addMessages()" data-toggle="modal"><img src="windows-10-mail-icon.png" style="width: 50px; height: 50px" class="rounded mx-auto d-block" alt="Mail">Messages</button>
-              <button id = "carouselButton" type="button" onClick = "addCarousel()" data-toggle="modal"><img src="events-icon.png" style="width: 50px; height: 50px" class="rounded mx-auto d-block" alt="Events">Update Events</button>
+              <button id = "calendarButton" type="button" onClick = "viewCalendar()" data-toggle="modal"><img src="Edit_Calendar.png" style="width: 50px; height: 50px" class="rounded mx-auto d-block" alt="Settings"/>View Calendar</button>
+              <button id = "carouselButton" type="button" onClick = "addCarousel()" data-toggle="modal"><img src="events-icon.png" style="width: 50px; height: 50px" class="rounded mx-auto d-block" alt="Events">Update Resources</button>
               <button id = "directoryButton" type="button" onclick = "addDirectory()" data-toggle="modal"><img src="maps-icon.png" style="width: 50px; height: 50px" class="rounded mx-auto d-block" alt="Maps">Room Directory</button>
               <button id = "settingsButton" type="button" onClick = "addSettings()" data-toggle="modal"><img src="settings-icon.png" style="width: 50px; height: 50px" class="rounded mx-auto d-block" alt="Settings">Settings</button>
             </div>
     </section>
   <h4></h4>
   <section1 id = "sec1">
+
+    <div id="schedModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Make an appointment</h4>
+              </div>
+              <div class="modal-body">
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Name</span>
+                  </div>
+                  <input id="schedName" type="text">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Topic</span>
+                  </div>
+                  <input id="schedTopic" type="text" placeholder="Optional Topic">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Your DirectoryID or Email</span>
+                  </div>
+                  <input id="schedID" type="text">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Start Time</span>
+                  </div>
+                  <input id="startTime" type="time" min="8:00" max="18:00">
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">End Time</span>
+                  </div>
+                  <input id="endTime" type="time" min="8:00" max="18:00">
+                </div>
+                <div id="errorSched"></div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" onClick="clearRequest()" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button id="requestButton" type="button" class="btn btn-success">Request</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    <div id = "calendarPage" width="450" align = "left" style="display:none">
+      <div id="calendar" width="450">
+
+      </div>
+      <button type="button" class="button button5" onClick="$('#helpMessages').modal('show')">Need Help?</button>
+    </div>
+
+
       <div id = "messageBoard" width="450" align = "left" style="display:block">
         <table id="example" width="900" align = 'center'>
           <tr id="messTitle" align = "center">
@@ -661,46 +731,66 @@
           document.getElementById("carouselButton").style.backgroundColor = "#eee";
           document.getElementById("directoryButton").style.backgroundColor = "#eee";
           document.getElementById("settingsButton").style.backgroundColor = "#eee";
+          document.getElementById("calendarPage").style.backgroundColor = "#eee";
 
           document.getElementById("messageBoard").style.display = "block";
           document.getElementById("carouselModal").style.display = "none";
           document.getElementById("directoryModal").style.display = "none";
           document.getElementById("settingPage").style.display = "none";
+          document.getElementById("calendarPage").style.display = "none";
         }
         function addCarousel(){
           document.getElementById("messagesButton").style.backgroundColor = "#eee";
           document.getElementById("carouselButton").style.backgroundColor = "#bbb";
           document.getElementById("directoryButton").style.backgroundColor = "#eee";
           document.getElementById("settingsButton").style.backgroundColor = "#eee";
+          document.getElementById("calendarPage").style.backgroundColor = "#createEventModal";
 
           document.getElementById("messageBoard").style.display = "none";
           document.getElementById("carouselModal").style.display = "block";
           document.getElementById("directoryModal").style.display = "none";
           document.getElementById("settingPage").style.display = "none";
+          document.getElementById("calendarPage").style.display = "none";
         }
         function addDirectory(){
           document.getElementById("messagesButton").style.backgroundColor = "#eee";
           document.getElementById("carouselButton").style.backgroundColor = "#eee";
           document.getElementById("directoryButton").style.backgroundColor = "#bbb";
           document.getElementById("settingsButton").style.backgroundColor = "#eee";
+          document.getElementById("calendarPage").style.backgroundColor = "#eee";
 
           document.getElementById("messageBoard").style.display = "none";
           document.getElementById("carouselModal").style.display = "none";
           document.getElementById("directoryModal").style.display = "block";
           document.getElementById("settingPage").style.display = "none";
+          document.getElementById("calendarPage").style.display = "none";
         }
         function addSettings(){
           document.getElementById("messagesButton").style.backgroundColor = "#eee";
           document.getElementById("carouselButton").style.backgroundColor = "#eee";
           document.getElementById("directoryButton").style.backgroundColor = "#eee";
           document.getElementById("settingsButton").style.backgroundColor = "#bbb";
+          document.getElementById("calendarPage").style.backgroundColor = "#eee";
 
           document.getElementById("messageBoard").style.display = "none";
           document.getElementById("carouselModal").style.display = "none";
           document.getElementById("directoryModal").style.display = "none";
           document.getElementById("settingPage").style.display = "block";
+          document.getElementById("calendarPage").style.display = "none";
         }
+        function viewCalendar(){
+          document.getElementById("messagesButton").style.backgroundColor = "#eee";
+          document.getElementById("carouselButton").style.backgroundColor = "#eee";
+          document.getElementById("directoryButton").style.backgroundColor = "#eee";
+          document.getElementById("settingsButton").style.backgroundColor = "#eee";
+          document.getElementById("calendarPage").style.backgroundColor = "#bbb";
 
+          document.getElementById("messageBoard").style.display = "none";
+          document.getElementById("carouselModal").style.display = "none";
+          document.getElementById("directoryModal").style.display = "none";
+          document.getElementById("settingPage").style.display = "none";
+          document.getElementById("calendarPage").style.display = "block";
+        }
       </script>
 
     <script>
@@ -758,6 +848,136 @@
         else{
           document.getElementById("statusOutline2").style.display = "none";
         }
+    });
+    </script>
+
+    <script>
+      function clearRequest(){
+        document.getElementById('errorSched').innerHTML = "";
+        document.getElementById('schedName').value = "";
+        document.getElementById('schedID').value = "";
+        document.getElementById('schedTopic').value = "";
+      }
+      var eventsArray = [{ // this object will be "parsed" into an Event Object
+        title: 'Department Meeting', // a property!
+        start: '2019-05-07T18:00:00+00:00', // a property!
+        end: '2019-05-07T20:00:00+00:00', // a property! ** see important note below about 'end' **
+        color: 'red'
+      },
+      {
+        title: 'Out For Lunch', // a property!
+        start: '2019-05-07T15:00:00+00:00', // a property!
+        end: '2019-05-07T16:00:00+00:00', // a property! ** see important note below about 'end' **
+        color: 'red'
+      },
+      {
+        title: 'Office Hours', // a property!
+        start: '2019-04-23T17:00:00+00:00', // a property!
+        end: '2019-04-23T18:00:00+00:00', // a property! ** see important note below about 'end' **
+        color: 'green'
+      },
+      {
+        title: 'Office Hours', // a property!
+        start: '2019-04-25T17:00:00+00:00', // a property!
+        end: '2019-04-25T18:00:00+00:00', // a property! ** see important note below about 'end' **
+        color: 'green'
+      },{
+        title: 'Office Hours', // a property!
+        start: '2019-04-30T17:00:00+00:00', // a property!
+        end: '2019-04-30T18:00:00+00:00', // a property! ** see important note below about 'end' **
+        color: 'green'
+      },{
+        title: 'Office Hours', // a property!
+        start: '2019-05-02T17:00:00+00:00', // a property!
+        end: '2019-05-02T18:00:00+00:00', // a property! ** see important note below about 'end' **
+        color: 'green'
+      },{
+        title: 'Office Hours', // a property!
+        start: '2019-05-07T17:00:00+00:00', // a property!
+        end: '2019-05-07T18:00:00+00:00', // a property! ** see important note below about 'end' **
+        color: 'green'
+      },{
+        title: 'Office Hours', // a property!
+        start: '2019-05-09T17:00:00+00:00', // a property!
+        end: '2019-05-09T18:00:00+00:00', // a property! ** see important note below about 'end' **
+        color: 'green'
+      }
+      ];
+      var flag = 0;
+      document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+        $('#schedModal').modal({ show: false})
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+          plugins: [ 'timeGrid', 'interaction','dayGrid'],
+          selectable: true,
+          timeZone: 'local',
+          weekends: false,
+          minTime: "08:00:00",
+          maxTime: "19:00:00",
+          schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source',
+          allDaySlot: false,
+          nowIndicator: true,
+          slotDuration: '00:30:00',
+          defaultView: 'timeGridDay',
+          header: {
+            left: '',
+            center: 'title',
+            right: ''
+          },
+          views: {
+            timeGridThreeDay: {
+              type: 'timeGrid',
+              duration: { days: 1 },
+              buttonText: 'today'
+            }
+          },
+          eventClick: function(info) {
+            var eventObj = info.event;
+            if(eventObj.title === null || eventObj.title === "") {
+              alert("Generic Event")
+            } else {
+              alert(eventObj.title);
+            }
+          },
+          select: function(info) {
+            $('#schedModal').modal('show');
+            document.getElementById('startTime').value = info.startStr.slice(11,16)
+            document.getElementById('endTime').value = info.endStr.slice(11,16)
+            $('#requestButton').off("click").click(function() {
+                name = document.getElementById('schedName').value
+                topic = document.getElementById('schedTopic').value
+                dirID = document.getElementById('schedID').value.toLowerCase();
+                startTime = document.getElementById('startTime').value
+                endTime = document.getElementById('endTime').value
+                if (name === "" || dirID === ""){
+                   document.getElementById('errorSched').innerHTML = ("Error".fontcolor("red")+": Fill out all fields").bold();
+                   return;
+                }
+                info.endStr = info.endStr.replace(info.endStr.slice(11,16), document.getElementById('endTime').value)
+                var topic = document.getElementById('schedTopic').value
+                var event = {
+                  title: topic,
+                  start: info.startStr,
+                  end: info.endStr,
+                  sticky: true
+                }
+                eventsArray.push(event)
+                calendar.addEvent(event)
+                calendar.rerenderEvents()
+                clearRequest()
+                $('#schedModal').modal("hide")
+            })
+          },
+          events: eventsArray,
+          //{ // you can also specify a plain string like 'json/events.json'
+            //url: 'json/events.json',
+            //failure: function() {
+              //document.getElementById('script-warning').style.display = 'block';
+            //}
+          //}
+        });
+        calendar.setOption('contentHeight', 300);
+        calendar.render();
     });
     </script>
 
