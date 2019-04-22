@@ -255,7 +255,9 @@ $('textarea').keyboard({
               </div>
           </div>
         </div>
-
+        <div style="align-self: center">
+          Tap for more information.
+        </div>
 			</div>
 		  <div id="col2">
 				<div id="calendar">
@@ -430,6 +432,27 @@ $('textarea').keyboard({
           </div>
         </div>
 
+        <div id="eventModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title" id="eventTitle"></h4>
+              </div>
+              <div class="modal-body">
+                <p>
+                  A short description detailing more about the event.
+                </p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Send</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
 	</div>
 
   <div id="calendarModal" class="modal fade" role="dialog">
@@ -473,7 +496,7 @@ $('textarea').keyboard({
           </div>
           <div class="modal-footer">
             <span class="input-group-text" id="basic-addon3">University email</span>
-            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="Interested? Send this to yourself.">
             <button type="button" class="btn btn-primary" data-dismiss="modal">Send</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           </div>
@@ -531,6 +554,7 @@ $('textarea').keyboard({
             <h4 class="modal-title">Testudo Home Page</h4>
           </div>
           <div class="modal-body">
+            <p>Try scanning me on your phone!</p>
             <img data-u="image" src="qr-code.png" height="400" width="400"/>
           </div>
           <div class="modal-footer">
@@ -685,14 +709,14 @@ $('textarea').keyboard({
     }
     var eventsArray = [{ // this object will be "parsed" into an Event Object
       title: 'Department Meeting', // a property!
-      start: '2019-04-22T16:00:00+00:00', // a property!
-      end: '2019-04-22T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      start: '2019-05-07T18:00:00+00:00', // a property!
+      end: '2019-05-07T20:00:00+00:00', // a property! ** see important note below about 'end' **
       color: 'red'
     },
     {
       title: 'Out For Lunch', // a property!
-      start: '2019-04-22T15:00:00+00:00', // a property!
-      end: '2019-04-22T16:00:00+00:00', // a property! ** see important note below about 'end' **
+      start: '2019-05-07T15:00:00+00:00', // a property!
+      end: '2019-05-07T16:00:00+00:00', // a property! ** see important note below about 'end' **
       color: 'red'
     },
     {
@@ -700,7 +724,34 @@ $('textarea').keyboard({
       start: '2019-04-23T17:00:00+00:00', // a property!
       end: '2019-04-23T18:00:00+00:00', // a property! ** see important note below about 'end' **
       color: 'green'
-    }];
+    },
+    {
+      title: 'Office Hours', // a property!
+      start: '2019-04-25T17:00:00+00:00', // a property!
+      end: '2019-04-25T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'green'
+    },{
+      title: 'Office Hours', // a property!
+      start: '2019-04-30T17:00:00+00:00', // a property!
+      end: '2019-04-30T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'green'
+    },{
+      title: 'Office Hours', // a property!
+      start: '2019-05-02T17:00:00+00:00', // a property!
+      end: '2019-05-02T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'green'
+    },{
+      title: 'Office Hours', // a property!
+      start: '2019-05-07T17:00:00+00:00', // a property!
+      end: '2019-05-07T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'green'
+    },{
+      title: 'Office Hours', // a property!
+      start: '2019-05-09T17:00:00+00:00', // a property!
+      end: '2019-05-09T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      color: 'green'
+    }
+    ];
     var flag = 0;
     document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
@@ -730,8 +781,12 @@ $('textarea').keyboard({
           }
         },
         eventClick: function(info) {
-            var eventObj = info.event;
+          var eventObj = info.event;
+          if(eventObj.title === null || eventObj.title === "") {
+            alert("Generic Event")
+          } else {
             alert(eventObj.title);
+          }
         },
         select: function(info) {
           $('#schedModal').modal('show');
@@ -775,7 +830,6 @@ $('textarea').keyboard({
   });
   function secondCalendarInit() {
   var secondEl = document.getElementById('secondCalendar');
-  if(flag != 1) {
     var secondCalendar = new FullCalendar.Calendar(secondEl, {
       plugins: [ 'timeGrid', 'interaction','dayGrid'],
       selectable: true,
@@ -794,8 +848,12 @@ $('textarea').keyboard({
         right: 'timeGridWeek,dayGridMonth,'
       },
       eventClick: function(info) {
-          var eventObj = info.event;
+        var eventObj = info.event;
+        if(eventObj.title === null || eventObj.title === "") {
+          alert("Generic Event")
+        } else {
           alert(eventObj.title);
+        }
       },
       select: function(info) {
       /*  $('#schedModal').modal('show');
@@ -832,8 +890,11 @@ $('textarea').keyboard({
     });
     secondCalendar.setOption('height', 450)
     secondCalendar.setOption('aspectRatio', 1.5)
+    if(flag != 1) {
     secondCalendar.render();
     flag = 1;
+    } else {
+    secondCalendar.rerenderEvents()
     }
   }
   </script>
