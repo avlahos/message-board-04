@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <title>SuperMessageBoard4_admin</title>
+
+    <style>
+      table#example {
+          border-collapse: collapse;
+      }
+      #example tr {
+          background-color: #eee;
+          border-top: 1px solid #fff;
+      }
+      #example tr:hover {
+          background-color: #ccc;
+      }
+      #example th {
+          background-color: #fff;
+      }
+      #example th, #example td {
+          padding: 3px 5px;
+      }
+      #example td:hover {
+          cursor: pointer;
+      }
+
+      table#example2 {
+          border-collapse: collapse;
+      }
+      #example2 tr {
+          background-color: #eee;
+          border-top: 1px solid #fff;
+      }
+      #example2 th {
+          background-color: #fff;
+      }
+      #example2 th, #example td {
+          padding: 3px 5px;
+      }
+
+
+      #profName {
+        margin-left: 0.5em;
+        font-size: 45px;
+      }
+      #profStatus {
+        font-size:  35px;
+      }
+      #statusBar {
+        height: 6em;
+        margin-top: 0em;
+        background-color: #FFFF88;
+      }
+      #upDateButton {
+        font-size:  20px;
+        margin-top: 1em;
+        margin-left: 3.5em;
+      }
+      #statusOutline {
+        margin-right: 1em;
+      }
+      #statusOutline2 {
+        margin-right: 2em;
+      }
+      .select option {
+        margin: 40px;
+        background: rgba(0, 0, 0, 0.3);
+        color: #fff;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+      }
+
+      #proPic {
+        margin-top: 2em;
+        margin-left: 2.5em;
+        height: 15em;
+        width: 12em;
+      }
+
+
+
+      .btn-group-vertical button {
+        background-color: #eee;
+        border: 1px solid gray;
+        color: black; /* White text */
+        padding: 40px 24px; /* Some padding */
+        cursor: pointer; /* Pointer/hand icon */
+        width: 100%; /* Set a width if needed */
+        display: block; /* Make the buttons appear below each other */
+      }
+
+      /* Add a background color on hover */
+      .btn-group-vertical button:hover {
+        background-color:#717D7E;
+      }
+
+      section {
+        float: left;
+        margin-left: 0em;
+      }
+      section1 {
+        float: left;
+        margin-left: 3.0em;
+      }
+
+      .message {
+        margin-top: 0.6em;
+        margin-left: 2em;
+        position: relative;
+      }
+      .message img {
+        margin-top: -0.5em;
+        width:100px;
+        height:90px;
+      }
+      .message .btn {
+        margin-left: 2em;
+        position: absolute;
+        background-color: #0078F1;
+        color: white;
+        font-size: 20px;
+        padding: 40px 60px;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+      }
+
+      .message .btn:hover {
+        background-color: black;
+      }
+      .message .btn .butex {
+        margin-top: 1em;
+        margin-bottom: -1em;
+      }
+
+      .badge {
+        position: absolute;
+        right: -55px;
+        margin-top: -1em;
+        padding: 5px 10px;
+        border-radius: 50%;
+        background-color: red;
+        color: white;
+      }
+
+      #DirectionButton {
+        margin-top: 1em;
+        margin-left: 17em;
+      }
+      .direction {
+        margin-top: 0.6em;
+        position: relative;
+      }
+      .direction img {
+        margin-bottom: -1em;
+        width:100px;
+        height:90px;
+      }
+      .direction .btn {
+        margin-left: 2em;
+        position: absolute;
+          background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        font-size: 20px;
+        padding: 65px 60px;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+      }
+
+      .direction .btn:hover {
+        background-color: black;
+      }
+      .direction .btn .butex {
+        margin-top: 2em;
+        margin-bottom: -1em;
+      }
+
+      .setting {
+        margin-left: 2em;
+        position: absolute;
+          background-color: rgba(0, 0, 0, 0.3);
+        color: white;
+        font-size: 20px;
+        padding: 65px 60px;
+        border: none;
+        cursor: pointer;
+        border-radius: 20px;
+      }
+      .setting:hover {
+        background-color: black;
+      }
+
+      .setting .butex {
+        margin-top: 2em;
+        margin-bottom: -1em;
+      }
+
+      .dropdown-menu {
+        background-color: #000000;
+         border: 1px solid #FFFFFF;
+      }
+
+      #carouselExampleCaptions {
+        background-color: black;
+        margin-left: 25%;
+        margin-top: .5em;
+        margin-bottom: 1em;
+        height: 30em;
+        width: 45em;
+      }
+     .carouselPic {
+       height: 30em;
+       width: 35em;
+       zoom: 90%;
+       object-fit: contain;
+      }
+
+    .green {
+      background-color: #00ff00;
+    }
+    .yellow {
+        background-color: yellow;
+    }
+    .red {
+        background-color: red;
+    }
+    .white {
+        background-color: white;
+    }
+
+    .button5 {
+      radius: 40%;
+      font-size: 8px;
+    }
+
+    #footer{
+      margin-top: 1em;
+    }
+    </style>
+
+  <head>
+    <div id="statusBar" class="d-flex align-items-center border border-dark">
+    <!--  <div class="border border-dark mr-auto p-2"> -->
+      <div id="profName" class="mr-auto p-2">John Dickerson</div>
+    <!--  </div> -->
+    <span class="border border-dark p-2">
+      <span id="status" size ="100px" align = 'right'> <font size="4"><b> Select your Current Status: </b> </font size="4.5">   </span>
+      <span id="statusOutline">
+        <span class="dropdown">
+          <select id = "firstSelect" class="" style="width: 150px;">
+            <option class = "white" value="">Please choose</option>
+            <option class = "green" value ="1"> I am in my office.</option>
+            <option class = "yellow" value ="2" style="background-color: yellow"> Be Back in ...  </option>
+            <option class = "red" value ='3' style="background-color: red"> Out for Today!</option>
+          </select>
+        </span>
+          <!--<div id="profStatus" >Be back in 15 mins!</div>-->
+      </span>
+        <span id="statusOutline2" style="display:none">
+          <select class = "yellow" style="width: 150px;">
+              <option class = "yellow" style="background-color:yellow">15 minutes</option>
+              <option class = "yellow" style="background-color:yellow">30 minutes</option>
+              <option class = "yellow" style="background-color:yellow">an hour</option>
+              <option class = "yellow" style="background-color:yellow">two hours</option>
+              <option class = "yellow" style="background-color:yellow">four hours</option>
+              <option class = "yellow" style="background-color:yellow">six hours</option>
+            </select>
+            <!--<div id="profStatus" >Be back in 15 mins!</div>-->
+      </span>
+    </span>
+  </div>
+  </head>
+
+<body>
+<section>
+      <div class= "btn-group-vertical">
+        <!-- <img id="proPic" src="dickerson_propic.jpg" alt="ProfilePic"><div></div> -->
+        <button id = "messagesButton" style="background-color:#bbb" type="button" onClick = "addMessages()" data-toggle="modal"><img src="windows-10-mail-icon.png" style="width: 50px; height: 50px" class="rounded mx-auto d-block" alt="Mail">Messages</button>
+        <button id = "carouselButton" type="button" onClick = "addCarousel()" data-toggle="modal"><img src="events-icon.png" style="width: 50px; height: 50px" class="rounded mx-auto d-block" alt="Events">Update Events</button>
+        <button id = "directoryButton" type="button" onclick = "addDirectory()" data-toggle="modal"><img src="maps-icon.png" style="width: 50px; height: 50px" class="rounded mx-auto d-block" alt="Maps">Room Directory</button>
+        <button id = "settingsButton" type="button" onClick = "addSettings()" data-toggle="modal"><img src="settings-icon.png" style="width: 50px; height: 50px" class="rounded mx-auto d-block" alt="Settings">Settings</button>
+      </div>
+  </section>
+
+  <h4></h4>
+  <section1 id = "sec1">
+      <div id = "messageBoard" width="450" align = "left" style="display:block">
+        <table id="example" width="900" align = 'center'>
+          <tr id="messTitle" align = "center">
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+          </tr>
+          <tr align = "center">
+              <th>Name</th>
+              <th>Topic</th>
+              <th>ID</th>
+          </tr >
+          <tr id="mess2" align = "center">
+              <td>John Smith</td>
+              <td>Grades</td>
+              <td>jsmith@umd.edu</td>
+          </tr >
+          <tr id="mess3" align = "center">
+              <td>Jane Smith</td>
+              <td>Lecture</td>
+              <td>jsmith12@umd.edu</td>
+          </tr>
+        </table>
+        <button type="button" class="button button5" onClick="$('#helpMessages').modal('show')">Need Help?</button>
+      </div>
+
+          <div id="carouselModal" role="dialog" style="display:none">
+             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+               <ol class="carousel-indicators">
+                 <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                 <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                 <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+               </ol>
+               <div class="carousel-inner">
+                 <div class="carousel-item active">
+                   <img src="competitionflyer.jpg" class="carouselPic d-block w-100" alt="...">
+                   <div class="carousel-caption d-none d-md-block">
+                     <h5></h5>
+                     <p></p>
+                   </div>
+                 </div>
+                 <div class="carousel-item">
+                   <img src="xkcd_pic.png" class="carouselPic d-block w-100" alt="...">
+                   <div class="carousel-caption d-none d-md-block">
+                   <!--  <h5>Second slide label</h5>
+                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> -->
+                   </div>
+                 </div>
+                 <div class="carousel-item">
+                   <img src="Golub.jpg" class="carouselPic d-block w-100" alt="...">
+                   <div class="carousel-caption d-none d-md-block">
+                     <h5>Professor of the Month</h5>
+                     <p>Congratulations to Dr. Evan Golub</p>
+                   </div>
+                 </div>
+               </div>
+               <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                 <span class="sr-only">Previous</span>
+               </a>
+               <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                 <span class="sr-only">Next</span>
+               </a>
+               <div> <br> </br> </div>
+               <div align="center">
+                 <button type="button" onClick = "notImplemented()" class="btn btn-success btn-lg mt-1">Add an Event</button>
+                 <button type="button" onClick = "notImplemented()" class="btn btn-primary btn-lg mt-1">Edit Display Orders</button>
+                 <button type="button" onClick = "notImplemented()" class="btn btn-danger btn-lg mt-1">Delete an Event</button>
+               </div>
+               </div>
+           </div>
+
+          <!-- directory functions -->
+          <div id="directoryModal" role="dialog" style="display:none">
+              <!-- Modal content-->
+              <h4></h4>
+              <div>
+                <div>
+                  <h4 align="center">Professors' Rooms</h4>
+                </div>
+                <div>
+                    <div class="header">
+                        <span class="text" align="center" id="dirinstuctions"> Enter as much of a professor's name as you know and press submit to find their office. </br> </br> </span>
+                    </div>
+                    <div class = "body" align="center">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                        <input type="text" name="name" id = "dirname" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        <button type="button" onClick="document.getElementById('result').innerHTML = query(document.getElementById('dirname').value)">Search</button>
+                      </div>
+                    </div>
+
+                  <div id="result"></div>
+                </div>
+              </div>
+          </div>
+
+          <div id="settingPage" role="dialog" style="display:none">
+              <!-- Modal content-->
+              <div>
+                <div>
+                  <h4></h4>
+                  <h4>Settings</h4>
+                </div>
+                <table id="example2" width="900" align = 'center'>
+                  <tr align = "left">
+                      <td><img id="proPic" src="dickerson_propic.jpg" alt="ProfilePic"></td>
+                      <td><button type="button" onClick='notImplemented()'>Edit Picture</a></td>
+                  </tr >
+                  <tr align = "left">
+                      <td>About Me </td>
+                      <td>
+                        <button type="button" onClick='notImplemented()'>Edit About Me </button>
+                      </td>
+                    </tr>
+                  <tr align = "left">
+                      <td>Set Email Address</td>
+                      <td>
+                        <input type = "text" value = "testing@umd.edu"></input>
+                      </td>
+                  <tr align = "left">
+                      <td>Do you want messages forwarded to your email?
+                        <button type="button" class="button button5" onClick="$('#helpModalForward').modal('show')">?</button>
+                      </td>
+                      <td>
+                        <select>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                        </select>
+                      </td>
+                  </tr>
+                  <tr align = "left">
+                      <td>Do you want your replies to messages forwarded to your email?
+                          <button type="button" class="button button5" onClick="$('#helpModalForwardReply').modal('show')">?</button>
+                      </td>
+                      <td>
+                        <select>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                        </select>
+                      </td>
+                  </tr>
+                  <tr align = "left">
+                      <td>Do you want appointment requests forwarded to your email?
+                          <button type="button" class="button button5" onClick="notImplemented()">?</button>
+                      </td>
+                      <td>
+                        <select>
+                          <option value="Yes">Yes</option>
+                          <option value="No">No</option>
+                        </select>
+                      </td>
+                  </tr>
+                </table>
+                <div id=footer >
+                  <button type="button" onCLick="$('#updateModal').modal('show')" align = "right"> Update Settings</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </section1>
+    </body>
+    <!-- directory functions end -->
+
+    <div id="updateModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h4>Settings Updated!</h4>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <div id="Mess02Modual" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Grades</h4> </br>
+              <h6 class="modal-title">John Smith</h6>
+            </div>
+            <div class="modal-body">
+              <p> Hi Professor Dickerson, </br>
+                 I wanted to ask you about why I lost points on question 2. The answer looks identical to the answer sheet. </br>
+                 Thanks, </br>
+                 John Smith
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" onClick = "$('#Reply02').modal('show')" class="btn btn-success">Reply</button>
+              <button type="button" onClick = "deleteMess('mess2')" class="btn btn-danger" data-dismiss="modal">Delete</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    <div id="Reply02" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Re: Grades</h4>
+          <h6>John Smith</h6>
+        </div>
+          <p style="margin-left:10px; margin-top:10px"> Type in your response in the textbox below. </p>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">response</span>
+            </div>
+            <textarea class="form-control" id="messageBody" aria-label="With textarea"></textarea>
+          </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Send</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="Mess03Modual" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Lecture</h4>
+          <h6 class="modal-title">Jane Smith</h6>
+        </div>
+        <div class="modal-body">
+          <p> Hi Professor Dickerson, </br> </br>
+              I stopped by to pick up the leture notes we talked about
+              but you were not here. I will try again tomorrow during office hours.</br></br>
+             Thanks, </br>
+             Jane Smith
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" onClick = "$('#Reply03').modal('show')" class="btn btn-success">Reply</button>
+          <button type="button" onClick = "deleteMess('mess3')"class="btn btn-danger" data-dismiss="modal">Delete</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<div id="Reply03" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Re: Lecture</h4>
+      <h6>Jane Smith</h6>
+    </div>
+      <p> Type in your response in the textbox below. </p>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">response</span>
+        </div>
+        <textarea class="form-control" id="messageBody" aria-label="With textarea"></textarea>
+      </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" data-dismiss="modal">Send</button>
+      <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div id="helpModalForward" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title"> Message Forwarding</h4>
+    </div>
+    <div class="modal-body">
+      <p> By selecting yes to message forwarding, every message that is left at your door will be automatically sent to your email specified above.
+          You can reply to the message through your email. The message will still be shown in the messages tab here and can be reply through this system as well.
+      </p>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="helpModalForwardReply" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title"> Message Reply Forwarding </h4>
+    </div>
+    <div class="modal-body">
+      <p> By selecting yes to Message Reply Forwarding, every reply you send out using this system (in the messages tab) will be sent to your email address
+        as well as the address of the person who left the message.
+      </p>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="helpMessages" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title"> Using the Message System</h4>
+    </div>
+    <div class="modal-body">
+      <p> All non-deleted messages are shown in the table above. In order to read the full message, hover over the message, so the row is highlighted, and click on message. The message should popup in a window.
+        Through this system, you can reply to the sender, delete the message, or close the window.
+      </p>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    </div>
+
+
+    <!-- Optional JavaScript -->
+
+      <!-- directory functions -->
+      <script>
+       var rooms = [{name: "Evan Golub", room: "IRB 1209"}, {name: "Michelle Hugue", room: "IRB 1211"}]
+        function query(name) {
+          var ret = "";
+          if(name  === ""){
+            ret = "Enter Professor name";
+            return ret;
+          }
+          for (i = 0; i < rooms.length; i++) {
+            if(rooms[i].name.toLowerCase().includes(name.toLowerCase())){
+              ret += rooms[i].name + " is in room " + rooms[i].room + "<br />";
+            }
+          }
+
+          if(ret === ""){
+            ret = "No professor found"
+          }
+
+          return ret;
+        }
+      </script>
+
+      <!-- directory functions end -->
+
+      <script>
+        function addMessages(){
+          document.getElementById("messagesButton").style.backgroundColor = "#bbb";
+          document.getElementById("carouselButton").style.backgroundColor = "#eee";
+          document.getElementById("directoryButton").style.backgroundColor = "#eee";
+          document.getElementById("settingsButton").style.backgroundColor = "#eee";
+
+          document.getElementById("messageBoard").style.display = "block";
+          document.getElementById("carouselModal").style.display = "none";
+          document.getElementById("directoryModal").style.display = "none";
+          document.getElementById("settingPage").style.display = "none";
+        }
+        function addCarousel(){
+          document.getElementById("messagesButton").style.backgroundColor = "#eee";
+          document.getElementById("carouselButton").style.backgroundColor = "#bbb";
+          document.getElementById("directoryButton").style.backgroundColor = "#eee";
+          document.getElementById("settingsButton").style.backgroundColor = "#eee";
+
+          document.getElementById("messageBoard").style.display = "none";
+          document.getElementById("carouselModal").style.display = "block";
+          document.getElementById("directoryModal").style.display = "none";
+          document.getElementById("settingPage").style.display = "none";
+        }
+        function addDirectory(){
+          document.getElementById("messagesButton").style.backgroundColor = "#eee";
+          document.getElementById("carouselButton").style.backgroundColor = "#eee";
+          document.getElementById("directoryButton").style.backgroundColor = "#bbb";
+          document.getElementById("settingsButton").style.backgroundColor = "#eee";
+
+          document.getElementById("messageBoard").style.display = "none";
+          document.getElementById("carouselModal").style.display = "none";
+          document.getElementById("directoryModal").style.display = "block";
+          document.getElementById("settingPage").style.display = "none";
+        }
+        function addSettings(){
+          document.getElementById("messagesButton").style.backgroundColor = "#eee";
+          document.getElementById("carouselButton").style.backgroundColor = "#eee";
+          document.getElementById("directoryButton").style.backgroundColor = "#eee";
+          document.getElementById("settingsButton").style.backgroundColor = "#bbb";
+
+          document.getElementById("messageBoard").style.display = "none";
+          document.getElementById("carouselModal").style.display = "none";
+          document.getElementById("directoryModal").style.display = "none";
+          document.getElementById("settingPage").style.display = "block";
+        }
+
+      </script>
+
+    <script>
+    $(".dropdown-menu li a").click(function(){
+      $(this).parents(".dropdown").find('.btn').html($(this).text() + ' <span class="caret"></span>');
+      $(this).parents(".dropdown").find('.btn').val($(this).data('value'));
+    });
+    </script>
+
+
+
+    <script>
+      function notImplemented(){
+        alert("Under Development");
+      }
+
+      $(document).ready(function() {
+        $('#example tr#mess2').click(function() {
+          console.log("here");
+          $("#Mess02Modual").modal("show")
+          this.backgroundColor = '#717D7E';
+        });
+        $('#example tr#mess3').click(function() {
+          console.log("here3");
+          $("#Mess03Modual").modal("show")
+          this.backgroundColor = '#717D7E';
+        });
+      });
+
+      function deleteMess(id){
+        document.getElementById('example').deleteRow(document.getElementById(id).rowIndex);
+        console.log(document.getElementById('example').rows.length);
+        if(document.getElementById('example').rows.length <= 2){
+            let newRow = document.getElementById('example').insertRow(-1);
+            newRow.insertCell(0);
+            let newCell = newRow.insertCell(1);
+            newRow.insertCell(2);
+            let newText = document.createTextNode('No Messages');
+            newCell.appendChild(newText);
+            newCell.style.textAlign = 'center';
+        }
+      }
+
+    </script>
+
+    <script>
+    $("#firstSelect").change(function(){
+        var color = $("option:selected", this).attr("class");
+        console.log(color);
+        $("#firstSelect").attr("class", color);
+
+        if( $("option:selected", this).attr("value") == "2"){
+          document.getElementById("statusOutline2").style.display = "inline";
+        }
+        else{
+          document.getElementById("statusOutline2").style.display = "none";
+        }
+    });
+    </script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>
