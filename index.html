@@ -62,6 +62,69 @@
     }
 
     </script>
+
+  </script>
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+    <link rel="stylesheet" type="text/css" href="https://mottie.github.io/Keyboard/css/keyboard.css">
+    <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css">
+    <script type="text/javascript" src="https://mottie.github.io/Keyboard/js/jquery.keyboard.js"></script>
+    <script type="text/javascript" src="https://mottie.github.io/Keyboard/js/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="https://mottie.github.io/Keyboard/js/jquery.keyboard.extension-typing.js"></script>
+
+<style id="compiled-css" type="text/css">
+    /* position keyboard at bottom of the screen - jQuery UI isn't even loaded! */
+
+.ui-keyboard {
+border-radius: 0;
+left: 0;
+top: auto;
+bottom: 0;
+position: fixed;
+width: 100%;
+}
+
+</style>
+
+<script type="text/javascript">
+
+
+  $(function(){
+
+/* VIRTUAL KEYBOARD DEMO - https://github.com/Mottie/Keyboard */
+$(function() {
+
+$('input').keyboard({
+    usePreview: false
+  })
+  // activate the typing extension
+  .addTyping({
+    showTyping: true,
+    delay: 250
+  });
+
+});
+
+$(function() {
+
+$('textarea').keyboard({
+    usePreview: false
+  })
+  // activate the typing extension
+  .addTyping({
+    showTyping: true,
+    delay: 250
+  });
+
+});
+
+
+  });
+
+</script>
+
 <title>Super Message Board 4</title>
 <style type="text/css">
 @import url("style.css");
@@ -162,6 +225,12 @@
       .jssora073.jssora073dn {opacity:.4;}
       .jssora073.jssora073ds {opacity:.3;pointer-events:none;}
   </style>
+  <div id="testButtons">
+    <button class="btnFutureDates" id="office_out" onclick="adjustStatus('office_out')">Out of office</button>
+    <button class="btnFutureDates" id="office_in" onclick="adjustStatus('office_in')">In office hours</button>
+    <button class="btnFutureDates" id="office_out_meeting" onclick="adjustStatus('office_out_meeting')">In a meeting</button>
+    <button class="btnFutureDates" id="office_back_soon" onclick="adjustStatus('office_back_soon')">Be back in 15 minutes</button>
+  </div>
 	<div id="wrapper">
 		<header>
 		  <div id="name">
@@ -319,15 +388,9 @@
               <h4 class="modal-title">Professors' Rooms</h4>
             </div>
             <div class="modal-body">
-                <form action="#" onsubmit="document.getElementById('result').innerHTML = findByName(query.value);query.select();return false;">
-                One word of their name:
-                <input type="text" name="query" id="query" value="">
-                <button type="button" onClick="document.getElementById('result').innerHTML = findByName(query.value);query.select();">Search</button>
-                </form>
-                <div id="result"></div>
               <div class="input-group mb-3">
                 <div class="modal-header">
-                    <span class="text" id="dirinstuctions"> Enter as much of a professor's name as you know and press submit to find their office</span>
+                    <span class="text" id="dirinstuctions">Enter as much of a professor's name as you know and press submit to find their office</span>
                 </div>
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
@@ -335,7 +398,7 @@
                 <input type="text" name="name" id = "dirname" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
                 <button class="btn btn-secondary" type="button" onClick="document.getElementById('result').innerHTML = query(document.getElementById('dirname').value)">Search</button>
               </div>
-              <div id="resudlt"></div>
+              <div id="result"></div>
               <div id="bottom" class="modal-footer">
                 <button type="button" onclick="document.getElementById('dirname').value = '';document.getElementById('result').innerHTML = ''" class="btn btn-danger" data-dismiss="modal">Close</button>
               </div>
@@ -567,6 +630,29 @@
         }
       </script>
 
+      <script>
+      function adjustStatus(task) {
+          var status = document.getElementById("status");
+          if (task == "office_out"){
+            status.innerHTML = "<h3>Out of office.</h3>"
+            status.style.background = '#c43c48';
+          } else if (task == "office_in"){
+            status.innerHTML = "<h3>Currently holding office hours.</h3>"
+            status.style.background = '#28a745';
+          } else if (task == "office_out_meeting"){
+            status.innerHTML = "<h3>Currently in a meeting.</h3>"
+            status.style.background = '#c43c48';
+          } else if (task == "office_back_soon"){
+            var today = new Date();
+            var date = (today.getMonth()+1)+'-'+today.getDate();
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            var dateTime = date+' '+time;
+            status.innerHTML = "<h3>Be back in 15 minutes! <small><small><small>"+dateTime+"</small></small></small></h3>";
+            status.style.background = '#c43c48';
+          }
+
+      }
+      </script>
 
 
       <!-- directory functions end -->
@@ -647,20 +733,20 @@
     }
     var eventsArray = [{ // this object will be "parsed" into an Event Object
       title: 'Department Meeting', // a property!
-      start: '2019-04-16T16:00:00+00:00', // a property!
-      end: '2019-04-16T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      start: '2019-04-22T16:00:00+00:00', // a property!
+      end: '2019-04-22T18:00:00+00:00', // a property! ** see important note below about 'end' **
       color: 'red'
     },
     {
       title: 'Out For Lunch', // a property!
-      start: '2019-04-16T15:00:00+00:00', // a property!
-      end: '2019-04-16T16:00:00+00:00', // a property! ** see important note below about 'end' **
+      start: '2019-04-22T15:00:00+00:00', // a property!
+      end: '2019-04-22T16:00:00+00:00', // a property! ** see important note below about 'end' **
       color: 'red'
     },
     {
       title: 'Office Hours', // a property!
-      start: '2019-04-17T17:00:00+00:00', // a property!
-      end: '2019-04-17T18:00:00+00:00', // a property! ** see important note below about 'end' **
+      start: '2019-04-23T17:00:00+00:00', // a property!
+      end: '2019-04-23T18:00:00+00:00', // a property! ** see important note below about 'end' **
       color: 'green'
     }];
     var flag = 0;
@@ -700,18 +786,6 @@
           $('#schedModal').modal('show');
           document.getElementById('startTime').value = info.startStr.slice(11,16)
           document.getElementById('endTime').value = info.endStr.slice(11,16)
-<<<<<<< HEAD
-          $('#requestButton').click(function() {
-            var event = {
-              title: 'dynamic event',
-              start: info.startStr,
-              end: info.endStr,
-              sticky: true
-            }
-            eventsArray.push(event)
-            calendar.addEvent(event)
-            //refresh the content
-=======
           var name = document.getElementById('schedName').value
           var dirID = document.getElementById('schedID').value.toLowerCase();
           $('#requestButton').off("click").click(function() {
@@ -726,10 +800,15 @@
               calendar.addEvent(event)
               calendar.rerenderEvents()
               clearRequest()
->>>>>>> e224da342938e12ecd6acbbbe797d5f9f9490879
           })
         },
         events: eventsArray,
+        //{ // you can also specify a plain string like 'json/events.json'
+          //url: 'json/events.json',
+          //failure: function() {
+            //document.getElementById('script-warning').style.display = 'block';
+          //}
+        //}
       });
       calendar.setOption('contentHeight', 475);
       calendar.render();
@@ -778,6 +857,19 @@
 <script>
 
 </script>
+
+<script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: "qnoga7vj"
+      }], "*")
+    }
+
+    // always overwrite window.name, in case users try to set it manually
+    window.name = "result"
+  </script>
 
 </body>
 </html>
