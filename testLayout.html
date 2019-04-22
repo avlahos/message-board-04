@@ -28,11 +28,14 @@
     <title>SuperMessageBoard4</title>
     <style>
     .alert{
-      margin-left: .7em;
+      margin-left: -5.75em;
+      margin-bottom: 0em;
+      float: left;
       height: 2em;
-      width: 22.5em;
+      width: 28.75em;
       font-size: 2em;
-
+      color: black !important;
+      text-align: center;
     }
     .flex-fill {
     flex: 1 1 auto;
@@ -49,13 +52,15 @@
     }
     #proPic {
       margin: auto;
-      width: 10em;
-      height: 12em;
+      width: 11em;
+      height: 13em;
 
     }
     .card {
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      width: 10em;
+      margin-top: 4.5em;
+      margin-left: .5em;
+      width: 11em;
       height: 10em;
       text-align: center;
       font-family: arial;
@@ -88,14 +93,16 @@
     }
     #carouselExampleCaptions {
       background-color: black;
+      margin-top: .5em;
       margin-left: 3em;
-      margin-bottom: -.5em;
-      height: 18em;
-      width: 30em;
+      margin-right: 5em;
+      margin-bottom: .5em;
+      height: 22em;
+      width: 40em;
     }
    .carouselPic {
-     height: 18em;
-     width: 30em;
+     height: 22em;
+     width: 32em;
      object-fit: contain;
     }
     #bd-example{
@@ -103,8 +110,8 @@
       margin-left: 3em;
       margin-top: 5.75em;
       margin-bottom: -2em;
-      height: 18em;
-      width: 30em;
+      height: 22em;
+      width: 32em;
     }
     </style>
   </head>
@@ -119,15 +126,15 @@
       <div id="profileBox" class="d-flex flex-column align-self-start">
         <div id="profileCard" class="card">
           <img id="proPic" src="dickerson_propic.jpg" alt="John">
-      <!--  <h1>John Doe</h1>
-        <p class="title">CEO & Founder, Example</p>
+          <h3>John Doe</h3>
+      <!--  <p class="title">CEO & Founder, Example</p>
         <p>Harvard University</p> -->
-            <div class="border border-dark" style="padding: 8px 0;">
+        <!--    <div class="border border-dark" style="padding: 8px 0;">
               <a href="#"><i class="fa fa-dribbble"></i></a>
               <a href="#"><i class="fa fa-twitter"></i></a>
               <a href="#"><i class="fa fa-linkedin"></i></a>
               <a href="#"><i class="fa fa-facebook"></i></a>
-            </div>
+            </div> -->
             <button type="button" class="profButton" data-toggle="modal" data-target="#aboutModal">About Me</button>
             <button type="button" class="profButton" data-toggle="modal" data-target="#messageModal">Message Me</button>
             <button id="directoryButton" type="button" class="profButton" data-toggle="modal" data-target="#messageModal">Directory</button>
@@ -135,7 +142,7 @@
         </div>
       <div class="d-flex flex-column">
         <div class="alert alert-danger" role="alert">
-          Currently out of the office!
+          <b>Currently out of the office!</b>
         </div>
         <div class="bd-example">
           <div id="carouselExampleCaptions" class="carousel slide " data-ride="carousel">
@@ -162,8 +169,8 @@
               <div class="carousel-item">
                 <img src="Golub.jpg" class="carouselPic d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                  <h5>Professor of the Month</h5>
-                  <p>Congratulations to Dr. Evan Golub</p>
+                  <h1>Professor of the Month</h1>
+                  <h3>Congratulations to Dr. Evan Golub</h3>
                 </div>
               </div>
             </div>
@@ -367,7 +374,7 @@
         },
         events: eventsArray,
       });
-      calendar.setOption('contentHeight', 300);
+      calendar.setOption('contentHeight', 215);
       calendar.setOption('aspectRatio', .5);
       calendar.render();
     $('#submitButton').on('click', function(e){
