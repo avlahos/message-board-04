@@ -11,7 +11,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.2.0/css/font-awesome.min.css">
 
     <link href="fullcalendar/core/main.css" rel="stylesheet" />
     <link href="fullcalendar/daygrid/main.css" rel="stylesheet" />
@@ -30,43 +29,7 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.5.0/papaparse.min.js">
     </script>
 
-    <script>
-    const csv = "https://www.cs.umd.edu/~egolub/Iribe/info.csv";
-    let results = [];
-    const csvData = Papa.parse(csv, {
-      header: true,
-      download: true,
-      complete: response => {
-        results = response.data;
-        // You can access the data here
-        //document.body.innerHTML += findOfficeByName("golub");
-      }
-    });
-
-
-    function findByName(name) {
-      retval="";
-      lName=name.toLowerCase();
-      for (i=0; i<results.length; i++) {
-        if (
-          results[i].LDAP && results[i].LDAP.toLowerCase().includes(lName) ||
-          results[i].LastName && results[i].LastName.toLowerCase().includes(lName) ||
-          results[i].FirstName && results[i].FirstName.toLowerCase().includes(lName)
-        ) {
-          retval+=results[i].FirstName + " " + results[i].LastName +
-          " is in IRB " +
-          results[i].Room+".<br>";
-        }
-      }
-      return retval;
-    }
-
-    </script>
-
   </script>
-  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
-
-  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
 
     <link rel="stylesheet" type="text/css" href="https://mottie.github.io/Keyboard/css/keyboard.css">
     <link rel="stylesheet" type="text/css" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/ui-lightness/jquery-ui.css">
@@ -260,7 +223,7 @@ $('textarea').keyboard({
           <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:430px;height:275px;overflow:hidden;visibility:hidden;">
               <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:430px;height:275px;overflow:hidden;">
                   <div class="slides">
-                      <img data-u="image" src="competitionflyer.jpg" />
+                      <img data-u="image" src="rodler.png" />
                   </div>
                   <div class="slides">
                       <img data-u="image" src="Golub.jpg" >
@@ -274,12 +237,10 @@ $('textarea').keyboard({
                       <img data-u="image" src="xkcd_pic.png" />
                   </div>
                   <div class="slides">
-                    <img data-u="image" src="Golub.jpg" >
-                      <div class="white-text">
-                        <h1>Professor of the Month</h1>
-                        <h3>Congratulations to Dr. Evan Golub</h3>
-                      </div>
-                    </img>
+                    <div class="white-text">
+                      <h5>Testudo Home Page</h5>
+                    </div>
+                    <img data-u="image" src="qr-code.png" />
                   </div>
               </div>
               <!-- Bullet Navigator -->
@@ -507,14 +468,13 @@ $('textarea').keyboard({
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Competition Flyer 1</h4>
+            <h4 class="modal-title">Scholarship Opportunity</h4>
           </div>
           <div class="modal-body">
-            <p> This is a great team for people who love a challege and want to get experence coding in many different styles and langauges!! Let me know if you plan to join. I would love to hear about the challenges.
-            </p>
+
             <!-- <img data-u="image" src="competitionflyer.jpg" height="400" width="450" /> -->
             <div style="text-align:center">
-                <iframe src="https://docs.google.com/viewer?url=http://www.pdf995.com/samples/pdf.pdf&embedded=true" frameborder="0" height="400px" width="100%"></iframe>
+                <iframe src="scholarship.pdf" frameborder="0" height="400px" width="100%"></iframe>
             </div>
           </div>
           <div class="modal-footer">
@@ -529,25 +489,19 @@ $('textarea').keyboard({
     </div>
 
     <div id="resourcesModal2" class="modal fade" role="dialog">
-      <div class="modal-dialog modal-lg" >
+      <div class="modal-dialog" >
 
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Competition Flyer 2</h4>
+            <h4 class="modal-title">Professor of the Month</h4>
           </div>
           <div class="modal-body">
-            <p> This is a great team for people who love a challege and want to get experence coding in many different styles and langauges!! Let me know if you plan to join. I would love to hear about the challenges.
+            <p> Congratulations to Dr. Evan Golub! He is doing a amazing job teaching his classes and his break throughs in Human Computer Interaction.
             </p>
-            <!-- <img data-u="image" src="competitionflyer.jpg" height="400" width="450" /> -->
-            <div style="text-align:center">
-                <iframe src="https://docs.google.com/viewer?url=http://www.pdf995.com/samples/pdf.pdf&embedded=true" frameborder="0" height="400px" width="100%"></iframe>
-            </div>
+            <img data-u="image" src="Golub.jpg" height="250" width="350" />
           </div>
           <div class="modal-footer">
-            <span class="input-group-text" id="basic-addon3">University email</span>
-            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Send</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           </div>
         </div>
@@ -556,25 +510,17 @@ $('textarea').keyboard({
     </div>
 
     <div id="resourcesModal3" class="modal fade" role="dialog">
-      <div class="modal-dialog modal-lg" >
+      <div class="modal-dialog" >
 
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Competition Flyer 3</h4>
+            <h4 class="modal-title">Windows File Comic</h4>
           </div>
           <div class="modal-body">
-            <p> This is a great team for people who love a challege and want to get experence coding in many different styles and langauges!! Let me know if you plan to join. I would love to hear about the challenges.
-            </p>
-            <!-- <img data-u="image" src="competitionflyer.jpg" height="400" width="450" /> -->
-            <div style="text-align:center">
-                <iframe src="https://docs.google.com/viewer?url=http://www.pdf995.com/samples/pdf.pdf&embedded=true" frameborder="0" height="400px" width="100%"></iframe>
-            </div>
+            <img data-u="image" src="xkcd_pic.png" height="400" width="450" />
           </div>
           <div class="modal-footer">
-            <span class="input-group-text" id="basic-addon3">University email</span>
-            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Send</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           </div>
         </div>
@@ -583,25 +529,17 @@ $('textarea').keyboard({
     </div>
 
     <div id="resourcesModal4" class="modal fade" role="dialog">
-      <div class="modal-dialog modal-lg" >
+      <div class="modal-dialog" >
 
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <h4 class="modal-title">Competition Flyer 4</h4>
+            <h4 class="modal-title">Testudo Home Page</h4>
           </div>
           <div class="modal-body">
-            <p> This is a great team for people who love a challege and want to get experence coding in many different styles and langauges!! Let me know if you plan to join. I would love to hear about the challenges.
-            </p>
-            <!-- <img data-u="image" src="competitionflyer.jpg" height="400" width="450" /> -->
-            <div style="text-align:center">
-                <iframe src="https://docs.google.com/viewer?url=http://www.pdf995.com/samples/pdf.pdf&embedded=true" frameborder="0" height="400px" width="100%"></iframe>
-            </div>
+            <img data-u="image" src="qr-code.png" height="400" width="400"/>
           </div>
           <div class="modal-footer">
-            <span class="input-group-text" id="basic-addon3">University email</span>
-            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-            <button type="button" class="btn btn-primary" data-dismiss="modal">Send</button>
             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
           </div>
         </div>
@@ -852,7 +790,6 @@ $('textarea').keyboard({
 
   <script type="text/javascript">
     jssor_1_slider_init();
-    console.log("Made to function")
   </script>
 <script>
 
