@@ -426,7 +426,7 @@ $('textarea').keyboard({
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Topic</span>
                       </div>
-                      <input id="schedTopic" type="text">
+                      <input id="schedTopic" type="text" placeholder="Optional Topic">
                     </div>
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
@@ -438,7 +438,7 @@ $('textarea').keyboard({
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Start Time</span>
                       </div>
-                      <input id="startTime" type="time" min="8:00" max="18:00" value="13:30">
+                      <input id="startTime" type="time" min="8:00" max="18:00">
                     </div>
                     <div class="input-group mb-3">
                       <div class="input-group-prepend">
@@ -449,7 +449,8 @@ $('textarea').keyboard({
                     <div id="errorSched"></div>
                   </div>
                   <div class="modal-footer">
-                    <button id="requestButton" type="button" class="btn btn-success" data-dismiss="modal">Request</button>
+                    <button type="button" onClick="clearRequest()" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button id="requestButton" type="button" class="btn btn-success">Request</button>
                   </div>
                 </div>
               </div>
@@ -782,13 +783,20 @@ $('textarea').keyboard({
             alert(eventObj.title);
         },
         select: function(info) {
-          console.log(info)
           $('#schedModal').modal('show');
           document.getElementById('startTime').value = info.startStr.slice(11,16)
           document.getElementById('endTime').value = info.endStr.slice(11,16)
-          var name = document.getElementById('schedName').value
-          var dirID = document.getElementById('schedID').value.toLowerCase();
           $('#requestButton').off("click").click(function() {
+              name = document.getElementById('schedName').value
+              topic = document.getElementById('schedTopic').value
+              dirID = document.getElementById('schedID').value.toLowerCase();
+              startTime = document.getElementById('startTime').value
+              endTime = document.getElementById('endTime').value
+              if (name === "" || dirID === ""){
+                 document.getElementById('errorSched').innerHTML = ("Error".fontcolor("red")+": Fill out all fields").bold();
+                 return;
+              }
+              info.endStr = info.endStr.replace(info.endStr.slice(11,16), document.getElementById('endTime').value)
               var topic = document.getElementById('schedTopic').value
               var event = {
                 title: topic,
@@ -800,6 +808,7 @@ $('textarea').keyboard({
               calendar.addEvent(event)
               calendar.rerenderEvents()
               clearRequest()
+              $('#schedModal').modal("hide")
           })
         },
         events: eventsArray,
@@ -838,7 +847,35 @@ $('textarea').keyboard({
           alert(eventObj.title);
       },
       select: function(info) {
-
+      /*  $('#schedModal').modal('show');
+        document.getElementById('startTime').value = info.startStr.slice(11,16)
+        document.getElementById('endTime').value = info.endStr.slice(11,16)
+        $('#requestButton').off("click").click(function() {
+            name = document.getElementById('schedName').value
+            topic = document.getElementById('schedTopic').value
+            dirID = document.getElementById('schedID').value.toLowerCase();
+            startTime = document.getElementById('startTime').value
+            endTime = document.getElementById('endTime').value
+            if (name === "" || dirID === ""){
+               document.getElementById('errorSched').innerHTML = ("Error".fontcolor("red")+": Fill out all fields").bold();
+               return;
+            }
+            info.endStr = info.endStr.replace(info.endStr.slice(11,16), document.getElementById('endTime').value)
+            var topic = document.getElementById('schedTopic').value
+            var event = {
+              title: topic,
+              start: info.startStr,
+              end: info.endStr,
+              sticky: true
+            }
+            eventsArray.push(event)
+            secondCalendar.addEvent(event)
+            calendar.addEvent(event)
+            secondCalendar.rerenderEvents()
+            calendar.rerenderEvents()
+            clearRequest()
+            $('#schedModal').modal("hide")
+        }) */
       },
       events: eventsArray,
     });
@@ -852,7 +889,6 @@ $('textarea').keyboard({
 
   <script type="text/javascript">
     jssor_1_slider_init();
-    console.log("Made to function")
   </script>
 <script>
 
