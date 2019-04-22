@@ -432,6 +432,7 @@
               }
               eventsArray.push(event)
               calendar.addEvent(event)
+              calendar.rerenderEvents()
               clearRequest()
           })
         },
