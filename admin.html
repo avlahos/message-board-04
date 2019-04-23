@@ -25,6 +25,7 @@
     <style>
       table#example {
           border-collapse: collapse;
+          align : center;
       }
       #example tr {
           background-color: #eee;
@@ -99,7 +100,7 @@
         background-color: #eee;
         border: 1px solid gray;
         color: black; /* White text */
-        padding: 40px 24px; /* Some padding */
+        padding: 1em 1em; /* Some padding */
         cursor: pointer; /* Pointer/hand icon */
         width: 100%; /* Set a width if needed */
         display: block; /* Make the buttons appear below each other */
@@ -111,13 +112,19 @@
       }
 
       section {
-        float: left;
+        /* float: left;
         margin-left: 0em;
-        display: inline;
+        display: inline; */
+
+        position: fixed;
+        z-index: 1;
+        left: 0px;
+        background: #eee;
+        overflow-x: hidden;
       }
       section1 {
         float: left;
-        margin-left: 3.0em;
+        margin-left: 11.0em;
         display: inline;
       }
 
@@ -353,8 +360,8 @@
           </div>
         </div>
 
-    <div id = "calendarPage" width="450" align = "left" style="display:none">
-      <div id="calendar" width="450">
+    <div id = "calendarPage" width="250"align = "left" style="display:none">
+      <div id="calendar" width="250">
 
       </div>
       <button type="button" class="button button5" onClick="$('#helpMessages').modal('show')">Need Help?</button>
