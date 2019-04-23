@@ -516,7 +516,7 @@
                   </tr>
                   <tr align = "left">
                       <td>Do you want appointment requests forwarded to your email?
-                          <button type="button" class="button button5" onClick="notImplemented()">?</button>
+                          <button type="button" class="button button5" onClick="$('#helpModalForwardRequests').modal('show')">?</button>
                       </td>
                       <td>
                         <select>
@@ -684,6 +684,24 @@
   </div>
 </div>
 
+<div id="helpModalForwardRequests" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title"> Calendar Request Forwarding </h4>
+    </div>
+    <div class="modal-body">
+      <p> By selecting yes to Calendar Request Forwarding, every appointment request that a students makes at your door using the calendar feature in the message board will automatically sent to your email to
+        alert you that an appoint has been requested. You can then approve the appointment through email, if you wish.
+      </p>
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <div id="helpMessages" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -828,6 +846,8 @@
           $("#Mess03Modual").modal("show")
           this.backgroundColor = '#717D7E';
         });
+
+
       });
 
       function deleteMess(id){
